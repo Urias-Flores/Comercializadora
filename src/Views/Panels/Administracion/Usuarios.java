@@ -41,8 +41,6 @@ public class Usuarios extends javax.swing.JPanel {
             l.setBackground(Color.white);
         }
     };
-    
-    //Hola como estas
     private FocusListener fl = new FocusListener(){
         @Override
         public void focusGained(FocusEvent e) {
@@ -63,7 +61,7 @@ public class Usuarios extends javax.swing.JPanel {
         }
     };
     private ControllerUsuario controllerUsuario;
-    ControllerUsuario conUs = new ControllerUsuario();
+    private ControllerUsuario conUs = new ControllerUsuario();
     
     public Usuarios() {
         initComponents();
