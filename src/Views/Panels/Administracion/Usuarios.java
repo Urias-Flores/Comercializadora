@@ -15,7 +15,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
 public class Usuarios extends javax.swing.JPanel {
-
+     
     private MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
