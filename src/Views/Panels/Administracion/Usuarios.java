@@ -32,7 +32,7 @@ public class Usuarios extends javax.swing.JPanel {
         @Override
         public void mouseEntered(MouseEvent e) {
             JLabel l = (JLabel) e.getComponent();
-            l.setBackground(new Color(220, 220, 220));
+            l.setBackground(new Color(220, 220, 221));
         }
 
         @Override
