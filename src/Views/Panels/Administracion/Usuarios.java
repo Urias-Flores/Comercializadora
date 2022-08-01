@@ -41,6 +41,8 @@ public class Usuarios extends javax.swing.JPanel {
             l.setBackground(Color.white);
         }
     };
+    
+    //Hola como estas
     private FocusListener fl = new FocusListener(){
         @Override
         public void focusGained(FocusEvent e) {
