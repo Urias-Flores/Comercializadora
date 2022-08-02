@@ -500,7 +500,11 @@ public class Producto extends javax.swing.JPanel {
     private void cmbCategoriaFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaFilterActionPerformed
         TableRowSorter s = new TableRowSorter(tbProductos.getModel());
         tbProductos.setRowSorter(s);
-        s.setRowFilter(RowFilter.regexFilter(cmbCategoria.getSelectedItem().toString(), 0, 1));
+        if(cmbCategoriaFilter.getSelectedIndex() > 0){
+            s.setRowFilter(RowFilter.regexFilter(cmbCategoriaFilter.getSelectedItem().toString(), 4));
+        }else{
+            s.setRowFilter(RowFilter.regexFilter("", 4));
+        }
     }//GEN-LAST:event_cmbCategoriaFilterActionPerformed
 
     private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
