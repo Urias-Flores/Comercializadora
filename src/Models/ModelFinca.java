@@ -4,6 +4,7 @@ import Resources.Conection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ModelFinca {
@@ -59,6 +60,23 @@ public class ModelFinca {
             rs.close();
         }catch(SQLException ex){
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    public DefaultComboBoxModel setModelProductores() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        try {
+            String Query = "Select ProductorID, Nombre from Productor";
+            ResultSet rs = conec.getStatement().executeQuery(Query);
+            
+            while (rs.next()) {
+                ModelProductor prod = new ModelProductor();
+                prod.setProductorID(rs.getInt("ProductorID"));
+                prod.setNombre(rs.getString("Nombre"));
+                model.addElement(prod);
+            }
+        } catch (Exception e) {
         }
         return model;
     }
