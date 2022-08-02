@@ -21,6 +21,7 @@ public class Fincas extends javax.swing.JPanel {
         initComponents();
         LoadTable();
         LoadProducers();
+        LoadFincas();
     }
 
     /**
