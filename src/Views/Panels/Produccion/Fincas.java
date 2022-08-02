@@ -39,6 +39,10 @@ public class Fincas extends javax.swing.JPanel {
     private void LoadProducers() {
         cmbProductores.setModel(conFinc.setProductorCmb());
     }
+    
+    private void LoadFincas () {
+        cmbFincas.setModel(conFinc.setFincaCmb());
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
