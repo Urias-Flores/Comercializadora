@@ -1,12 +1,28 @@
 
 package Views.Panels.Inventario;
 
+import Controllers.ControllerTipoRiego;
+import Controllers.ControllerTipoSuelo;
+import java.util.ArrayList;
+
 public class Producto extends javax.swing.JPanel {
 
+    private final ControllerTipoSuelo conSu = new ControllerTipoSuelo();
+    private final ControllerTipoRiego conRi = new ControllerTipoRiego();
+    
     public Producto() {
         initComponents();
+        Load();
     }
 
+    private void Load(){
+        ArrayList<String> list;
+        list = conSu.SelectListTipoSuelo();
+        list.forEach(cmbTipoSuelo::addItem);
+        list = conRi.SelectListTipoRiego();
+        list.forEach(cmbTipoRiego::addItem);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
