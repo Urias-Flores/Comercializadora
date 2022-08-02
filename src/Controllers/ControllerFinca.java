@@ -36,6 +36,10 @@ public class ControllerFinca {
     
     public DefaultComboBoxModel setProductorCmb () {
         return modelFinca.setModelProductores();
+    }
+    
+    public DefaultComboBoxModel setFincaCmb () {
+        return modelFinca.SelectModelFincaCmb();
     } 
     
     public boolean InsertFinca(){
