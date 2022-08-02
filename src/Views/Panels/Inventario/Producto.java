@@ -1,18 +1,27 @@
 
 package Views.Panels.Inventario;
 
+import Controllers.ControllerProducto;
 import Controllers.ControllerTipoRiego;
 import Controllers.ControllerTipoSuelo;
 import java.util.ArrayList;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 public class Producto extends javax.swing.JPanel {
 
-    private final ControllerTipoSuelo conSu = new ControllerTipoSuelo();
-    private final ControllerTipoRiego conRi = new ControllerTipoRiego();
+    private ControllerTipoSuelo conSu = new ControllerTipoSuelo();
+    private ControllerTipoRiego conRi = new ControllerTipoRiego();
+    private ControllerProducto controllerProducto;
+    private ControllerProducto conPro;
     
     public Producto() {
         initComponents();
         Load();
+        controllerProducto = new ControllerProducto
+        (txtNombre, txtDescripcion, txtPrecioCompra, txtPrecioVenta, txtDescuento, cmbCategoria, cmbTipoSuelo, cmbTipoRiego, txtTiempoObtencion);
+        conPro = new ControllerProducto
+        (txtNombre, txtDescripcion, txtPrecioCompra, txtPrecioVenta, txtDescuento, cmbCategoria);
     }
 
     private void Load(){
@@ -21,6 +30,18 @@ public class Producto extends javax.swing.JPanel {
         list.forEach(cmbTipoSuelo::addItem);
         list = conRi.SelectListTipoRiego();
         list.forEach(cmbTipoRiego::addItem);
+        
+        LoadTable();
+    }
+    
+    private void LoadTable(){
+        ControllerProducto conPro2 = new ControllerProducto();
+        tbProductos.setModel(conPro2.SelectModelProductos());
+        tbProductos.getColumn("ID").setPreferredWidth(10);
+        tbProductos.getColumn("Nombre").setPreferredWidth(400);
+        tbProductos.getColumn("Precio/Compra").setPreferredWidth(70);
+        tbProductos.getColumn("Precio/Venta").setPreferredWidth(70);
+        tbProductos.getColumn("Categoria").setPreferredWidth(130);
     }
     
     @SuppressWarnings("unchecked")
@@ -128,6 +149,7 @@ public class Producto extends javax.swing.JPanel {
 
         txtTiempoObtencion.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtTiempoObtencion.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtTiempoObtencion.setEnabled(false);
 
         jLabel20.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
         jLabel20.setText("Meses");
@@ -158,13 +180,20 @@ public class Producto extends javax.swing.JPanel {
         });
 
         cmbCategoria.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --", "De produccion", "Obtenible " }));
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --", "PRODUCCION", "OBTENIBLE" }));
+        cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCategoriaActionPerformed(evt);
+            }
+        });
 
         cmbTipoSuelo.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         cmbTipoSuelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --" }));
+        cmbTipoSuelo.setEnabled(false);
 
         cmbTipoRiego.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         cmbTipoRiego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --" }));
+        cmbTipoRiego.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -284,12 +313,22 @@ public class Producto extends javax.swing.JPanel {
         txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
         txtBuscar.setText("Nombre...");
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
 
         jLabel23.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel23.setText("Categoria");
 
         cmbCategoriaFilter.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         cmbCategoriaFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --", "De produccion", "Obtenible " }));
+        cmbCategoriaFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCategoriaFilterActionPerformed(evt);
+            }
+        });
 
         lbActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
@@ -302,8 +341,8 @@ public class Producto extends javax.swing.JPanel {
         btnEditar.setBackground(new java.awt.Color(49, 152, 65));
         btnEditar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar.png"))); // NOI18N
-        btnEditar.setText("Agregar");
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/editar2.png"))); // NOI18N
+        btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -313,8 +352,8 @@ public class Producto extends javax.swing.JPanel {
         btnEliminar.setBackground(new java.awt.Color(144, 40, 40));
         btnEliminar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/limpiar.png"))); // NOI18N
-        btnEliminar.setText("Limpiar");
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eliminar.png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -420,6 +459,30 @@ public class Producto extends javax.swing.JPanel {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        TableRowSorter s = new TableRowSorter(tbProductos.getModel());
+        tbProductos.setRowSorter(s);
+        s.setRowFilter(RowFilter.regexFilter(txtBuscar.getText(), 0, 1));
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void cmbCategoriaFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaFilterActionPerformed
+        TableRowSorter s = new TableRowSorter(tbProductos.getModel());
+        tbProductos.setRowSorter(s);
+        s.setRowFilter(RowFilter.regexFilter(cmbCategoria.getSelectedItem().toString(), 0, 1));
+    }//GEN-LAST:event_cmbCategoriaFilterActionPerformed
+
+    private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
+        if(cmbCategoria.getSelectedIndex() == 0 || cmbCategoria.getSelectedIndex() == 2){
+            cmbTipoSuelo.setEnabled(false); cmbTipoSuelo.setSelectedIndex(0);
+            cmbTipoRiego.setEnabled(false); cmbTipoRiego.setSelectedIndex(0);
+            txtTiempoObtencion.setEnabled(false); txtTiempoObtencion.setText("");
+        }else{
+            cmbTipoSuelo.setEnabled(true);
+            cmbTipoRiego.setEnabled(true);
+            txtTiempoObtencion.setEnabled(true);
+        }
+    }//GEN-LAST:event_cmbCategoriaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

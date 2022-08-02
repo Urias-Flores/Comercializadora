@@ -3,7 +3,9 @@ package Models;
 
 import Resources.Conection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 public class ModelProducto {
     private Conection conec = new Conection();
@@ -132,5 +134,25 @@ public class ModelProducto {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return true;
+    }
+    
+    public DefaultTableModel SelectModelProducto(){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"ID", "Nombre", "Precio/Compra", "Precio/Venta", "Categoria"};
+        model.setColumnIdentifiers(Columns);
+        String Query = "SELECT * FROM PRODUCTOS";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                String[] row = {rs.getString("ID"), 
+                                rs.getString("Nombre"), 
+                                rs.getString("PrecioCompra"), 
+                                rs.getString("PrecioVenta"), 
+                                rs.getString("Categoria")};
+                model.addRow(row);
+            }
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
     }
 }

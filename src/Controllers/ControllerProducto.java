@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class ControllerProducto {
     
@@ -72,10 +73,10 @@ public class ControllerProducto {
         modelProducto.setDescripcion(Descripcion.getText());
         modelProducto.setPrecioCompra(Float.parseFloat(PrecioCompra.getText()));
         modelProducto.setPrecioVenta(Float.parseFloat(PrecioVenta.getText()));
-        modelProducto.setDescuento(Float.parseFloat(Descuento.getText()));
+        modelProducto.setDescuento(Float.parseFloat(Descuento.getText())/100);
         modelProducto.setCategoria(CategoriaMapping.get(Categoria.getSelectedIndex()));
-        modelProducto.setTipoSueloID(TipoSueloID.getSelectedIndex() + 1000);
-        modelProducto.setTipoRiegoID(TipoRiegoID.getSelectedIndex() + 1000);
+        modelProducto.setTipoSueloID(TipoSueloID.getSelectedIndex() + 999);
+        modelProducto.setTipoRiegoID(TipoRiegoID.getSelectedIndex() + 999);
         modelProducto.setTiempoCosecha(Float.parseFloat(TiempoCosecha.getText()));
         return modelProducto.InsertProductoDeProduccion();
     }
@@ -85,8 +86,12 @@ public class ControllerProducto {
         modelProducto.setDescripcion(Descripcion.getText());
         modelProducto.setPrecioCompra(Float.parseFloat(PrecioCompra.getText()));
         modelProducto.setPrecioVenta(Float.parseFloat(PrecioVenta.getText()));
-        modelProducto.setDescuento(Float.parseFloat(Descuento.getText()));
+        modelProducto.setDescuento(Float.parseFloat(Descuento.getText())/100);
         modelProducto.setCategoria(CategoriaMapping.get(Categoria.getSelectedIndex()));
         return modelProducto.InsertProductoObtenible();
+    }
+    
+    public DefaultTableModel SelectModelProductos(){
+        return modelProducto.SelectModelProducto();
     }
 }
