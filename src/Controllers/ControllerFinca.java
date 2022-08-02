@@ -1,7 +1,6 @@
 package Controllers;
 
 import Models.ModelFinca;
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
