@@ -121,7 +121,7 @@ public class ModelProducto {
     }
     
     public boolean InsertProductoObtenible(){
-        String Query = "EXECUTE spInsertProducto ?, ?, ?, ?, ?, ?;";
+        String Query = "EXECUTE spInsertProductoObtenible ?, ?, ?, ?, ?, ?;";
         try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
             ps.setString(1,Nombre);
             ps.setString(2, Descripcion);
@@ -140,7 +140,7 @@ public class ModelProducto {
         DefaultTableModel model = new DefaultTableModel();
         String[] Columns = {"ID", "Nombre", "Precio/Compra", "Precio/Venta", "Categoria"};
         model.setColumnIdentifiers(Columns);
-        String Query = "SELECT * FROM PRODUCTOS";
+        String Query = "SELECT * FROM PRODUCTOSOBTENIBLES";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
             while(rs.next()){
                 String[] row = {rs.getString("ID"), 

@@ -4,7 +4,15 @@ package Views.Panels.Inventario;
 import Controllers.ControllerProducto;
 import Controllers.ControllerTipoRiego;
 import Controllers.ControllerTipoSuelo;
+import Views.Dialogs.Dialogs;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
@@ -14,6 +22,50 @@ public class Producto extends javax.swing.JPanel {
     private ControllerTipoRiego conRi = new ControllerTipoRiego();
     private ControllerProducto controllerProducto;
     private ControllerProducto conPro;
+    private MouseListener ml = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(new Color(220, 220, 220));
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(Color.white);
+        }
+    };
+    private FocusListener fl = new FocusListener(){
+        @Override
+        public void focusGained(FocusEvent e) {
+           JTextField jt = (JTextField) e.getComponent();
+           if(jt.getText().equals("Nombre...")){
+               jt.setText("");
+               jt.setForeground(Color.BLACK);
+           }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+           JTextField jt = (JTextField) e.getComponent();
+           if(jt.getText().isEmpty()){
+               jt.setText("Nombre...");
+               jt.setForeground(new Color(190, 190, 190));
+           }
+        }
+    };
     
     public Producto() {
         initComponents();
@@ -30,7 +82,9 @@ public class Producto extends javax.swing.JPanel {
         list.forEach(cmbTipoSuelo::addItem);
         list = conRi.SelectListTipoRiego();
         list.forEach(cmbTipoRiego::addItem);
-        
+        lbActualizar.addMouseListener(ml);
+        lbInformacion.addMouseListener(ml);
+        txtBuscar.addFocusListener(fl);
         LoadTable();
     }
     
@@ -108,20 +162,18 @@ public class Producto extends javax.swing.JPanel {
 
         txtPrecioCompra.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtPrecioCompra.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txtPrecioCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioCompraActionPerformed(evt);
-            }
-        });
+        txtPrecioCompra.setText("0.00");
 
         txtPrecioVenta.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtPrecioVenta.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtPrecioVenta.setText("0.00");
 
         jLabel13.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel13.setText("Descuento");
 
         txtDescuento.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtDescuento.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtDescuento.setText("0");
 
         jLabel12.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel12.setText("Compra");
@@ -292,9 +344,9 @@ public class Producto extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTiempoObtencion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -323,42 +375,41 @@ public class Producto extends javax.swing.JPanel {
         jLabel23.setText("Categoria");
 
         cmbCategoriaFilter.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        cmbCategoriaFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --", "De produccion", "Obtenible " }));
+        cmbCategoriaFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --", "PRODUCCION", "OBTENIBLE" }));
         cmbCategoriaFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCategoriaFilterActionPerformed(evt);
             }
         });
 
+        lbActualizar.setBackground(new java.awt.Color(255, 255, 255));
         lbActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
         lbActualizar.setToolTipText("Actualizar");
+        lbActualizar.setOpaque(true);
+        lbActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbActualizarMouseClicked(evt);
+            }
+        });
 
+        lbInformacion.setBackground(new java.awt.Color(255, 255, 255));
         lbInformacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/informacion.png"))); // NOI18N
         lbInformacion.setToolTipText("Ver informacion");
+        lbInformacion.setOpaque(true);
 
         btnEditar.setBackground(new java.awt.Color(49, 152, 65));
         btnEditar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/editar2.png"))); // NOI18N
         btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
 
         btnEliminar.setBackground(new java.awt.Color(144, 40, 40));
         btnEliminar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
 
         tbProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -440,26 +491,6 @@ public class Producto extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPrecioCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioCompraActionPerformed
-        
-    }//GEN-LAST:event_txtPrecioCompraActionPerformed
-
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        
-    }//GEN-LAST:event_btnEditarActionPerformed
-
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
         TableRowSorter s = new TableRowSorter(tbProductos.getModel());
         tbProductos.setRowSorter(s);
@@ -484,6 +515,113 @@ public class Producto extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cmbCategoriaActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if(Verify()){
+            if(cmbCategoria.getSelectedIndex() == 1){
+                if(!controllerProducto.InsertProductoDeproduccion()){
+                    Dialogs.ShowMessageDialog("Producto agregado exitosamente", Dialogs.COMPLETEMessage);
+                    LoadTable();
+                    ClearFields();
+                }else{
+                    Dialogs.ShowMessageDialog("Ha ocurrido un error inesperado", Dialogs.ERRORMessage);
+                }
+            }else if(cmbCategoria.getSelectedIndex() == 2){
+                if(!conPro.InsertProductoObtenible()){
+                    Dialogs.ShowMessageDialog("Producto agregado exitosamente", Dialogs.COMPLETEMessage);
+                    LoadTable();
+                    ClearFields();
+                }else{
+                    Dialogs.ShowMessageDialog("Ha ocurrido un error inesperado", Dialogs.ERRORMessage);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void lbActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbActualizarMouseClicked
+        LoadTable();
+    }//GEN-LAST:event_lbActualizarMouseClicked
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        ClearFields();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private boolean Verify(){
+        if(txtNombre.getText().isEmpty()){
+            txtError.setText("Error, el nombre es obligatorio");
+            return false;
+        }
+        if(txtDescripcion.getText().isEmpty()){
+            txtError.setText("Error, la descripcion es obligatorio");
+            return false;
+        }
+        if(txtPrecioCompra.getText().isEmpty()){
+            txtError.setText("El precio de compra es obligatorio");
+            return false;
+        }
+        try{
+            float number = Float.parseFloat(txtPrecioCompra.getText());
+        }catch(NumberFormatException ex){
+            txtError.setText("El precio de compra debe ser un numero");
+            return false;
+        }
+        if(txtPrecioVenta.getText().isEmpty()){
+            txtError.setText("El precio de venta es obligatorio");
+            return false;
+        }
+        try{
+            float number = Float.parseFloat(txtPrecioVenta.getText());
+        }catch(NumberFormatException ex){
+            txtError.setText("El precio de venta debe ser un numero");
+            return false;
+        }
+        if(txtDescuento.getText().isEmpty()){
+            txtError.setText("El descuento es obligatorio");
+            return false;
+        }
+        try{
+            float number = Float.parseFloat(txtDescuento.getText());
+        }catch(NumberFormatException ex){
+            txtError.setText("El descuento debe ser un numero");
+            return false;
+        }
+        if(cmbCategoria.getSelectedIndex() == 0){
+            txtError.setText("Seleccione una categoria");
+            return false;
+        }
+        if(cmbCategoria.getSelectedIndex() == 1 && cmbTipoSuelo.getSelectedIndex() == 0){
+            txtError.setText("Seleccione un tipo de suelo");
+            return false;
+        }
+        if(cmbCategoria.getSelectedIndex() == 1 && cmbTipoRiego.getSelectedIndex() == 0){
+            txtError.setText("Seleccione un tipo de riego");
+            return false;
+        }
+        if(cmbCategoria.getSelectedIndex() == 1 && txtTiempoObtencion.getText().isEmpty()){
+            txtError.setText("El tiempo de obtencion es obligatorio");
+            return false;
+        }
+        if(cmbCategoria.getSelectedIndex() == 1){
+            try{
+            float number = Float.parseFloat(txtTiempoObtencion.getText());
+            }catch(NumberFormatException ex){
+            txtError.setText("El descuento debe ser un numero");
+            return false;
+        }
+        }
+        return true;
+    }
+    
+    private void ClearFields(){
+        txtNombre.setText("");
+        txtDescripcion.setText("");
+        txtPrecioCompra.setText("0.00");
+        txtPrecioVenta.setText("0.00");
+        txtDescuento.setText("0");
+        cmbCategoria.setSelectedIndex(0);
+        cmbTipoSuelo.setSelectedIndex(0);
+        cmbTipoRiego.setSelectedIndex(0);
+        txtTiempoObtencion.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

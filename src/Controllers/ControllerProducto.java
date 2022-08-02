@@ -55,6 +55,8 @@ public class ControllerProducto {
     }
 
     public ControllerProducto(JTextField Nombre, JTextField Descripcion, JTextField PrecioCompra, JTextField PrecioVenta, JTextField Descuento, JComboBox Categoria) {
+        CategoriaMapping.put(1, "S");
+        CategoriaMapping.put(2, "N");
         this.Nombre = Nombre;
         this.Descripcion = Descripcion;
         this.PrecioCompra = PrecioCompra;
