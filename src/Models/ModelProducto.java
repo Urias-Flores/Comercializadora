@@ -1,6 +1,136 @@
 
 package Models;
 
+import Resources.Conection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class ModelProducto {
+    private Conection conec = new Conection();
     
+    private int ProductoID;
+    private String Nombre;
+    private String Descripcion;
+    private float PrecioCompra;
+    private float PrecioVenta;
+    private float Descuento;
+    private String Categoria;
+    private int TipoSueloID;
+    private int TipoRiegoID;
+    private float TiempoCosecha;
+
+    public int getProductoID() {
+        return ProductoID;
+    }
+
+    public void setProductoID(int ProductoID) {
+        this.ProductoID = ProductoID;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
+    }
+
+    public float getPrecioCompra() {
+        return PrecioCompra;
+    }
+
+    public void setPrecioCompra(float PrecioCompra) {
+        this.PrecioCompra = PrecioCompra;
+    }
+
+    public float getPrecioVenta() {
+        return PrecioVenta;
+    }
+
+    public void setPrecioVenta(float PrecioVenta) {
+        this.PrecioVenta = PrecioVenta;
+    }
+
+    public float getDescuento() {
+        return Descuento;
+    }
+
+    public void setDescuento(float Descuento) {
+        this.Descuento = Descuento;
+    }
+
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
+    }
+
+    public int getTipoSueloID() {
+        return TipoSueloID;
+    }
+
+    public void setTipoSueloID(int TipoSueloID) {
+        this.TipoSueloID = TipoSueloID;
+    }
+
+    public int getTipoRiegoID() {
+        return TipoRiegoID;
+    }
+
+    public void setTipoRiegoID(int TipoRiegoID) {
+        this.TipoRiegoID = TipoRiegoID;
+    }
+
+    public float getTiempoCosecha() {
+        return TiempoCosecha;
+    }
+
+    public void setTiempoCosecha(float TiempoCosecha) {
+        this.TiempoCosecha = TiempoCosecha;
+    }
+    
+    public boolean InsertProductoDeProduccion(){
+        String Query = "EXECUTE spInsertProducto ?, ?, ?, ?, ?, ?, ?, ?, ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setString(1,Nombre);
+            ps.setString(2, Descripcion);
+            ps.setFloat(3, PrecioCompra);
+            ps.setFloat(4, PrecioVenta);
+            ps.setFloat(5, Descuento);
+            ps.setString(6, Categoria);
+            ps.setInt(7, TipoSueloID);
+            ps.setInt(8, TipoRiegoID);
+            ps.setFloat(9, TiempoCosecha);
+            return ps.execute();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return true;
+    }
+    
+    public boolean InsertProductoObtenible(){
+        String Query = "EXECUTE spInsertProducto ?, ?, ?, ?, ?, ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setString(1,Nombre);
+            ps.setString(2, Descripcion);
+            ps.setFloat(3, PrecioCompra);
+            ps.setFloat(4, PrecioVenta);
+            ps.setFloat(5, Descuento);
+            ps.setString(6, Categoria);
+            return ps.execute();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return true;
+    }
 }
