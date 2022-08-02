@@ -111,4 +111,9 @@ public class ModelFinca {
         }
         return true;
     }
+    
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
 }
