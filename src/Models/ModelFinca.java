@@ -81,6 +81,24 @@ public class ModelFinca {
         return model;
     }
     
+    public DefaultComboBoxModel SelectModelFincaCmb(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        String Query = "SELECT * FROM Finca";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                ModelFinca finc = new ModelFinca();
+                finc.setFincaID(rs.getInt("FincaID"));
+                finc.setNombre(rs.getString("Nombre"));
+                model.addElement(finc);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
     public boolean InsertFinca(){
         String Query = "EXECUTE spInsertFinca ?, ?, ?;";
         try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
