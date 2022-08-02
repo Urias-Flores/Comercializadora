@@ -4,6 +4,7 @@ import Resources.Conection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ModelFinca {
@@ -63,6 +64,41 @@ public class ModelFinca {
         return model;
     }
     
+    public DefaultComboBoxModel setModelProductores() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        try {
+            String Query = "Select ProductorID, Nombre from Productor";
+            ResultSet rs = conec.getStatement().executeQuery(Query);
+            
+            while (rs.next()) {
+                ModelProductor prod = new ModelProductor();
+                prod.setProductorID(rs.getInt("ProductorID"));
+                prod.setNombre(rs.getString("Nombre"));
+                model.addElement(prod);
+            }
+        } catch (Exception e) {
+        }
+        return model;
+    }
+    
+    public DefaultComboBoxModel SelectModelFincaCmb(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        String Query = "SELECT * FROM Finca";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                ModelFinca finc = new ModelFinca();
+                finc.setFincaID(rs.getInt("FincaID"));
+                finc.setNombre(rs.getString("Nombre"));
+                model.addElement(finc);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
     public boolean InsertFinca(){
         String Query = "EXECUTE spInsertFinca ?, ?, ?;";
         try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
@@ -74,5 +110,10 @@ public class ModelFinca {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return true;
+    }
+    
+    @Override
+    public String toString() {
+        return this.getNombre();
     }
 }

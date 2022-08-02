@@ -20,6 +20,8 @@ public class Fincas extends javax.swing.JPanel {
     public Fincas() {
         initComponents();
         LoadTable();
+        LoadProducers();
+        LoadFincas();
     }
 
     /**
@@ -33,6 +35,14 @@ public class Fincas extends javax.swing.JPanel {
         tbFincas.getColumn("ID").setPreferredWidth(10);
         tbFincas.getColumn("Nombre").setPreferredWidth(159);
         tbFincas.getColumn("Propietario").setPreferredWidth(159);
+    }
+    
+    private void LoadProducers() {
+        cmbProductores.setModel(conFinc.setProductorCmb());
+    }
+    
+    private void LoadFincas () {
+        cmbFincas.setModel(conFinc.setFincaCmb());
     }
 
     @SuppressWarnings("unchecked")
