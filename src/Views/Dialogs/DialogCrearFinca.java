@@ -3,15 +3,9 @@ package Views.Dialogs;
 import Controllers.ControllerFinca;
 import Models.ModelProductor;
 import java.awt.Color;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
-
 
 public class DialogCrearFinca extends javax.swing.JDialog {
 
@@ -39,32 +33,12 @@ public class DialogCrearFinca extends javax.swing.JDialog {
             l.setOpaque(true);
         }
     };
-    private FocusListener fl = new FocusListener(){
-        @Override
-        public void focusGained(FocusEvent e) {
-           JTextField jt = (JTextField) e.getComponent();
-           if(jt.getText().equals("Nombre...")){
-               jt.setText("");
-               jt.setForeground(Color.BLACK);
-           }
-        }
-
-        @Override
-        public void focusLost(FocusEvent e) {
-           JTextField jt = (JTextField) e.getComponent();
-           if(jt.getText().isEmpty()){
-               jt.setText("Nombre...");
-               jt.setForeground(new Color(190, 190, 190));
-           }
-        }
-    };
     
-
-
     public DialogCrearFinca(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         LoadProductores();
+        btnCerrar.addMouseListener(ml);
     }
     
     private void LoadProductores(){
@@ -108,8 +82,10 @@ public class DialogCrearFinca extends javax.swing.JDialog {
             }
         });
 
+        btnCerrar.setBackground(new java.awt.Color(39, 49, 65));
         btnCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cerrar.png"))); // NOI18N
+        btnCerrar.setOpaque(true);
         btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCerrarMouseClicked(evt);
@@ -141,12 +117,6 @@ public class DialogCrearFinca extends javax.swing.JDialog {
         btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleccionarActionPerformed(evt);
-            }
-        });
-
-        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescripcionActionPerformed(evt);
             }
         });
 
@@ -253,10 +223,6 @@ public class DialogCrearFinca extends javax.swing.JDialog {
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
         this.setVisible(false);
     }//GEN-LAST:event_btnCerrarMouseClicked
-
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescripcionActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
