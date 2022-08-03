@@ -1,15 +1,14 @@
 package Views.Dialogs;
 
-import Controllers.ControllerEmpleado;
 import Controllers.ControllerFinca;
-import Controllers.ControllerProductor;
+import Models.ModelProductor;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
@@ -235,7 +234,16 @@ public class DialogCrearFinca extends javax.swing.JDialog {
     }//GEN-LAST:event_pnBarraMouseDragged
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
+        ModelProductor prod = (ModelProductor) cmbProductor.getSelectedItem();
+        ControllerFinca contFinc = new ControllerFinca();
+        boolean ok = contFinc.InsertFinca(prod.getProductorID(), txtDescripcion.getText(), txtUbicacion.getText());
         
+        if (!ok) {
+            Dialogs.ShowMessageDialog("productor ingresado exitosamente", Dialogs.COMPLETEMessage);
+            this.dispose();
+        } else {
+            Dialogs.ShowMessageDialog("Ha ocurredo un error", Dialogs.COMPLETEMessage);
+        }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
@@ -287,7 +295,7 @@ public class DialogCrearFinca extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnCerrar;
     private javax.swing.JButton btnSeleccionar;
-    private javax.swing.JComboBox<String> cmbProductor;
+    private javax.swing.JComboBox<Object> cmbProductor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
