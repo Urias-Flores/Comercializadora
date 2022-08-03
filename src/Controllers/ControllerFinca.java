@@ -15,6 +15,7 @@ public class ControllerFinca {
     private JTextField Ubicacion;
 
     public ControllerFinca() {
+        
     }
 
     public ControllerFinca(JTextField FincaID, JTextField Nombre, JTextField ProductorID, JTextField Ubicacion) {
