@@ -1,7 +1,12 @@
-
 package Views.Panels.Produccion;
 
 import Controllers.ControllerFinca;
+import java.awt.List;
+import java.util.ArrayList;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class Fincas extends javax.swing.JPanel {
 
@@ -22,16 +27,16 @@ public class Fincas extends javax.swing.JPanel {
         tbFincas.getColumn("Nombre").setPreferredWidth(159);
         tbFincas.getColumn("Propietario").setPreferredWidth(159);
     }
-    
+
     private void LoadProducers() {
         cmbProductores.setModel(conFinc.setProductorCmb());
     }
-    
-    private void LoadFincas () {
+
+    private void LoadFincas() {
         cmbFincas.setModel(conFinc.setFincaCmb());
     }
-    
-    private void LoadParcelas () {
+
+    private void LoadParcelas() {
         conFinc = new ControllerFinca();
         tbParcelas.setModel(conFinc.SelectModelParcela());
     }
@@ -211,6 +216,11 @@ public class Fincas extends javax.swing.JPanel {
         btnCargar.setForeground(new java.awt.Color(255, 255, 255));
         btnCargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cargar.png"))); // NOI18N
         btnCargar.setText("Cargar");
+        btnCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarActionPerformed(evt);
+            }
+        });
 
         btnEditarParcelar.setBackground(new java.awt.Color(49, 152, 65));
         btnEditarParcelar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
@@ -339,6 +349,21 @@ public class Fincas extends javax.swing.JPanel {
     private void btnEditarParcelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarParcelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarParcelarActionPerformed
+
+    private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
+        DefaultTableModel dm = (DefaultTableModel) tbParcelas.getModel();
+
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbParcelas.getModel());
+        java.util.List<RowFilter<Object,Object>> filters = new ArrayList<RowFilter<Object,Object>>(2);
+        filters.add(RowFilter.regexFilter(cmbProductores.getSelectedItem().toString(), 2));
+        filters.add(RowFilter.regexFilter(cmbFincas.getSelectedItem().toString(),1));
+        RowFilter<Object,Object> serviceFilter = RowFilter.andFilter(filters);
+        
+        sorter.setRowFilter(serviceFilter);
+        
+        tbParcelas.setRowSorter(sorter);
+
+    }//GEN-LAST:event_btnCargarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
