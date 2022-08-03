@@ -2,38 +2,38 @@
 package Views.Panels.Produccion;
 
 import Controllers.ControllerFinca;
+import Controllers.ControllerParcela;
+import Controllers.ControllerProductor;
 
 public class Fincas extends javax.swing.JPanel {
 
     private ControllerFinca conFinc;
+    private ControllerParcela controllerParcela;
+    private ControllerProductor controllerProductor = new ControllerProductor();
 
     public Fincas() {
         initComponents();
-        LoadTable();
-        LoadProducers();
-        LoadFincas();
-        LoadParcelas();
+        LoadTableFincas();
+        LoadTableParcelas();
+        Load();
+    }
+    
+    private void Load(){
+        cmbProductores.setModel(conFinc.setProductorCmb());
+        cmbFincas.setModel(conFinc.setFincaCmb());
     }
 
-    private void LoadTable() {
+    private void LoadTableFincas() {
         conFinc = new ControllerFinca();
         tbFincas.setModel(conFinc.SelectModelFinca());
         tbFincas.getColumn("ID").setPreferredWidth(10);
-        tbFincas.getColumn("Nombre").setPreferredWidth(159);
-        tbFincas.getColumn("Propietario").setPreferredWidth(159);
+        tbFincas.getColumn("Nombre").setPreferredWidth(140);
+        tbFincas.getColumn("Propietario").setPreferredWidth(200);
     }
     
-    private void LoadProducers() {
-        cmbProductores.setModel(conFinc.setProductorCmb());
-    }
-    
-    private void LoadFincas () {
-        cmbFincas.setModel(conFinc.setFincaCmb());
-    }
-    
-    private void LoadParcelas () {
-        conFinc = new ControllerFinca();
-        tbParcelas.setModel(conFinc.SelectModelParcela());
+    private void LoadTableParcelas() {
+        controllerParcela = new ControllerParcela();
+        tbParcelas.setModel(controllerParcela.SelectModelParcelas()); 
     }
 
     @SuppressWarnings("unchecked")
