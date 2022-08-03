@@ -12,6 +12,7 @@ public class Fincas extends javax.swing.JPanel {
         LoadTable();
         LoadProducers();
         LoadFincas();
+        LoadParcelas();
     }
 
     private void LoadTable() {
@@ -28,6 +29,11 @@ public class Fincas extends javax.swing.JPanel {
     
     private void LoadFincas () {
         cmbFincas.setModel(conFinc.setFincaCmb());
+    }
+    
+    private void LoadParcelas () {
+        conFinc = new ControllerFinca();
+        tbParcelas.setModel(conFinc.SelectModelParcela());
     }
 
     @SuppressWarnings("unchecked")
@@ -47,7 +53,7 @@ public class Fincas extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbParcelas = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         cmbProductores = new javax.swing.JComboBox<>();
@@ -172,7 +178,7 @@ public class Fincas extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
         jLabel8.setText("Control de parcelas o lotes");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbParcelas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -183,7 +189,7 @@ public class Fincas extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tbParcelas);
 
         jLabel9.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel9.setText("Filtrar");
@@ -353,12 +359,12 @@ public class Fincas extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lbActualizarFincas;
     private javax.swing.JLabel lbActualizarParcelar;
     private javax.swing.JLabel lbAgregarFinca;
     private javax.swing.JLabel lbAgregarParcelas;
     private javax.swing.JTable tbFincas;
+    private javax.swing.JTable tbParcelas;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
