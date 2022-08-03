@@ -48,4 +48,11 @@ public class ControllerFinca {
         modelFinca.setUbicacion(Ubicacion.getText());
         return modelFinca.InsertFinca();
     }
+    
+    public boolean InsertFinca(int id, String nombre, String ubicacion) {
+        modelFinca.setProductorID(id);
+        modelFinca.setNombre(nombre);
+        modelFinca.setUbicacion(ubicacion);
+        return modelFinca.InsertFinca();
+    }
 }

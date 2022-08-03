@@ -1,16 +1,21 @@
-
 package Views.Panels.Produccion;
 
 import Controllers.ControllerFinca;
 import Controllers.ControllerParcela;
 import Controllers.ControllerProductor;
+import Views.Dialogs.DialogCrearFinca;
+import Views.Main;
+import java.util.ArrayList;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class Fincas extends javax.swing.JPanel {
-
+    
     private ControllerFinca conFinc;
     private ControllerParcela controllerParcela;
     private ControllerProductor controllerProductor = new ControllerProductor();
-
+   
     public Fincas() {
         initComponents();
         LoadTableFincas();
@@ -22,7 +27,6 @@ public class Fincas extends javax.swing.JPanel {
         cmbProductores.setModel(conFinc.setProductorCmb());
         cmbFincas.setModel(conFinc.setFincaCmb());
     }
-
     private void LoadTableFincas() {
         conFinc = new ControllerFinca();
         tbFincas.setModel(conFinc.SelectModelFinca());
@@ -35,7 +39,7 @@ public class Fincas extends javax.swing.JPanel {
         controllerParcela = new ControllerParcela();
         tbParcelas.setModel(controllerParcela.SelectModelParcelas()); 
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -125,6 +129,11 @@ public class Fincas extends javax.swing.JPanel {
         lbAgregarFinca.setToolTipText("Agregar");
         lbAgregarFinca.setOpaque(true);
         lbAgregarFinca.setPreferredSize(new java.awt.Dimension(38, 32));
+        lbAgregarFinca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbAgregarFincaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -339,6 +348,22 @@ public class Fincas extends javax.swing.JPanel {
     private void btnEditarParcelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarParcelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarParcelarActionPerformed
+
+    private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbParcelas.getModel());
+        java.util.List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(2);
+        filters.add(RowFilter.regexFilter(cmbProductores.getSelectedItem().toString(), 2));
+        filters.add(RowFilter.regexFilter(cmbFincas.getSelectedItem().toString(), 1));
+        RowFilter<Object, Object> serviceFilter = RowFilter.andFilter(filters);
+        sorter.setRowFilter(serviceFilter);
+        tbParcelas.setRowSorter(sorter);
+    }//GEN-LAST:event_btnCargarActionPerformed
+
+    private void lbAgregarFincaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarFincaMouseClicked
+        Main m = new Main();
+        DialogCrearFinca cf = new DialogCrearFinca(m, true);
+        cf.setVisible(true);
+    }//GEN-LAST:event_lbAgregarFincaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
