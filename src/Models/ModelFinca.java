@@ -76,7 +76,8 @@ public class ModelFinca {
                 prod.setNombre(rs.getString("Nombre"));
                 model.addElement(prod);
             }
-        } catch (Exception e) {
+        } catch (SQLException ex) {
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return model;
     }

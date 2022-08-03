@@ -7,9 +7,6 @@ public class Fincas extends javax.swing.JPanel {
 
     private ControllerFinca conFinc;
 
-    /**
-     * Creates new form Fincas
-     */
     public Fincas() {
         initComponents();
         LoadTable();
