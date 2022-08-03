@@ -112,7 +112,7 @@ public class DialogCrearFinca extends javax.swing.JDialog {
         btnSeleccionar.setBackground(new java.awt.Color(49, 152, 65));
         btnSeleccionar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
         btnSeleccionar.setForeground(new java.awt.Color(255, 255, 255));
-        btnSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/seleccionar.png"))); // NOI18N
+        btnSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar.png"))); // NOI18N
         btnSeleccionar.setText("Guardar");
         btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
