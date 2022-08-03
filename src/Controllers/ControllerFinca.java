@@ -34,6 +34,10 @@ public class ControllerFinca {
         return modelFinca.SelectModelFinca();
     }
     
+    public DefaultTableModel SelectModelParcela(){
+        return modelFinca.SelectModelParcela();
+    }
+    
     public DefaultComboBoxModel setProductorCmb () {
         return modelFinca.setModelProductores();
     }
