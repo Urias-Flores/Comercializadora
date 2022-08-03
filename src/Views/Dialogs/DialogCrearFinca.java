@@ -1,6 +1,8 @@
 package Views.Dialogs;
 
 import Controllers.ControllerEmpleado;
+import Controllers.ControllerFinca;
+import Controllers.ControllerProductor;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -9,9 +11,8 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.RowFilter;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
+
+
 
 public class DialogCrearFinca extends javax.swing.JDialog {
 
@@ -58,22 +59,19 @@ public class DialogCrearFinca extends javax.swing.JDialog {
            }
         }
     };
-    private ControllerEmpleado contEmpleado = new ControllerEmpleado();
-    private ArrayList<String> result = new ArrayList<>();
-    private DefaultTableModel model = new DefaultTableModel();
+    
 
-    public ArrayList<String> getResult() {
-        return result;
-    }
 
     public DialogCrearFinca(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Load();
+        LoadProductores();
     }
     
-    private void Load(){
+    private void LoadProductores(){
+        ControllerFinca conFinc = new ControllerFinca();
         
+        cmbProductor.setModel(conFinc.setProductorCmb());
     }
 
     @SuppressWarnings("unchecked")
@@ -140,7 +138,7 @@ public class DialogCrearFinca extends javax.swing.JDialog {
         btnSeleccionar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
         btnSeleccionar.setForeground(new java.awt.Color(255, 255, 255));
         btnSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/seleccionar.png"))); // NOI18N
-        btnSeleccionar.setText("Seleccionar");
+        btnSeleccionar.setText("Guardar");
         btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleccionarActionPerformed(evt);
