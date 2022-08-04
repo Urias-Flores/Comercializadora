@@ -1,6 +1,7 @@
 package Views.Dialogs;
 
 import Controllers.ControllerFinca;
+import Controllers.ControllerProductor;
 import Models.ModelProductor;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -42,8 +43,8 @@ public class DialogCrearFinca extends javax.swing.JDialog {
     }
     
     private void LoadProductores(){
-        ControllerFinca conFinc = new ControllerFinca();
-        cmbProductor.setModel(conFinc.setProductorCmb());
+        ControllerProductor conProductor = new ControllerProductor();
+        cmbProductor.setModel(conProductor.setProductorCmb());
     }
 
     @SuppressWarnings("unchecked")
