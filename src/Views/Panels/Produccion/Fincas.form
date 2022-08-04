@@ -474,6 +474,9 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Agregar"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbAgregarParcelasMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
