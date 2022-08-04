@@ -80,7 +80,7 @@ public class Fincas extends javax.swing.JPanel {
     }
     
     private void Load(){
-        cmbProductores.setModel(conFinc.setProductorCmb());
+        cmbProductores.setModel(controllerProductor.setProductorCmb());
         cmbFincas.setModel(conFinc.setFincaCmb());
     }
     private void LoadTableFincas() {
