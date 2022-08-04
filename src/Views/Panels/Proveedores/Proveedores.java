@@ -10,11 +10,13 @@ import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 public class Proveedores extends javax.swing.JPanel {
 
     private ControllerProveedor controllerProveedor;
+    private ControllerProveedor conPro;
     private MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -59,6 +61,7 @@ public class Proveedores extends javax.swing.JPanel {
            }
         }
     };
+    private DefaultTableModel model;
     
     public Proveedores() {
         initComponents();
@@ -249,6 +252,11 @@ public class Proveedores extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbProveedoresMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbProveedores);
 
         btnEliminar.setBackground(new java.awt.Color(144, 40, 40));
@@ -286,13 +294,15 @@ public class Proveedores extends javax.swing.JPanel {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Deuda total con proveedores");
 
+        txtSaldo.setEditable(false);
         txtSaldo.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtSaldo.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txtSaldo.setText("0.00");
+        txtSaldo.setText("0.0");
 
+        txtDeudaTotal.setEditable(false);
         txtDeudaTotal.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtDeudaTotal.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txtDeudaTotal.setText("0.00");
+        txtDeudaTotal.setText("0.0");
 
         jLabel5.setFont(new java.awt.Font("Cascadia Code", 0, 22)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -425,13 +435,34 @@ public class Proveedores extends javax.swing.JPanel {
         sorter.setRowFilter(RowFilter.regexFilter(txtBuscar.getText(), 0, 1));
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void tbProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProveedoresMouseClicked
+        int row = tbProveedores.getSelectedRow();
+        if(row > -1){
+            String ID = tbProveedores.getValueAt(row, 0).toString();
+            for(int i = 0; i < tbProveedores.getRowCount(); i++){
+                if(ID.equals(model.getValueAt(i, 0))){
+                    String saldo = model.getValueAt(row, 4).toString();
+                    txtSaldo.setText(saldo);
+                }
+            }
+        }
+    }//GEN-LAST:event_tbProveedoresMouseClicked
+
     private void LoadTable(){
-        ControllerProveedor conPro = new ControllerProveedor();
-        tbProveedores.setModel(conPro.SelectModelProveedor());
+        
+        conPro = new ControllerProveedor();
+        model = conPro.SelectModelProveedor();
+        tbProveedores.setModel(model);
+        tbProveedores.removeColumn(tbProveedores.getColumn("Saldo"));
         tbProveedores.getColumn("ID").setPreferredWidth(15);
         tbProveedores.getColumn("Nombre").setPreferredWidth(250);
         tbProveedores.getColumn("Documento").setPreferredWidth(150);
         tbProveedores.getColumn("Tipo de documento").setPreferredWidth(100);
+        float suma = 0;
+        for(int i = 0; i < tbProveedores.getRowCount(); i++){
+            suma += Float.parseFloat(model.getValueAt(i, 4).toString());
+        }
+        txtDeudaTotal.setText(String.valueOf(suma));
     }
     
     private void ClearFields(){

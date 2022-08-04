@@ -82,7 +82,7 @@ public class ModelProveedor {
     
     public DefaultTableModel SelectModelProveedor(){
         DefaultTableModel model = new DefaultTableModel();
-        String[] Columns = {"ID", "Nombre", "Documento", "Tipo de documento"};
+        String[] Columns = {"ID", "Nombre", "Documento", "Tipo de documento", "Saldo"};
         model.setColumnIdentifiers(Columns);
         
         String Query = "SELECT * FROM PROVEEDORDETALLES";
@@ -91,7 +91,8 @@ public class ModelProveedor {
                 String[] row = {rs.getString("ID"), 
                                 rs.getString("Nombre"), 
                                 rs.getString("Documento"), 
-                                rs.getString("Tipo de documento")};
+                                rs.getString("Tipo de documento"),
+                                rs.getString("Saldo")};
                 model.addRow(row);
             }
             rs.close();
