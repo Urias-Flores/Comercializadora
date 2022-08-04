@@ -160,7 +160,7 @@ public class ModelProducto {
     public DefaultComboBoxModel SelectModelProductoCmb(){
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         
-        String Query = "SELECT ID, Nombre FROM Finca";
+        String Query = "SELECT ID, Nombre FROM PRODUCTOSOBTENIBLES";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
             while(rs.next()){
                 ModelProducto prod = new ModelProducto();
@@ -173,5 +173,10 @@ public class ModelProducto {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return model;
+    }
+    
+    @Override
+    public String toString() {
+        return this.getNombre();
     }
 }
