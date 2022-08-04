@@ -64,24 +64,6 @@ public class ModelFinca {
         return model;
     }
     
-    public DefaultComboBoxModel setModelProductores() {
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        try {
-            String Query = "Select ProductorID, Nombre from Productor";
-            ResultSet rs = conec.getStatement().executeQuery(Query);
-            
-            while (rs.next()) {
-                ModelProductor prod = new ModelProductor();
-                prod.setProductorID(rs.getInt("ProductorID"));
-                prod.setNombre(rs.getString("Nombre"));
-                model.addElement(prod);
-            }
-        } catch (SQLException ex) {
-            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
-        }
-        return model;
-    }
-    
     public DefaultComboBoxModel SelectModelFincaCmb(){
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         
