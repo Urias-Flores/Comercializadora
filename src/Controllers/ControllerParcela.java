@@ -3,6 +3,7 @@ package Controllers;
 import Models.ModelParcela;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class ControllerParcela {
     
@@ -56,4 +57,9 @@ public class ControllerParcela {
         modelParcela.setCantidad(Float.parseFloat(Cantidad.getText()));
         return modelParcela.InsertParcela();
     }
+  
+    public DefaultTableModel SelectModelParcelas(){
+        return modelParcela.SelectModelParcela();
+    }
+    
 }

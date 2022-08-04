@@ -92,7 +92,7 @@ public class ModelProductor {
         DefaultTableModel model = new DefaultTableModel();
         String[] Columns = {"ID", "Nombre", "Documento", "Tipo de documento", "Numero telefonico", "Correo electronico"};
         model.setColumnIdentifiers(Columns);
-        
+
         String Query = "SELECT * FROM PRODUCTORES";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
             while(rs.next()){

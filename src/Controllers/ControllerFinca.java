@@ -15,6 +15,7 @@ public class ControllerFinca {
     private JTextField Ubicacion;
 
     public ControllerFinca() {
+        
     }
 
     public ControllerFinca(JTextField FincaID, JTextField Nombre, JTextField ProductorID, JTextField Ubicacion) {
@@ -32,10 +33,6 @@ public class ControllerFinca {
     
     public DefaultTableModel SelectModelFinca(){
         return modelFinca.SelectModelFinca();
-    }
-    
-    public DefaultTableModel SelectModelParcela(){
-        return modelFinca.SelectModelParcela();
     }
     
     public DefaultComboBoxModel setProductorCmb () {

@@ -1,9 +1,18 @@
 package Views.Panels.Produccion;
 
 import Controllers.ControllerFinca;
+import Controllers.ControllerParcela;
+import Controllers.ControllerProductor;
 import Views.Dialogs.DialogCrearFinca;
 import Views.Main;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -11,34 +20,80 @@ import javax.swing.table.TableRowSorter;
 public class Fincas extends javax.swing.JPanel {
     
     private ControllerFinca conFinc;
-    
+    private ControllerParcela controllerParcela;
+    private ControllerProductor controllerProductor = new ControllerProductor();
+    private MouseListener ml = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(new Color(220, 220, 220));
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(Color.white);
+        }
+    };
+    private FocusListener fl = new FocusListener(){
+        @Override
+        public void focusGained(FocusEvent e) {
+           JTextField jt = (JTextField) e.getComponent();
+           if(jt.getText().equals("Nombre...")){
+               jt.setText("");
+               jt.setForeground(Color.BLACK);
+           }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+           JTextField jt = (JTextField) e.getComponent();
+           if(jt.getText().isEmpty()){
+               jt.setText("Nombre...");
+               jt.setForeground(new Color(190, 190, 190));
+           }
+        }
+    };
+   
     public Fincas() {
         initComponents();
-        LoadTable();
-        LoadProducers();
-        LoadFincas();
-        LoadParcelas();
+        LoadTableFincas();
+        LoadTableParcelas();
+        Load();
+        lbAgregarFinca.addMouseListener(ml);
+        lbActualizarFincas.addMouseListener(ml);
+        lbAgregarParcelas.addMouseListener(ml);
+        lbActualizarParcelas.addMouseListener(ml);
+        txtBuscar.addFocusListener(fl);
     }
     
-    private void LoadTable() {
+    private void Load(){
+        cmbProductores.setModel(conFinc.setProductorCmb());
+        cmbFincas.setModel(conFinc.setFincaCmb());
+    }
+    private void LoadTableFincas() {
         conFinc = new ControllerFinca();
         tbFincas.setModel(conFinc.SelectModelFinca());
         tbFincas.getColumn("ID").setPreferredWidth(10);
-        tbFincas.getColumn("Nombre").setPreferredWidth(159);
-        tbFincas.getColumn("Propietario").setPreferredWidth(159);
+        tbFincas.getColumn("Nombre").setPreferredWidth(140);
+        tbFincas.getColumn("Propietario").setPreferredWidth(200);
     }
     
-    private void LoadProducers() {
-        cmbProductores.setModel(conFinc.setProductorCmb());
-    }
-    
-    private void LoadFincas() {
-        cmbFincas.setModel(conFinc.setFincaCmb());
-    }
-    
-    private void LoadParcelas() {
-        conFinc = new ControllerFinca();
-        tbParcelas.setModel(conFinc.SelectModelParcela());
+    private void LoadTableParcelas() {
+        controllerParcela = new ControllerParcela();
+        tbParcelas.setModel(controllerParcela.SelectModelParcelas()); 
     }
     
     @SuppressWarnings("unchecked")
@@ -67,7 +122,7 @@ public class Fincas extends javax.swing.JPanel {
         btnCargar = new javax.swing.JButton();
         btnEditarParcelar = new javax.swing.JButton();
         btnEliminarParcela = new javax.swing.JButton();
-        lbActualizarParcelar = new javax.swing.JLabel();
+        lbActualizarParcelas = new javax.swing.JLabel();
         lbAgregarParcelas = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -244,9 +299,9 @@ public class Fincas extends javax.swing.JPanel {
             }
         });
 
-        lbActualizarParcelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbActualizarParcelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
-        lbActualizarParcelar.setToolTipText("Actualizar");
+        lbActualizarParcelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbActualizarParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
+        lbActualizarParcelas.setToolTipText("Actualizar");
 
         lbAgregarParcelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAgregarParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar_32.png"))); // NOI18N
@@ -266,7 +321,7 @@ public class Fincas extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lbAgregarParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbActualizarParcelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lbActualizarParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
@@ -304,7 +359,7 @@ public class Fincas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbActualizarParcelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbActualizarParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbAgregarParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(cmbFincas)
@@ -356,11 +411,8 @@ public class Fincas extends javax.swing.JPanel {
         filters.add(RowFilter.regexFilter(cmbProductores.getSelectedItem().toString(), 2));
         filters.add(RowFilter.regexFilter(cmbFincas.getSelectedItem().toString(), 1));
         RowFilter<Object, Object> serviceFilter = RowFilter.andFilter(filters);
-        
         sorter.setRowFilter(serviceFilter);
-        
         tbParcelas.setRowSorter(sorter);
-
     }//GEN-LAST:event_btnCargarActionPerformed
 
     private void lbAgregarFincaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarFincaMouseClicked
@@ -389,7 +441,7 @@ public class Fincas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbActualizarFincas;
-    private javax.swing.JLabel lbActualizarParcelar;
+    private javax.swing.JLabel lbActualizarParcelas;
     private javax.swing.JLabel lbAgregarFinca;
     private javax.swing.JLabel lbAgregarParcelas;
     private javax.swing.JTable tbFincas;
