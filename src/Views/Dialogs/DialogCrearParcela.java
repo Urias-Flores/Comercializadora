@@ -46,11 +46,12 @@ public class DialogCrearParcela extends javax.swing.JDialog {
     private void Load(){
         ModelFinca mf = new ModelFinca();
         ModelProducto mp = new ModelProducto();
-        ModelTipoSuelo ms = new ModelTipoSuelo();
+        ModelTipoSuelo ts = new ModelTipoSuelo();
         ModelTipoRiego tr = new ModelTipoRiego();
         
         cmbFinca.setModel(mf.SelectModelFincaCmb());
         cmbProducto.setModel(mp.SelectModelProductoCmb());
+        cmbSuelo.setModel(ts.SelectModelTipoSueloCmb());
     }
 
     @SuppressWarnings("unchecked")
