@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 public class ModelTipoRiego {
     
@@ -53,5 +54,28 @@ public class ModelTipoRiego {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return true;
+    }
+    
+    public DefaultComboBoxModel SelectModelTipoRiegoCmb(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        String Query = "SELECT ID, Nombre FROM TIPOSDERIEGO";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                ModelTipoRiego tr = new ModelTipoRiego();
+                tr.setTipoRiegoID(rs.getInt("ID"));
+                tr.setNombre(rs.getString("Nombre"));
+                model.addElement(tr);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    @Override
+    public String toString() {
+        return this.getNombre();
     }
 }
