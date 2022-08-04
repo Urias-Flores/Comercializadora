@@ -37,10 +37,6 @@ public class ControllerFinca {
         return modelFinca.SelectModelFinca();
     }
     
-    public DefaultComboBoxModel setProductorCmb () {
-        return modelProductor.setModelProductores();
-    }
-    
     public DefaultComboBoxModel setFincaCmb () {
         return modelFinca.SelectModelFincaCmb();
     } 
