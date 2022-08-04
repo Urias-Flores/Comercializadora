@@ -4,6 +4,7 @@ import Controllers.ControllerFinca;
 import Controllers.ControllerParcela;
 import Controllers.ControllerProductor;
 import Views.Dialogs.DialogCrearFinca;
+import Views.Dialogs.DialogCrearParcela;
 import Views.Main;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
@@ -306,6 +307,11 @@ public class Fincas extends javax.swing.JPanel {
         lbAgregarParcelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAgregarParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar_32.png"))); // NOI18N
         lbAgregarParcelas.setToolTipText("Agregar");
+        lbAgregarParcelas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbAgregarParcelasMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -420,6 +426,12 @@ public class Fincas extends javax.swing.JPanel {
         DialogCrearFinca cf = new DialogCrearFinca(m, true);
         cf.setVisible(true);
     }//GEN-LAST:event_lbAgregarFincaMouseClicked
+
+    private void lbAgregarParcelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarParcelasMouseClicked
+        Main m = new Main();
+        DialogCrearParcela cp = new DialogCrearParcela(m, true);
+        cp.setVisible(true);
+    }//GEN-LAST:event_lbAgregarParcelasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
