@@ -2,13 +2,69 @@ package Views.Panels.Proveedores;
 
 import Controllers.ControllerProveedor;
 import Views.Dialogs.Dialogs;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 public class Proveedores extends javax.swing.JPanel {
 
     private ControllerProveedor controllerProveedor;
+    private MouseListener ml = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(new Color(220, 220, 220));
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(Color.white);
+        }
+    };
+    private FocusListener fl = new FocusListener(){
+        @Override
+        public void focusGained(FocusEvent e) {
+           JTextField jt = (JTextField) e.getComponent();
+           if(jt.getText().equals("Nombre...")){
+               jt.setText("");
+               jt.setForeground(Color.BLACK);
+           }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+           JTextField jt = (JTextField) e.getComponent();
+           if(jt.getText().isEmpty()){
+               jt.setText("Nombre...");
+               jt.setForeground(new Color(190, 190, 190));
+           }
+        }
+    };
     
     public Proveedores() {
         initComponents();
+        lbActualizar.addMouseListener(ml);
+        lbInformacion.addMouseListener(ml);
+        txtBuscar.addFocusListener(fl);
         LoadTable();
         controllerProveedor = new ControllerProveedor(txtNombre, txtDocumento, cmbTipoDocumento, txtNumero, txtCorreo);
     }
@@ -35,19 +91,19 @@ public class Proveedores extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtNombre1 = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbProveedores = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lbActualizar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtSaldo = new javax.swing.JTextField();
+        txtDeudaTotal = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lbInformacion = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -173,9 +229,14 @@ public class Proveedores extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/buscar.png"))); // NOI18N
 
-        txtNombre1.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        txtNombre1.setForeground(new java.awt.Color(190, 190, 190));
-        txtNombre1.setText("Nombre...");
+        txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
+        txtBuscar.setText("Nombre...");
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
 
         tbProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -212,10 +273,10 @@ public class Proveedores extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
-        jLabel2.setOpaque(true);
+        lbActualizar.setBackground(new java.awt.Color(255, 255, 255));
+        lbActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
+        lbActualizar.setOpaque(true);
 
         jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -225,13 +286,13 @@ public class Proveedores extends javax.swing.JPanel {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Deuda total con proveedores");
 
-        jTextField1.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField1.setText("0.00");
+        txtSaldo.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtSaldo.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtSaldo.setText("0.00");
 
-        jTextField2.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField2.setText("0.00");
+        txtDeudaTotal.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtDeudaTotal.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtDeudaTotal.setText("0.00");
 
         jLabel5.setFont(new java.awt.Font("Cascadia Code", 0, 22)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -241,10 +302,10 @@ public class Proveedores extends javax.swing.JPanel {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("$");
 
-        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/informacion.png"))); // NOI18N
-        jLabel14.setOpaque(true);
+        lbInformacion.setBackground(new java.awt.Color(255, 255, 255));
+        lbInformacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/informacion.png"))); // NOI18N
+        lbInformacion.setOpaque(true);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -260,11 +321,11 @@ public class Proveedores extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDeudaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -273,11 +334,11 @@ public class Proveedores extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -295,21 +356,21 @@ public class Proveedores extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtNombre1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(lbActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbInformacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDeudaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -357,6 +418,12 @@ public class Proveedores extends javax.swing.JPanel {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        TableRowSorter sorter = new TableRowSorter(tbProveedores.getModel());
+        tbProveedores.setRowSorter(sorter);
+        sorter.setRowFilter(RowFilter.regexFilter(txtBuscar.getText(), 0, 1));
+    }//GEN-LAST:event_txtBuscarKeyReleased
 
     private void LoadTable(){
         ControllerProveedor conPro = new ControllerProveedor();
@@ -410,8 +477,6 @@ public class Proveedores extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -422,14 +487,16 @@ public class Proveedores extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lbActualizar;
+    private javax.swing.JLabel lbInformacion;
     private javax.swing.JTable tbProveedores;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDeudaTotal;
     private javax.swing.JTextField txtDocumento;
     private javax.swing.JLabel txtError;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombre1;
     private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
 }

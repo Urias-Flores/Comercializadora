@@ -277,12 +277,12 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextField2" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="txtDeudaTotal" min="-2" pref="117" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" pref="21" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextField1" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="txtSaldo" min="-2" pref="117" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" pref="21" max="-2" attributes="0"/>
                               </Group>
@@ -294,11 +294,11 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel1" min="-2" pref="38" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtNombre1" min="-2" pref="308" max="-2" attributes="0"/>
+                                  <Component id="txtBuscar" min="-2" pref="308" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel14" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="lbInformacion" min="-2" pref="38" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel2" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="lbActualizar" min="-2" pref="38" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel7" alignment="1" max="32767" attributes="0"/>
@@ -323,9 +323,9 @@
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel1" max="32767" attributes="0"/>
-                      <Component id="txtNombre1" pref="38" max="32767" attributes="0"/>
-                      <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel14" alignment="1" max="32767" attributes="0"/>
+                      <Component id="txtBuscar" pref="38" max="32767" attributes="0"/>
+                      <Component id="lbActualizar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lbInformacion" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
@@ -333,13 +333,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel5" min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="txtSaldo" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jTextField2" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="txtDeudaTotal" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -368,7 +368,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNombre1">
+        <Component class="javax.swing.JTextField" name="txtBuscar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Cascadia Code" size="18" style="0"/>
@@ -378,6 +378,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre..."/>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscarKeyReleased"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -440,7 +443,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lbActualizar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -470,7 +473,7 @@
             <Property name="text" type="java.lang.String" value="Deuda total con proveedores"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txtSaldo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Cascadia Code" size="18" style="0"/>
@@ -479,7 +482,7 @@
             <Property name="text" type="java.lang.String" value="0.00"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="txtDeudaTotal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Cascadia Code" size="18" style="0"/>
@@ -506,7 +509,7 @@
             <Property name="text" type="java.lang.String" value="$"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel14">
+        <Component class="javax.swing.JLabel" name="lbInformacion">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
