@@ -1,5 +1,9 @@
 package Views.Dialogs;
 
+import Models.ModelFinca;
+import Models.ModelProducto;
+import Models.ModelTipoRiego;
+import Models.ModelTipoSuelo;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -35,13 +39,18 @@ public class DialogCrearParcela extends javax.swing.JDialog {
     public DialogCrearParcela(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        LoadProductores();
+        Load();
         btnCerrar.addMouseListener(ml);
     }
     
-    private void LoadProductores(){
+    private void Load(){
+        ModelFinca mf = new ModelFinca();
+        ModelProducto mp = new ModelProducto();
+        ModelTipoSuelo ms = new ModelTipoSuelo();
+        ModelTipoRiego tr = new ModelTipoRiego();
         
-        
+        cmbFinca.setModel(mf.SelectModelFincaCmb());
+        cmbProducto.setModel(mp.SelectModelProductoCmb());
     }
 
     @SuppressWarnings("unchecked")
