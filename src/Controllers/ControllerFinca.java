@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.ModelFinca;
+import Models.ModelProductor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -8,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerFinca {
     
     private ModelFinca modelFinca = new ModelFinca();
+    private ModelProductor modelProductor = new ModelProductor();
     
     private JTextField FincaID;
     private JTextField Nombre;
@@ -36,7 +38,7 @@ public class ControllerFinca {
     }
     
     public DefaultComboBoxModel setProductorCmb () {
-        return modelFinca.setModelProductores();
+        return modelProductor.setModelProductores();
     }
     
     public DefaultComboBoxModel setFincaCmb () {
