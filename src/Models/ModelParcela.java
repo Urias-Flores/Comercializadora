@@ -4,7 +4,9 @@ package Models;
 import Resources.Conection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 public class ModelParcela {
     
@@ -97,5 +99,24 @@ public class ModelParcela {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return true;
+    }
+    
+    public DefaultTableModel SelectModelParcela(){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"Parcela", "Finca", "Propietario", "Bodega", "Producto"};
+        model.setColumnIdentifiers(Columns);
+        String Query = "select * from PARCELADETALLES";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                String[] row = {
+                    rs.getString("Parcela"), rs.getString("Finca"), rs.getString("Propietario"), rs.getString("Bodega"), rs.getString("Producto")
+                };
+                model.addRow(row);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
     }
 }
