@@ -214,7 +214,7 @@ public class DialogCrearFinca extends javax.swing.JDialog {
         boolean ok = contFinc.InsertFinca(prod.getProductorID(), txtDescripcion.getText(), txtUbicacion.getText());
         
         if (!ok) {
-            Dialogs.ShowMessageDialog("productor ingresado exitosamente", Dialogs.COMPLETEMessage);
+            Dialogs.ShowMessageDialog("Finca ingresado exitosamente", Dialogs.COMPLETEMessage);
             this.dispose();
         } else {
             Dialogs.ShowMessageDialog("Ha ocurrido un error", Dialogs.COMPLETEMessage);
