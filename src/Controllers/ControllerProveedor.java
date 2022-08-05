@@ -44,4 +44,10 @@ public class ControllerProveedor {
     public DefaultTableModel SelectModelProveedor(){
         return modelProveedor.SelectModelProveedor();
     }
+    
+    public ModelProveedor SelectProveedor(){
+        modelProveedor.setProveedorID(Integer.parseInt(ProveedorID.getName()));
+        return modelProveedor.SelectProveedor();
+    }
+        
 }

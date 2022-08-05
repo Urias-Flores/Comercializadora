@@ -1,6 +1,7 @@
 package Views.Dialogs;
 
 import java.util.ArrayList;
+import javax.swing.JTextField;
 
 public class Dialogs {
     
@@ -42,5 +43,12 @@ public class Dialogs {
         DialogListaEmpleados dle = new DialogListaEmpleados(null, true);
         dle.setVisible(true);
         return dle.getResult();
+    }
+    
+    public static void ShowInformacionProveedorDialog(JTextField ProveedorID){
+        DialogInformacionProveedor dip = new DialogInformacionProveedor(null, true);
+        dip.setProveedorID(ProveedorID);
+        dip.Load();
+        dip.setVisible(true);
     }
 }
