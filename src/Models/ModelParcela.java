@@ -145,4 +145,15 @@ public class ModelParcela {
         }
         return model;
     }
+    
+    public boolean DeleteParcela(){
+        String Query = "EXECUTE spDeleteParcela ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setInt(1,ParcelaID);
+            return ps.execute();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return true;
+    }
 }
