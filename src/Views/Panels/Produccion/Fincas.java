@@ -92,7 +92,7 @@ public class Fincas extends javax.swing.JPanel {
         tbFincas.getColumn("Propietario").setPreferredWidth(200);
     }
     
-    private void LoadTableParcelas() {
+    public void LoadTableParcelas() {
         controllerParcela = new ControllerParcela();
         tbParcelas.setModel(controllerParcela.SelectModelParcelas()); 
     }
@@ -440,6 +440,7 @@ public class Fincas extends javax.swing.JPanel {
     private void lbAgregarParcelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarParcelasMouseClicked
         Main m = new Main();
         DialogCrearParcela cp = new DialogCrearParcela(m, true);
+        cp.fincas = this;
         cp.setVisible(true);
     }//GEN-LAST:event_lbAgregarParcelasMouseClicked
 
