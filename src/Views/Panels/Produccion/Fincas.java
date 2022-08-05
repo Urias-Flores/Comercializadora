@@ -178,6 +178,11 @@ public class Fincas extends javax.swing.JPanel {
         lbActualizarFincas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
         lbActualizarFincas.setToolTipText("Actualizar");
         lbActualizarFincas.setOpaque(true);
+        lbActualizarFincas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbActualizarFincasMouseClicked(evt);
+            }
+        });
 
         lbAgregarFinca.setBackground(new java.awt.Color(255, 255, 255));
         lbAgregarFinca.setFont(new java.awt.Font("Cascadia Code", 0, 16)); // NOI18N
@@ -303,6 +308,11 @@ public class Fincas extends javax.swing.JPanel {
         lbActualizarParcelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbActualizarParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
         lbActualizarParcelas.setToolTipText("Actualizar");
+        lbActualizarParcelas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbActualizarParcelasMouseClicked(evt);
+            }
+        });
 
         lbAgregarParcelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAgregarParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar_32.png"))); // NOI18N
@@ -432,6 +442,14 @@ public class Fincas extends javax.swing.JPanel {
         DialogCrearParcela cp = new DialogCrearParcela(m, true);
         cp.setVisible(true);
     }//GEN-LAST:event_lbAgregarParcelasMouseClicked
+
+    private void lbActualizarFincasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbActualizarFincasMouseClicked
+        LoadTableFincas();
+    }//GEN-LAST:event_lbActualizarFincasMouseClicked
+
+    private void lbActualizarParcelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbActualizarParcelasMouseClicked
+        LoadTableParcelas();
+    }//GEN-LAST:event_lbActualizarParcelasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

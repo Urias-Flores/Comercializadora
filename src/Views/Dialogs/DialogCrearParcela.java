@@ -295,7 +295,7 @@ public class DialogCrearParcela extends javax.swing.JDialog {
     }//GEN-LAST:event_pnBarraMouseDragged
 
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnCerrarMouseClicked
 
     private void txtExtensionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtExtensionActionPerformed
