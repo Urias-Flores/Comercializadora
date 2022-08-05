@@ -440,7 +440,7 @@ public class Fincas extends javax.swing.JPanel {
         controllerParcela = new ControllerParcela();
 
         if (tbParcelas.getSelectedRow() != -1) {
-            if (Dialogs.ShowDeleteParcelaDialog()) {
+            if (Dialogs.ShowLogerSecureDialog("Eliminación", "¿Estás seguro que deseas eliminar?", "Escribe tu contraseña para confirmar")) {
                 controllerParcela.DeleteParcela(Integer.valueOf(tbParcelas.getValueAt(tbParcelas.getSelectedRow(), 0).toString()));
                 LoadTableParcelas();
             }
