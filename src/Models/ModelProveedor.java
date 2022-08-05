@@ -16,6 +16,7 @@ public class ModelProveedor {
     private String TipoDocumento;
     private String Numero;
     private String Correo;
+    private float Saldo;
 
     public int getProveedorID() {
         return ProveedorID;
@@ -63,6 +64,32 @@ public class ModelProveedor {
 
     public void setCorreo(String Correo) {
         this.Correo = Correo;
+    }
+
+    public float getSaldo() {
+        return Saldo;
+    }
+
+    public void setSaldo(float Saldo) {
+        this.Saldo = Saldo;
+    }
+    
+    public ModelProveedor SelectProveedor(){
+        String Query = "SELECT * FROM Proveedor Where ProveedorID = "+ProveedorID+"";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            if(rs.next()){
+                this.Nombre = rs.getString("Nombre");
+                this.Documento = rs.getString("Documento");
+                this.TipoDocumento = rs.getString("Tipodocumento");
+                this.Numero = rs.getString("Numero");
+                this.Correo = rs.getString("Correo");
+                this.Saldo = rs.getFloat("Saldo");
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return this;
     }
     
     public boolean InsertProveedor(){

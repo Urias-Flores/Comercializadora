@@ -285,6 +285,11 @@ public class Proveedores extends javax.swing.JPanel {
         lbActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
         lbActualizar.setOpaque(true);
+        lbActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbActualizarMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -316,6 +321,11 @@ public class Proveedores extends javax.swing.JPanel {
         lbInformacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/informacion.png"))); // NOI18N
         lbInformacion.setOpaque(true);
+        lbInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbInformacionMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -447,6 +457,20 @@ public class Proveedores extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_tbProveedoresMouseClicked
+
+    private void lbActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbActualizarMouseClicked
+        LoadTable();
+    }//GEN-LAST:event_lbActualizarMouseClicked
+
+    private void lbInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbInformacionMouseClicked
+        int row = tbProveedores.getSelectedRow();
+        if(row > -1){
+            txtNombre.setName(tbProveedores.getValueAt(row, 0).toString());
+            Dialogs.ShowInformacionProveedorDialog(txtNombre);
+        }else{
+            Dialogs.ShowMessageDialog("Error, seleccione un proveedor", Dialogs.ERRORMessage);
+        }
+    }//GEN-LAST:event_lbInformacionMouseClicked
 
     private void LoadTable(){
         
