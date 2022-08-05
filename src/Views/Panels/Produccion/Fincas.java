@@ -429,7 +429,7 @@ public class Fincas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarFincaActionPerformed
 
     private void btnEliminarParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarParcelaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnEliminarParcelaActionPerformed
 
     private void btnEditarParcelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarParcelarActionPerformed
