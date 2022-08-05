@@ -218,6 +218,7 @@ public class DialogCrearFinca extends javax.swing.JDialog {
         
         if (!ok) {
             Dialogs.ShowMessageDialog("Finca ingresado exitosamente", Dialogs.COMPLETEMessage);
+            fincas.LoadTableFincas();
             this.dispose();
         } else {
             Dialogs.ShowMessageDialog("Ha ocurrido un error", Dialogs.COMPLETEMessage);
