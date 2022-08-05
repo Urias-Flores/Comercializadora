@@ -8,8 +8,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ModelFinca {
+
     private Conection conec = new Conection();
-    
+
     private int FincaID;
     private String Nombre;
     private int ProductorID;
@@ -46,66 +47,83 @@ public class ModelFinca {
     public void setUbicacion(String Ubicacion) {
         this.Ubicacion = Ubicacion;
     }
-    
-    public DefaultTableModel SelectModelFinca(){
+
+    public DefaultTableModel SelectModelFinca() {
         DefaultTableModel model = new DefaultTableModel();
         String[] Columns = {"ID", "Nombre", "Propietario"};
         model.setColumnIdentifiers(Columns);
         String Query = "SELECT * FROM FINCADETALLE";
-        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
-            while(rs.next()){
+        try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
+            while (rs.next()) {
                 String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Propietario")};
                 model.addRow(row);
             }
             rs.close();
-        }catch(SQLException ex){
-            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
         }
         return model;
     }
-    
-    public DefaultComboBoxModel SelectModelFincaCmb(){
+
+    public DefaultTableModel SelectFincaPorID() {
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"ID", "Nombre", "Propietario"};
+        model.setColumnIdentifiers(Columns);
+        String Query = "SELECT * FROM FINCADETALLE WHERE ID = " + FincaID;
+        try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
+            while (rs.next()) {
+                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Propietario")};
+                model.addRow(row);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return model;
+    }
+
+    public DefaultComboBoxModel SelectModelFincaCmb() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        
-        String Query = "SELECT * FROM Finca";
-        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
-            while(rs.next()){
+
+        String Query = "SELECT * FROM FINCADETALLE";
+        try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
+            while (rs.next()) {
                 ModelFinca finc = new ModelFinca();
-                finc.setFincaID(rs.getInt("FincaID"));
+                finc.setFincaID(rs.getInt("ID"));
                 finc.setNombre(rs.getString("Nombre"));
                 model.addElement(finc);
             }
             rs.close();
-        }catch(SQLException ex){
-            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
         }
         return model;
     }
-    
-    public boolean InsertFinca(){
+
+    public boolean InsertFinca() {
         String Query = "EXECUTE spInsertFinca ?, ?, ?;";
-        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
-            ps.setInt(1,ProductorID);
+        try (PreparedStatement ps = conec.getconec().prepareStatement(Query)) {
+            ps.setInt(1, ProductorID);
             ps.setString(2, Nombre);
             ps.setString(3, Ubicacion);
             return ps.execute();
-        }catch(SQLException ex){
-            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
         }
         return true;
     }
-    
-    public boolean DeleteFinca(){
+
+    public boolean DeleteFinca() {
         String Query = "EXECUTE spDeleteFinca ?;";
-        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
-            ps.setInt(1,FincaID);
+        try (PreparedStatement ps = conec.getconec().prepareStatement(Query)) {
+            ps.setInt(1, FincaID);
             return ps.execute();
-        }catch(SQLException ex){
-            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
         return this.getNombre();
