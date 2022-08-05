@@ -18,6 +18,12 @@ public class Dialogs {
         return dc.ok;
     }
     
+    public static boolean ShowDeleteParcelaDialog(){
+        DialogDeleteParcela dp = new DialogDeleteParcela(null, true);
+        dp.setVisible(true);
+        return dp.ok;
+    }
+    
     public static void ShowMessageDialog(String Message, int icon){
         DialogMessage dm = new DialogMessage(null, true);
         dm.setIcon(icon);
