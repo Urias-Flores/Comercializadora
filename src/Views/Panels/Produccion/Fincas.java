@@ -427,8 +427,9 @@ public class Fincas extends javax.swing.JPanel {
         conFinc = new ControllerFinca();
 
         if (tbFincas.getSelectedRow() != -1) {
-            if (Dialogs.ShowDeleteFincaDialog()) {
+            if (Dialogs.ShowLogerSecureDialog("Eliminación", "¿Estás seguro que deseas eliminar?", "Escribe tu contraseña para confirmar")) {
                 conFinc.DeleteFinca(Integer.valueOf(tbFincas.getValueAt(tbFincas.getSelectedRow(), 0).toString()));
+                LoadTableFincas();
             }
         } else {
             Dialogs.ShowMessageDialog("Debe seleccionar una fila", -1);
@@ -441,6 +442,7 @@ public class Fincas extends javax.swing.JPanel {
         if (tbParcelas.getSelectedRow() != -1) {
             if (Dialogs.ShowDeleteParcelaDialog()) {
                 controllerParcela.DeleteParcela(Integer.valueOf(tbParcelas.getValueAt(tbParcelas.getSelectedRow(), 0).toString()));
+                LoadTableParcelas();
             }
         } else {
             Dialogs.ShowMessageDialog("Debe seleccionar una fila", -1);
