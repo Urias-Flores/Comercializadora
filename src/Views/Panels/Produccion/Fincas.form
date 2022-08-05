@@ -195,6 +195,9 @@
             <Property name="toolTipText" type="java.lang.String" value="Actualizar"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbActualizarFincasMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbAgregarFinca">
           <Properties>
@@ -465,6 +468,9 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Actualizar"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbActualizarParcelasMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbAgregarParcelas">
           <Properties>
