@@ -105,7 +105,7 @@ public class ModelParcela {
         DefaultTableModel model = new DefaultTableModel();
         String[] Columns = {"Parcela", "Finca", "Propietario", "Producto", "Extencion"};
         model.setColumnIdentifiers(Columns);
-        String Query = "SELECT * FROM PARCELAs";
+        String Query = "SELECT * FROM PARCELAS";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
             while(rs.next()){
                 String[] row = {
@@ -130,7 +130,7 @@ public class ModelParcela {
                 String[] row = {
                     rs.getString("ID"),
                     rs.getString("Finca"),
-                    rs.getString("Dueno"),
+                    rs.getString("Propietario"),
                     rs.getString("Tipo de Suelo"),
                     rs.getString("Tipo de Riego"),
                     rs.getString("Extension"),

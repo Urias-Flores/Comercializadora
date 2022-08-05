@@ -307,18 +307,22 @@ public class Fincas extends javax.swing.JPanel {
             }
         });
 
+        lbActualizarParcelas.setBackground(new java.awt.Color(255, 255, 255));
         lbActualizarParcelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbActualizarParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
         lbActualizarParcelas.setToolTipText("Actualizar");
+        lbActualizarParcelas.setOpaque(true);
         lbActualizarParcelas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbActualizarParcelasMouseClicked(evt);
             }
         });
 
+        lbAgregarParcelas.setBackground(new java.awt.Color(255, 255, 255));
         lbAgregarParcelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAgregarParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar_32.png"))); // NOI18N
         lbAgregarParcelas.setToolTipText("Agregar");
+        lbAgregarParcelas.setOpaque(true);
         lbAgregarParcelas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbAgregarParcelasMouseClicked(evt);
