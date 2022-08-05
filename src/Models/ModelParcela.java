@@ -103,13 +103,13 @@ public class ModelParcela {
     
     public DefaultTableModel SelectModelParcela(){
         DefaultTableModel model = new DefaultTableModel();
-        String[] Columns = {"Parcela", "Finca", "Propietario", "Bodega", "Producto"};
+        String[] Columns = {"Parcela", "Finca", "Propietario", "Producto", "Extencion"};
         model.setColumnIdentifiers(Columns);
-        String Query = "select * from PARCELADETALLES";
+        String Query = "SELECT * FROM PARCELAs";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
             while(rs.next()){
                 String[] row = {
-                    rs.getString("Parcela"), rs.getString("Finca"), rs.getString("Propietario"), rs.getString("Bodega"), rs.getString("Producto")
+                    rs.getString("ID"), rs.getString("Finca"), rs.getString("Propietario"), rs.getString("Producto"), rs.getString("Extension")
                 };
                 model.addRow(row);
             }
