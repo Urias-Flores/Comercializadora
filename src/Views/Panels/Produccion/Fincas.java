@@ -5,6 +5,7 @@ import Controllers.ControllerParcela;
 import Controllers.ControllerProductor;
 import Views.Dialogs.DialogCrearFinca;
 import Views.Dialogs.DialogCrearParcela;
+import Views.Dialogs.Dialogs;
 import Views.Main;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
@@ -19,7 +20,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class Fincas extends javax.swing.JPanel {
-    
+
     private ControllerFinca conFinc;
     private ControllerParcela controllerParcela;
     private ControllerProductor controllerProductor = new ControllerProductor();
@@ -48,26 +49,26 @@ public class Fincas extends javax.swing.JPanel {
             l.setBackground(Color.white);
         }
     };
-    private FocusListener fl = new FocusListener(){
+    private FocusListener fl = new FocusListener() {
         @Override
         public void focusGained(FocusEvent e) {
-           JTextField jt = (JTextField) e.getComponent();
-           if(jt.getText().equals("Nombre...")){
-               jt.setText("");
-               jt.setForeground(Color.BLACK);
-           }
+            JTextField jt = (JTextField) e.getComponent();
+            if (jt.getText().equals("Nombre...")) {
+                jt.setText("");
+                jt.setForeground(Color.BLACK);
+            }
         }
 
         @Override
         public void focusLost(FocusEvent e) {
-           JTextField jt = (JTextField) e.getComponent();
-           if(jt.getText().isEmpty()){
-               jt.setText("Nombre...");
-               jt.setForeground(new Color(190, 190, 190));
-           }
+            JTextField jt = (JTextField) e.getComponent();
+            if (jt.getText().isEmpty()) {
+                jt.setText("Nombre...");
+                jt.setForeground(new Color(190, 190, 190));
+            }
         }
     };
-   
+
     public Fincas() {
         initComponents();
         LoadTableFincas();
@@ -79,11 +80,12 @@ public class Fincas extends javax.swing.JPanel {
         lbActualizarParcelas.addMouseListener(ml);
         txtBuscar.addFocusListener(fl);
     }
-    
-    private void Load(){
+
+    private void Load() {
         cmbProductores.setModel(controllerProductor.setProductorCmb());
         cmbFincas.setModel(conFinc.setFincaCmb());
     }
+
     public void LoadTableFincas() {
         conFinc = new ControllerFinca();
         tbFincas.setModel(conFinc.SelectModelFinca());
@@ -91,12 +93,12 @@ public class Fincas extends javax.swing.JPanel {
         tbFincas.getColumn("Nombre").setPreferredWidth(140);
         tbFincas.getColumn("Propietario").setPreferredWidth(200);
     }
-    
+
     public void LoadTableParcelas() {
         controllerParcela = new ControllerParcela();
-        tbParcelas.setModel(controllerParcela.SelectModelParcelas()); 
+        tbParcelas.setModel(controllerParcela.SelectModelParcelas());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -410,7 +412,16 @@ public class Fincas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditarFincaActionPerformed
 
     private void btnEliminarFincaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFincaActionPerformed
-        // TODO add your handling code here:
+        conFinc = new ControllerFinca();
+
+        if (tbFincas.getSelectedRow() != -1) {
+            if (Dialogs.ShowDeleteFincaDialog()) {
+                conFinc.DeleteFinca(tbFincas.getSelectedRow());
+            }
+        } else {
+            Dialogs.ShowMessageDialog("Debe seleccionar una fila", -1);
+        }
+
     }//GEN-LAST:event_btnEliminarFincaActionPerformed
 
     private void btnEliminarParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarParcelaActionPerformed
