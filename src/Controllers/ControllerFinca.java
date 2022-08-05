@@ -54,4 +54,9 @@ public class ControllerFinca {
         modelFinca.setUbicacion(ubicacion);
         return modelFinca.InsertFinca();
     }
+    
+    public boolean DeleteFinca(int FincaId) {
+        modelFinca.setFincaID(FincaId);
+        return modelFinca.DeleteFinca();
+    }
 }
