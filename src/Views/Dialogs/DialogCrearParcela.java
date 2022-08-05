@@ -5,13 +5,16 @@ import Models.ModelFinca;
 import Models.ModelProducto;
 import Models.ModelTipoRiego;
 import Models.ModelTipoSuelo;
+import Views.Panels.Produccion.Fincas;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 
 public class DialogCrearParcela extends javax.swing.JDialog {
-    
+
+    public Fincas fincas = new Fincas();
+
     private int X, Y;
     private MouseListener ml = new MouseListener() {
         @Override
@@ -40,26 +43,26 @@ public class DialogCrearParcela extends javax.swing.JDialog {
             l.setOpaque(true);
         }
     };
-    
+
     public DialogCrearParcela(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         Load();
         btnCerrar.addMouseListener(ml);
     }
-    
+
     private void Load() {
         ModelFinca mf = new ModelFinca();
         ModelProducto mp = new ModelProducto();
         ModelTipoSuelo ts = new ModelTipoSuelo();
         ModelTipoRiego tr = new ModelTipoRiego();
-        
+
         cmbFinca.setModel(mf.SelectModelFincaCmb());
         cmbProducto.setModel(mp.SelectModelProductoCmb());
         cmbSuelo.setModel(ts.SelectModelTipoSueloCmb());
         cmbRiego.setModel(tr.SelectModelTipoRiegoCmb());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -267,16 +270,17 @@ public class DialogCrearParcela extends javax.swing.JDialog {
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         ControllerParcela cp = new ControllerParcela();
-        
+
         ModelFinca mf = (ModelFinca) cmbFinca.getSelectedItem();
         ModelProducto mp = (ModelProducto) cmbProducto.getSelectedItem();
         ModelTipoSuelo ts = (ModelTipoSuelo) cmbSuelo.getSelectedItem();
         ModelTipoRiego tr = (ModelTipoRiego) cmbRiego.getSelectedItem();
-        
+
         boolean ok = cp.InsertParcela(mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.parseFloat(txtExtension.getText()), Float.parseFloat(txtCantidad.getText()));
-        
+
         if (!ok) {
             Dialogs.ShowMessageDialog("Parcela ingresada exitosamente", Dialogs.COMPLETEMessage);
+            fincas.LoadTableParcelas();
             this.dispose();
         } else {
             Dialogs.ShowMessageDialog("Ha ocurrido un error", Dialogs.COMPLETEMessage);
@@ -305,7 +309,7 @@ public class DialogCrearParcela extends javax.swing.JDialog {
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadActionPerformed
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
