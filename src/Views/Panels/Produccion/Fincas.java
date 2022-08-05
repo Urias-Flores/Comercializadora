@@ -412,7 +412,15 @@ public class Fincas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarFincaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFincaActionPerformed
-        // TODO add your handling code here:
+        if (tbFincas.getSelectedRow() != -1) {
+            Main m = new Main();
+            DialogCrearFinca cf = new DialogCrearFinca(m, true);
+            cf.fincas = this;
+            cf.setVisible(true);
+        } else {
+            Dialogs.ShowMessageDialog("Debe seleccionar una fila", -1);
+        }
+
     }//GEN-LAST:event_btnEditarFincaActionPerformed
 
     private void btnEliminarFincaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFincaActionPerformed
@@ -440,7 +448,7 @@ public class Fincas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarParcelaActionPerformed
 
     private void btnEditarParcelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarParcelarActionPerformed
-        
+
     }//GEN-LAST:event_btnEditarParcelarActionPerformed
 
     private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
