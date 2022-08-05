@@ -57,6 +57,16 @@ public class ControllerParcela {
         modelParcela.setCantidad(Float.parseFloat(Cantidad.getText()));
         return modelParcela.InsertParcela();
     }
+    
+    public boolean InsertParcela(int fincaID, int productoID, int tipoSueloID, int tipoRiegoID, float extension, float cantidad){
+        modelParcela.setFincaID(fincaID);
+        modelParcela.setProductoID(productoID);
+        modelParcela.setTipoSueloID(tipoSueloID);
+        modelParcela.setTipoRiegoID(tipoRiegoID);
+        modelParcela.setExtension(extension);
+        modelParcela.setCantidad(cantidad);
+        return modelParcela.InsertParcela();
+    }
   
     public DefaultTableModel SelectModelParcelas(){
         return modelParcela.SelectModelParcela();

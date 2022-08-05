@@ -12,6 +12,12 @@ public class Dialogs {
         return dc.isAcces();
     }
     
+    public static boolean ShowDeleteFincaDialog(){
+        DialogDeleteFinca dc = new DialogDeleteFinca(null, true);
+        dc.setVisible(true);
+        return dc.ok;
+    }
+    
     public static void ShowMessageDialog(String Message, int icon){
         DialogMessage dm = new DialogMessage(null, true);
         dm.setIcon(icon);

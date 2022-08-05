@@ -101,7 +101,7 @@ public class ModelParcela {
         return true;
     }
     
-    public DefaultTableModel SelectModelParcela(){
+    public DefaultTableModel SelectModelParcelaDetalle(){
         DefaultTableModel model = new DefaultTableModel();
         String[] Columns = {"Parcela", "Finca", "Propietario", "Producto", "Extencion"};
         model.setColumnIdentifiers(Columns);
@@ -110,6 +110,32 @@ public class ModelParcela {
             while(rs.next()){
                 String[] row = {
                     rs.getString("ID"), rs.getString("Finca"), rs.getString("Propietario"), rs.getString("Producto"), rs.getString("Extension")
+                };
+                model.addRow(row);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    public DefaultTableModel SelectModelParcela(){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"ID", "Finca", "Propietario", "Tipo de Suelo", "Tipo de Riego", "Extensión", "Cantidad de Cosecha", "Fecha de Cosecha"};
+        model.setColumnIdentifiers(Columns);
+        String Query = "select * from PARCELAS";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                String[] row = {
+                    rs.getString("ID"),
+                    rs.getString("Finca"),
+                    rs.getString("Dueno"),
+                    rs.getString("Tipo de Suelo"),
+                    rs.getString("Tipo de Riego"),
+                    rs.getString("Extension"),
+                    rs.getString("Cantidad/Cosechada"),
+                    rs.getString("Fecha/Cosecha")
                 };
                 model.addRow(row);
             }

@@ -4,6 +4,8 @@ import Controllers.ControllerFinca;
 import Controllers.ControllerParcela;
 import Controllers.ControllerProductor;
 import Views.Dialogs.DialogCrearFinca;
+import Views.Dialogs.DialogCrearParcela;
+import Views.Dialogs.Dialogs;
 import Views.Main;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
@@ -18,7 +20,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class Fincas extends javax.swing.JPanel {
-    
+
     private ControllerFinca conFinc;
     private ControllerParcela controllerParcela;
     private ControllerProductor controllerProductor = new ControllerProductor();
@@ -47,26 +49,26 @@ public class Fincas extends javax.swing.JPanel {
             l.setBackground(Color.white);
         }
     };
-    private FocusListener fl = new FocusListener(){
+    private FocusListener fl = new FocusListener() {
         @Override
         public void focusGained(FocusEvent e) {
-           JTextField jt = (JTextField) e.getComponent();
-           if(jt.getText().equals("Nombre...")){
-               jt.setText("");
-               jt.setForeground(Color.BLACK);
-           }
+            JTextField jt = (JTextField) e.getComponent();
+            if (jt.getText().equals("Nombre...")) {
+                jt.setText("");
+                jt.setForeground(Color.BLACK);
+            }
         }
 
         @Override
         public void focusLost(FocusEvent e) {
-           JTextField jt = (JTextField) e.getComponent();
-           if(jt.getText().isEmpty()){
-               jt.setText("Nombre...");
-               jt.setForeground(new Color(190, 190, 190));
-           }
+            JTextField jt = (JTextField) e.getComponent();
+            if (jt.getText().isEmpty()) {
+                jt.setText("Nombre...");
+                jt.setForeground(new Color(190, 190, 190));
+            }
         }
     };
-   
+
     public Fincas() {
         initComponents();
         LoadTableFincas();
@@ -78,24 +80,25 @@ public class Fincas extends javax.swing.JPanel {
         lbActualizarParcelas.addMouseListener(ml);
         txtBuscar.addFocusListener(fl);
     }
-    
-    private void Load(){
+
+    private void Load() {
         cmbProductores.setModel(controllerProductor.setProductorCmb());
         cmbFincas.setModel(conFinc.setFincaCmb());
     }
-    private void LoadTableFincas() {
+
+    public void LoadTableFincas() {
         conFinc = new ControllerFinca();
         tbFincas.setModel(conFinc.SelectModelFinca());
         tbFincas.getColumn("ID").setPreferredWidth(10);
         tbFincas.getColumn("Nombre").setPreferredWidth(140);
         tbFincas.getColumn("Propietario").setPreferredWidth(200);
     }
-    
-    private void LoadTableParcelas() {
+
+    public void LoadTableParcelas() {
         controllerParcela = new ControllerParcela();
-        tbParcelas.setModel(controllerParcela.SelectModelParcelas()); 
+        tbParcelas.setModel(controllerParcela.SelectModelParcelas());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -177,6 +180,11 @@ public class Fincas extends javax.swing.JPanel {
         lbActualizarFincas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
         lbActualizarFincas.setToolTipText("Actualizar");
         lbActualizarFincas.setOpaque(true);
+        lbActualizarFincas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbActualizarFincasMouseClicked(evt);
+            }
+        });
 
         lbAgregarFinca.setBackground(new java.awt.Color(255, 255, 255));
         lbAgregarFinca.setFont(new java.awt.Font("Cascadia Code", 0, 16)); // NOI18N
@@ -302,10 +310,20 @@ public class Fincas extends javax.swing.JPanel {
         lbActualizarParcelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbActualizarParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
         lbActualizarParcelas.setToolTipText("Actualizar");
+        lbActualizarParcelas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbActualizarParcelasMouseClicked(evt);
+            }
+        });
 
         lbAgregarParcelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAgregarParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar_32.png"))); // NOI18N
         lbAgregarParcelas.setToolTipText("Agregar");
+        lbAgregarParcelas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbAgregarParcelasMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -394,7 +412,16 @@ public class Fincas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditarFincaActionPerformed
 
     private void btnEliminarFincaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarFincaActionPerformed
-        // TODO add your handling code here:
+        conFinc = new ControllerFinca();
+
+        if (tbFincas.getSelectedRow() != -1) {
+            if (Dialogs.ShowDeleteFincaDialog()) {
+                conFinc.DeleteFinca(tbFincas.getSelectedRow());
+            }
+        } else {
+            Dialogs.ShowMessageDialog("Debe seleccionar una fila", -1);
+        }
+
     }//GEN-LAST:event_btnEliminarFincaActionPerformed
 
     private void btnEliminarParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarParcelaActionPerformed
@@ -418,8 +445,24 @@ public class Fincas extends javax.swing.JPanel {
     private void lbAgregarFincaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarFincaMouseClicked
         Main m = new Main();
         DialogCrearFinca cf = new DialogCrearFinca(m, true);
+        cf.fincas = this;
         cf.setVisible(true);
     }//GEN-LAST:event_lbAgregarFincaMouseClicked
+
+    private void lbAgregarParcelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarParcelasMouseClicked
+        Main m = new Main();
+        DialogCrearParcela cp = new DialogCrearParcela(m, true);
+        cp.fincas = this;
+        cp.setVisible(true);
+    }//GEN-LAST:event_lbAgregarParcelasMouseClicked
+
+    private void lbActualizarFincasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbActualizarFincasMouseClicked
+        LoadTableFincas();
+    }//GEN-LAST:event_lbActualizarFincasMouseClicked
+
+    private void lbActualizarParcelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbActualizarParcelasMouseClicked
+        LoadTableParcelas();
+    }//GEN-LAST:event_lbActualizarParcelasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

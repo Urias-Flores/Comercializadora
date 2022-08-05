@@ -95,6 +95,17 @@ public class ModelFinca {
         return true;
     }
     
+    public boolean DeleteFinca(){
+        String Query = "EXECUTE spDeleteFinca ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setInt(1,FincaID);
+            return ps.execute();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return true;
+    }
+    
     @Override
     public String toString() {
         return this.getNombre();

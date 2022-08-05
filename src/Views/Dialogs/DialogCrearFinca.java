@@ -3,6 +3,7 @@ package Views.Dialogs;
 import Controllers.ControllerFinca;
 import Controllers.ControllerProductor;
 import Models.ModelProductor;
+import Views.Panels.Produccion.Fincas;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -10,6 +11,8 @@ import javax.swing.JLabel;
 
 public class DialogCrearFinca extends javax.swing.JDialog {
 
+    public Fincas fincas = new Fincas();
+    
     private int X, Y;
     private MouseListener ml = new MouseListener() {
         @Override
@@ -214,7 +217,8 @@ public class DialogCrearFinca extends javax.swing.JDialog {
         boolean ok = contFinc.InsertFinca(prod.getProductorID(), txtDescripcion.getText(), txtUbicacion.getText());
         
         if (!ok) {
-            Dialogs.ShowMessageDialog("productor ingresado exitosamente", Dialogs.COMPLETEMessage);
+            Dialogs.ShowMessageDialog("Finca ingresado exitosamente", Dialogs.COMPLETEMessage);
+            fincas.LoadTableFincas();
             this.dispose();
         } else {
             Dialogs.ShowMessageDialog("Ha ocurrido un error", Dialogs.COMPLETEMessage);

@@ -5,6 +5,7 @@ import Resources.Conection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ModelProducto {
@@ -154,5 +155,28 @@ public class ModelProducto {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return model;
+    }
+    
+    public DefaultComboBoxModel SelectModelProductoCmb(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        String Query = "SELECT ID, Nombre FROM PRODUCTOSOBTENIBLES";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                ModelProducto prod = new ModelProducto();
+                prod.setProductoID(rs.getInt("ID"));
+                prod.setNombre(rs.getString("Nombre"));
+                model.addElement(prod);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    @Override
+    public String toString() {
+        return this.getNombre();
     }
 }
