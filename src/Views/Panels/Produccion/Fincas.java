@@ -420,20 +420,27 @@ public class Fincas extends javax.swing.JPanel {
 
         if (tbFincas.getSelectedRow() != -1) {
             if (Dialogs.ShowDeleteFincaDialog()) {
-                conFinc.DeleteFinca(tbFincas.getSelectedRow());
+                conFinc.DeleteFinca(Integer.valueOf(tbFincas.getValueAt(tbFincas.getSelectedRow(), 0).toString()));
             }
         } else {
             Dialogs.ShowMessageDialog("Debe seleccionar una fila", -1);
         }
-
     }//GEN-LAST:event_btnEliminarFincaActionPerformed
 
     private void btnEliminarParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarParcelaActionPerformed
-        
+        controllerParcela = new ControllerParcela();
+
+        if (tbParcelas.getSelectedRow() != -1) {
+            if (Dialogs.ShowDeleteParcelaDialog()) {
+                controllerParcela.DeleteParcela(Integer.valueOf(tbParcelas.getValueAt(tbParcelas.getSelectedRow(), 0).toString()));
+            }
+        } else {
+            Dialogs.ShowMessageDialog("Debe seleccionar una fila", -1);
+        }
     }//GEN-LAST:event_btnEliminarParcelaActionPerformed
 
     private void btnEditarParcelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarParcelarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnEditarParcelarActionPerformed
 
     private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
