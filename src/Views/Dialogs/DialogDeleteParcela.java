@@ -115,7 +115,7 @@ public class DialogDeleteParcela extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Cascadia Code", 0, 19)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("¿Desea salir y cerrar su sesion actual?");
+        jLabel1.setText("¿Desea Eliminar la Parcela?");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
