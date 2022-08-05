@@ -130,7 +130,7 @@ public class ModelParcela {
                 String[] row = {
                     rs.getString("ID"),
                     rs.getString("Finca"),
-                    rs.getString("Propietario"),
+                    rs.getString("Dueno"),
                     rs.getString("Tipo de Suelo"),
                     rs.getString("Tipo de Riego"),
                     rs.getString("Extension"),
