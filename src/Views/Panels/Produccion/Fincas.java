@@ -84,7 +84,7 @@ public class Fincas extends javax.swing.JPanel {
         cmbProductores.setModel(controllerProductor.setProductorCmb());
         cmbFincas.setModel(conFinc.setFincaCmb());
     }
-    private void LoadTableFincas() {
+    public void LoadTableFincas() {
         conFinc = new ControllerFinca();
         tbFincas.setModel(conFinc.SelectModelFinca());
         tbFincas.getColumn("ID").setPreferredWidth(10);
@@ -434,6 +434,7 @@ public class Fincas extends javax.swing.JPanel {
     private void lbAgregarFincaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarFincaMouseClicked
         Main m = new Main();
         DialogCrearFinca cf = new DialogCrearFinca(m, true);
+        cf.fincas = this;
         cf.setVisible(true);
     }//GEN-LAST:event_lbAgregarFincaMouseClicked
 
