@@ -6,9 +6,9 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class ControllerParcela {
-    
+
     private ModelParcela modelParcela = new ModelParcela();
-    
+
     private JTextField ParcelaID;
     private JTextField FincaID;
     private JTextField ProductoID;
@@ -47,8 +47,8 @@ public class ControllerParcela {
         this.Extension = Extension;
         this.Cantidad = Cantidad;
     }
-    
-    public boolean InsertParcela(){
+
+    public boolean InsertParcela() {
         modelParcela.setFincaID(Integer.parseInt(FincaID.getName()));
         modelParcela.setProductoID(Integer.parseInt(ProductoID.getName()));
         modelParcela.setTipoSueloID(TipoSueloID.getSelectedIndex() + 1000);
@@ -57,8 +57,8 @@ public class ControllerParcela {
         modelParcela.setCantidad(Float.parseFloat(Cantidad.getText()));
         return modelParcela.InsertParcela();
     }
-    
-    public boolean InsertParcela(int fincaID, int productoID, int tipoSueloID, int tipoRiegoID, float extension, float cantidad){
+
+    public boolean InsertParcela(int fincaID, int productoID, int tipoSueloID, int tipoRiegoID, float extension, float cantidad) {
         modelParcela.setFincaID(fincaID);
         modelParcela.setProductoID(productoID);
         modelParcela.setTipoSueloID(tipoSueloID);
@@ -67,9 +67,14 @@ public class ControllerParcela {
         modelParcela.setCantidad(cantidad);
         return modelParcela.InsertParcela();
     }
-  
-    public DefaultTableModel SelectModelParcelas(){
+
+    public boolean DeleteParcela(int parcelaID) {
+        modelParcela.setParcelaID(parcelaID);
+        return modelParcela.DeleteParcela();
+    }
+
+    public DefaultTableModel SelectModelParcelas() {
         return modelParcela.SelectModelParcela();
     }
-    
+
 }

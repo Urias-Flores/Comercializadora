@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 
-public class DialogDeleteFinca extends javax.swing.JDialog {
+public class DialogDeleteParcela extends javax.swing.JDialog {
 
     public boolean ok = false;
     private int X, Y;
@@ -36,7 +36,7 @@ public class DialogDeleteFinca extends javax.swing.JDialog {
         }
     };
     
-    public DialogDeleteFinca(java.awt.Frame parent, boolean modal) {
+    public DialogDeleteParcela(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         lbCerrar.addMouseListener(ml);
@@ -115,7 +115,7 @@ public class DialogDeleteFinca extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Cascadia Code", 0, 19)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("¿Desea Eliminar la Finca?");
+        jLabel1.setText("¿Desea Eliminar la Parcela?");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -204,20 +204,22 @@ public class DialogDeleteFinca extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogDeleteFinca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogDeleteParcela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogDeleteFinca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogDeleteParcela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogDeleteFinca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogDeleteParcela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogDeleteFinca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogDeleteParcela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            DialogDeleteFinca dialog = new DialogDeleteFinca(new javax.swing.JFrame(), true);
+            DialogDeleteParcela dialog = new DialogDeleteParcela(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {

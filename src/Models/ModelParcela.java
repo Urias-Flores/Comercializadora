@@ -130,7 +130,7 @@ public class ModelParcela {
                 String[] row = {
                     rs.getString("ID"),
                     rs.getString("Finca"),
-                    rs.getString("Propietario"),
+                    rs.getString("Dueno"),
                     rs.getString("Tipo de Suelo"),
                     rs.getString("Tipo de Riego"),
                     rs.getString("Extension"),
@@ -144,5 +144,16 @@ public class ModelParcela {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return model;
+    }
+    
+    public boolean DeleteParcela(){
+        String Query = "EXECUTE spDeleteParcela ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setInt(1,ParcelaID);
+            return ps.execute();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return true;
     }
 }

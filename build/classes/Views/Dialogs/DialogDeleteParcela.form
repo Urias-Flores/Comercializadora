@@ -164,7 +164,7 @@
               <Font name="Cascadia Code" size="19" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="&#xbf;Desea Eliminar la Finca?"/>
+            <Property name="text" type="java.lang.String" value="&#xbf;Desea Eliminar la Parcela?"/>
           </Properties>
         </Component>
       </SubComponents>
