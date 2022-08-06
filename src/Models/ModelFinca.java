@@ -4,6 +4,7 @@ import Resources.Conection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,12 +51,12 @@ public class ModelFinca {
 
     public DefaultTableModel SelectModelFinca() {
         DefaultTableModel model = new DefaultTableModel();
-        String[] Columns = {"ID", "Nombre", "Propietario"};
+        String[] Columns = {"ID", "Nombre", "Propietario", "Ubicación"};
         model.setColumnIdentifiers(Columns);
         String Query = "SELECT * FROM FINCADETALLE";
         try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
             while (rs.next()) {
-                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Propietario")};
+                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Propietario"), rs.getString("Ubicacion")};
                 model.addRow(row);
             }
             rs.close();
@@ -65,21 +66,24 @@ public class ModelFinca {
         return model;
     }
 
-    public DefaultTableModel SelectFincaPorID() {
-        DefaultTableModel model = new DefaultTableModel();
-        String[] Columns = {"ID", "Nombre", "Propietario"};
-        model.setColumnIdentifiers(Columns);
+    public ArrayList SelectFincaPorID() {
+        ArrayList<Object> arrList = new ArrayList<>();
         String Query = "SELECT * FROM FINCADETALLE WHERE ID = " + FincaID;
         try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
             while (rs.next()) {
-                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Propietario")};
-                model.addRow(row);
+                ModelFinca mf = new ModelFinca();
+                this.setFincaID(rs.getInt("ID"));
+                this.setNombre(rs.getString("Nombre"));
+                this.setProductorID(rs.getInt("ProductorID"));
+                this.setUbicacion(rs.getString("Ubicacion"));
+                arrList.add(this);
+                
             }
             rs.close();
         } catch (SQLException ex) {
             System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
         }
-        return model;
+        return arrList;
     }
 
     public DefaultComboBoxModel SelectModelFincaCmb() {
@@ -98,6 +102,20 @@ public class ModelFinca {
             System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
         }
         return model;
+    }
+    
+    public boolean UpdateFinca() {
+        String Query = "EXECUTE spUpdateFinca ?, ?, ?, ?;";
+        try (PreparedStatement ps = conec.getconec().prepareStatement(Query)) {
+            ps.setInt(1, FincaID);
+            ps.setInt(2, ProductorID);
+            ps.setString(3, Nombre);
+            ps.setString(4, Ubicacion);
+            return ps.execute();
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return true;
     }
 
     public boolean InsertFinca() {
@@ -128,4 +146,5 @@ public class ModelFinca {
     public String toString() {
         return this.getNombre();
     }
+    
 }
