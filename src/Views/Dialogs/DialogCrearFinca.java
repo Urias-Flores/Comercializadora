@@ -2,34 +2,41 @@ package Views.Dialogs;
 
 import Controllers.ControllerFinca;
 import Controllers.ControllerProductor;
+import Models.ModelFinca;
 import Models.ModelProductor;
 import Views.Panels.Produccion.Fincas;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 
 public class DialogCrearFinca extends javax.swing.JDialog {
 
     public Fincas fincas = new Fincas();
-    
+    public int fincaID;
+
     private int X, Y;
     private MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
         }
+
         @Override
         public void mousePressed(MouseEvent e) {
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
         }
+
         @Override
         public void mouseEntered(MouseEvent e) {
             JLabel l = (JLabel) e.getComponent();
             l.setOpaque(true);
             l.setBackground(Color.red);
         }
+
         @Override
         public void mouseExited(MouseEvent e) {
             JLabel l = (JLabel) e.getComponent();
@@ -37,17 +44,33 @@ public class DialogCrearFinca extends javax.swing.JDialog {
             l.setOpaque(true);
         }
     };
-    
-    public DialogCrearFinca(java.awt.Frame parent, boolean modal) {
+
+    public DialogCrearFinca(java.awt.Frame parent, boolean modal, int FincaID) {
         super(parent, modal);
         initComponents();
+        this.fincaID = FincaID;
         LoadProductores();
         btnCerrar.addMouseListener(ml);
     }
-    
-    private void LoadProductores(){
+
+    private void LoadProductores() {
         ControllerProductor conProductor = new ControllerProductor();
         cmbProductor.setModel(conProductor.setProductorCmb());
+        if (fincaID != 0) {
+            ControllerFinca conFinca = new ControllerFinca();
+            ArrayList arrList = conFinca.selectFincaPorID(fincaID);
+
+            ModelFinca mFinca = (ModelFinca) arrList.get(0);
+
+            for (int i = 0; i < cmbProductor.getItemCount(); i++) {
+                ModelProductor mProductor = (ModelProductor) cmbProductor.getItemAt(i);
+                if (mProductor.getProductorID() == mFinca.getProductorID()) {
+                    cmbProductor.setSelectedIndex(i);
+                }
+            }
+            txtDescripcion.setText(mFinca.getNombre());
+            txtUbicacion.setText(mFinca.getUbicacion());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -214,8 +237,8 @@ public class DialogCrearFinca extends javax.swing.JDialog {
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         ModelProductor prod = (ModelProductor) cmbProductor.getSelectedItem();
         ControllerFinca contFinc = new ControllerFinca();
-        boolean ok = contFinc.InsertFinca(prod.getProductorID(), txtDescripcion.getText(), txtUbicacion.getText());
-        
+        boolean ok = contFinc.UpdateFinca(fincaID, prod.getProductorID(), txtDescripcion.getText(), txtUbicacion.getText());
+
         if (!ok) {
             Dialogs.ShowMessageDialog("Finca ingresado exitosamente", Dialogs.COMPLETEMessage);
             fincas.LoadTableFincas();
@@ -256,7 +279,7 @@ public class DialogCrearFinca extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            DialogCrearFinca dialog = new DialogCrearFinca(new javax.swing.JFrame(), true);
+            DialogCrearFinca dialog = new DialogCrearFinca(new javax.swing.JFrame(), true, Integer.BYTES);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
