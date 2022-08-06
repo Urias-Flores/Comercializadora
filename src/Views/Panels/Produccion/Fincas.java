@@ -24,6 +24,7 @@ public class Fincas extends javax.swing.JPanel {
     private ControllerFinca conFinc;
     private ControllerParcela controllerParcela;
     private ControllerProductor controllerProductor = new ControllerProductor();
+    
     private MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -414,7 +415,7 @@ public class Fincas extends javax.swing.JPanel {
     private void btnEditarFincaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFincaActionPerformed
         if (tbFincas.getSelectedRow() != -1) {
             Main m = new Main();
-            DialogCrearFinca cf = new DialogCrearFinca(m, true);
+            DialogCrearFinca cf = new DialogCrearFinca(m, true, Integer.valueOf(tbFincas.getValueAt(tbFincas.getSelectedRow(), 0).toString()));
             cf.fincas = this;
             cf.setVisible(true);
         } else {
@@ -465,7 +466,7 @@ public class Fincas extends javax.swing.JPanel {
 
     private void lbAgregarFincaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarFincaMouseClicked
         Main m = new Main();
-        DialogCrearFinca cf = new DialogCrearFinca(m, true);
+        DialogCrearFinca cf = new DialogCrearFinca(m, true, 0);
         cf.fincas = this;
         cf.setVisible(true);
     }//GEN-LAST:event_lbAgregarFincaMouseClicked
