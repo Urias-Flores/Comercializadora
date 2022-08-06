@@ -60,4 +60,10 @@ public class ControllerProductor {
     public DefaultTableModel SelectModelProductor(){
         return modelProductor.SelectModelProductor();
     }
+    
+    public ModelProductor getModelProductor (int productorID, String nombre) {
+        modelProductor.setProductorID(productorID);
+        modelProductor.setNombre(nombre);
+        return modelProductor;
+    }
 }
