@@ -24,6 +24,7 @@ public class Fincas extends javax.swing.JPanel {
     private ControllerFinca conFinc;
     private ControllerParcela controllerParcela;
     private ControllerProductor controllerProductor = new ControllerProductor();
+    
     private MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -414,7 +415,7 @@ public class Fincas extends javax.swing.JPanel {
     private void btnEditarFincaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFincaActionPerformed
         if (tbFincas.getSelectedRow() != -1) {
             Main m = new Main();
-            DialogCrearFinca cf = new DialogCrearFinca(m, true);
+            DialogCrearFinca cf = new DialogCrearFinca(m, true, Integer.valueOf(tbFincas.getValueAt(tbFincas.getSelectedRow(), 0).toString()));
             cf.fincas = this;
             cf.setVisible(true);
         } else {
@@ -427,8 +428,9 @@ public class Fincas extends javax.swing.JPanel {
         conFinc = new ControllerFinca();
 
         if (tbFincas.getSelectedRow() != -1) {
-            if (Dialogs.ShowDeleteFincaDialog()) {
+            if (Dialogs.ShowLogerSecureDialog("Eliminación", "¿Estás seguro que deseas eliminar?", "Escribe tu contraseña para confirmar")) {
                 conFinc.DeleteFinca(Integer.valueOf(tbFincas.getValueAt(tbFincas.getSelectedRow(), 0).toString()));
+                LoadTableFincas();
             }
         } else {
             Dialogs.ShowMessageDialog("Debe seleccionar una fila", -1);
@@ -439,8 +441,9 @@ public class Fincas extends javax.swing.JPanel {
         controllerParcela = new ControllerParcela();
 
         if (tbParcelas.getSelectedRow() != -1) {
-            if (Dialogs.ShowDeleteParcelaDialog()) {
+            if (Dialogs.ShowLogerSecureDialog("Eliminación", "¿Estás seguro que deseas eliminar?", "Escribe tu contraseña para confirmar")) {
                 controllerParcela.DeleteParcela(Integer.valueOf(tbParcelas.getValueAt(tbParcelas.getSelectedRow(), 0).toString()));
+                LoadTableParcelas();
             }
         } else {
             Dialogs.ShowMessageDialog("Debe seleccionar una fila", -1);
@@ -463,7 +466,7 @@ public class Fincas extends javax.swing.JPanel {
 
     private void lbAgregarFincaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarFincaMouseClicked
         Main m = new Main();
-        DialogCrearFinca cf = new DialogCrearFinca(m, true);
+        DialogCrearFinca cf = new DialogCrearFinca(m, true, 0);
         cf.fincas = this;
         cf.setVisible(true);
     }//GEN-LAST:event_lbAgregarFincaMouseClicked
