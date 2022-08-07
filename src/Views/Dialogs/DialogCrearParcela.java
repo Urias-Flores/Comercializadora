@@ -2,6 +2,7 @@ package Views.Dialogs;
 
 import Controllers.ControllerParcela;
 import Models.ModelFinca;
+import Models.ModelParcela;
 import Models.ModelProducto;
 import Models.ModelTipoRiego;
 import Models.ModelTipoSuelo;
@@ -9,6 +10,7 @@ import Views.Panels.Produccion.Fincas;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 
 public class DialogCrearParcela extends javax.swing.JDialog {
@@ -65,7 +67,41 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         cmbRiego.setModel(tr.SelectModelTipoRiegoCmb());
         
         if (ParcelaID != 0) {
+            ControllerParcela conParcela = new ControllerParcela();
+            ArrayList arryList = conParcela.selectParcelaPorID(ParcelaID);
             
+            ModelParcela mParcela = (ModelParcela) arryList.get(0);
+            
+            for (int i = 0; i < cmbFinca.getItemCount(); i++) {
+                ModelFinca mFinca = (ModelFinca) cmbFinca.getItemAt(i);
+                if (mFinca.getFincaID()== mParcela.getFincaID()) {
+                    cmbFinca.setSelectedIndex(i);
+                }
+            }
+            
+            for (int i = 0; i < cmbProducto.getItemCount(); i++) {
+                ModelProducto mProducto = (ModelProducto) cmbProducto.getItemAt(i);
+                if (mProducto.getProductoID() == mParcela.getProductoID()) {
+                    cmbProducto.setSelectedIndex(i);
+                }
+            }
+            
+            for (int i = 0; i < cmbSuelo.getItemCount(); i++) {
+                ModelTipoSuelo mTSuelo = (ModelTipoSuelo) cmbSuelo.getItemAt(i);
+                if (mTSuelo.getTipoSueloID()== mParcela.getTipoSueloID()) {
+                    cmbSuelo.setSelectedIndex(i);
+                }
+            }
+            
+            for (int i = 0; i < cmbRiego.getItemCount(); i++) {
+                ModelTipoRiego mTRiego = (ModelTipoRiego) cmbRiego.getItemAt(i);
+                if (mTRiego.getTipoRiegoID()== mParcela.getTipoRiegoID()) {
+                    cmbRiego.setSelectedIndex(i);
+                }
+            }
+            
+            txtExtension.setText(String.valueOf(mParcela.getExtension()));
+            txtCantidad.setText(String.valueOf(mParcela.getCantidad()));
         }
     }
 
