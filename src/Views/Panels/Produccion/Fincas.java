@@ -473,7 +473,7 @@ public class Fincas extends javax.swing.JPanel {
 
     private void lbAgregarParcelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarParcelasMouseClicked
         Main m = new Main();
-        DialogCrearParcela cp = new DialogCrearParcela(m, true);
+        DialogCrearParcela cp = new DialogCrearParcela(m, true, Integer.valueOf(tbParcelas.getValueAt(tbParcelas.getSelectedRow(), 0).toString()));
         cp.fincas = this;
         cp.setVisible(true);
     }//GEN-LAST:event_lbAgregarParcelasMouseClicked
