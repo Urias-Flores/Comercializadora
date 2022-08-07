@@ -318,8 +318,14 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         ModelTipoSuelo ts = (ModelTipoSuelo) cmbSuelo.getSelectedItem();
         ModelTipoRiego tr = (ModelTipoRiego) cmbRiego.getSelectedItem();
 
-        boolean ok = cp.InsertParcela(mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.parseFloat(txtExtension.getText()), Float.parseFloat(txtCantidad.getText()));
-
+        boolean ok = false;
+        
+        if (ParcelaID != 0) {
+            ok = cp.UpdateParcela(ParcelaID, mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.valueOf(txtExtension.getText()), Float.valueOf(txtCantidad.getText()));
+        } else {
+            ok = cp.InsertParcela(mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.parseFloat(txtExtension.getText()), Float.parseFloat(txtCantidad.getText()));
+        }
+        
         if (!ok) {
             Dialogs.ShowMessageDialog("Parcela ingresada exitosamente", Dialogs.COMPLETEMessage);
             fincas.LoadTableParcelas();
