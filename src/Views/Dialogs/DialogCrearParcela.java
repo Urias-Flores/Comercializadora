@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 public class DialogCrearParcela extends javax.swing.JDialog {
 
     public Fincas fincas = new Fincas();
+    private int ParcelaID;
 
     private int X, Y;
     private MouseListener ml = new MouseListener() {
@@ -44,8 +45,9 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         }
     };
 
-    public DialogCrearParcela(java.awt.Frame parent, boolean modal) {
+    public DialogCrearParcela(java.awt.Frame parent, boolean modal, int parcelaID) {
         super(parent, modal);
+        this.ParcelaID = parcelaID;
         initComponents();
         Load();
         btnCerrar.addMouseListener(ml);
@@ -61,6 +63,10 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         cmbProducto.setModel(mp.SelectModelProductoCmb());
         cmbSuelo.setModel(ts.SelectModelTipoSueloCmb());
         cmbRiego.setModel(tr.SelectModelTipoRiegoCmb());
+        
+        if (ParcelaID != 0) {
+            
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -339,7 +345,7 @@ public class DialogCrearParcela extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            DialogCrearParcela dialog = new DialogCrearParcela(new javax.swing.JFrame(), true);
+            DialogCrearParcela dialog = new DialogCrearParcela(new javax.swing.JFrame(), true, Integer.BYTES);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
