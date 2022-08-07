@@ -102,7 +102,7 @@ public class ModelParcela {
     }
 
     public boolean UpdateParcela() {
-        String Query = "EXECUTE spInsertParcela ?, ?, ?, ?, ?, ?, ?, ?;";
+        String Query = "EXECUTE spUpdateParcela ?, ?, ?, ?, ?, ?, ?, ?;";
         try (PreparedStatement ps = conec.getconec().prepareStatement(Query)) {
             ps.setInt(1, ParcelaID);
             ps.setInt(2, FincaID);
