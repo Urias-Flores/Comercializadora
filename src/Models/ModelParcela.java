@@ -165,18 +165,17 @@ public class ModelParcela {
     }
 
     public ArrayList SelectParcelaPorID() {
-        String Query = "select * from PARCELAS";
+        String Query = "select * from PARCELAS WHERE ID = " + ParcelaID; 
         ArrayList<Object> arrList = new ArrayList<>();
         try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
             while (rs.next()) {
-                this.setParcelaID(ParcelaID);
-                this.setFincaID(FincaID);
-                this.setProductoID(ProductoID);
-                this.setTipoSueloID(TipoSueloID);
-                this.setTipoRiegoID(TipoRiegoID);
-                this.setExtension(Extension);
-                this.setCantidad(Cantidad);
-
+                this.setParcelaID(rs.getInt("ID"));
+                this.setFincaID(rs.getInt("FincaID"));
+                this.setProductoID(rs.getInt("ProductoID"));
+                this.setTipoSueloID(rs.getInt("TipoSueloID"));
+                this.setTipoRiegoID(rs.getInt("TipoRiegoID"));
+                this.setExtension(rs.getFloat("Extension"));
+                this.setCantidad(rs.getFloat("Cantidad/Cosechada"));
                 arrList.add(this);
 
             }
