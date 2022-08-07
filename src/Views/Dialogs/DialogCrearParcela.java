@@ -319,7 +319,6 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         ModelTipoRiego tr = (ModelTipoRiego) cmbRiego.getSelectedItem();
 
         boolean ok = false;
-        
         if (ParcelaID != 0) {
             ok = cp.UpdateParcela(ParcelaID, mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.valueOf(txtExtension.getText()), Float.valueOf(txtCantidad.getText()));
         } else {
@@ -327,7 +326,7 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         }
         
         if (!ok) {
-            Dialogs.ShowMessageDialog("Parcela ingresada exitosamente", Dialogs.COMPLETEMessage);
+            Dialogs.ShowMessageDialog("Guardado exitosamente", Dialogs.COMPLETEMessage);
             fincas.LoadTableParcelas();
             this.dispose();
         } else {
