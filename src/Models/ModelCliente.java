@@ -74,7 +74,7 @@ public class ModelCliente {
         this.TipoCliente = TipoCliente;
     }
     
-    public DefaultTableModel SelectModelFinca() {
+    public DefaultTableModel SelectModelCliente() {
         DefaultTableModel model = new DefaultTableModel();
         String[] Columns = {"ID", "Nombre", "RTN", "Documento", "Tipo de Cliente"};
         model.setColumnIdentifiers(Columns);
