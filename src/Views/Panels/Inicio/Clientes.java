@@ -5,6 +5,7 @@
 package Views.Panels.Inicio;
 
 import Controllers.ControllerCliente;
+import Views.Dialogs.Dialogs;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -388,7 +389,16 @@ public class Clientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        ControllerCliente conCliente = new ControllerCliente();
         
+        boolean ok = conCliente.InsertCliente(txtNombre.getText(), txtRTN.getText(), txtDocumento.getText(), cmbTipoDocumento.getSelectedItem().toString() == "Identidad" ? "I" : "P", cmbTipoCliente.getSelectedItem().toString() == "Mayorista" ? "M" : "D");
+        
+        if (!ok) {
+            Dialogs.ShowMessageDialog("Cliente ingresado exitosamente", Dialogs.COMPLETEMessage);
+            LoadTable();
+        } else {
+            Dialogs.ShowMessageDialog("Ha ocurrido un error", Dialogs.COMPLETEMessage);
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
