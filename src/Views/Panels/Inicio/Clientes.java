@@ -407,8 +407,7 @@ public class Clientes extends javax.swing.JPanel {
         } else {
             ok = conCliente.InsertCliente(txtNombre.getText(), txtRTN.getText(), txtDocumento.getText(), cmbTipoDocumento.getSelectedItem().toString() == "Identidad" ? "I" : "P", cmbTipoCliente.getSelectedItem().toString() == "Mayorista" ? "M" : "D");
         }
-        
-        
+                
         
         if (!ok) {
             Dialogs.ShowMessageDialog("Cliente ingresado exitosamente", Dialogs.COMPLETEMessage);
