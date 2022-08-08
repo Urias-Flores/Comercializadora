@@ -4,6 +4,14 @@
  */
 package Views.Panels.Inicio;
 
+import Controllers.ControllerCliente;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
@@ -13,12 +21,60 @@ import javax.swing.table.TableRowSorter;
  */
 public class Clientes extends javax.swing.JPanel {
 
+    
+    private MouseListener ml = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(new Color(220, 220, 220));
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(Color.white);
+        }
+    };
+    private FocusListener fl = new FocusListener() {
+        @Override
+        public void focusGained(FocusEvent e) {
+            JTextField jt = (JTextField) e.getComponent();
+            if (jt.getText().equals("Nombre...")) {
+                jt.setText("");
+                jt.setForeground(Color.BLACK);
+            }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            JTextField jt = (JTextField) e.getComponent();
+            if (jt.getText().isEmpty()) {
+                jt.setText("Nombre...");
+                jt.setForeground(new Color(190, 190, 190));
+            }
+        }
+    };
     /**
      * Creates new form Otros
      */
     public Clientes() {
         initComponents();
+        LoadTable();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,6 +83,9 @@ public class Clientes extends javax.swing.JPanel {
      */
     
     private void LoadTable() {
+        ControllerCliente conCliente = new ControllerCliente();
+        tbClientes.setModel(conCliente.SelectModelFinca());
+        
         
     }
     

@@ -81,7 +81,7 @@ public class ModelCliente {
         String Query = "SELECT * FROM CLIENTEDETALLE";
         try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
             while (rs.next()) {
-                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Nombre"), rs.getString("RTN"), rs.getString("Documento"), rs.getString("Tipo de Cliente")};
+                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("RTN"), rs.getString("Documento"), rs.getString("Tipo de Cliente")};
                 model.addRow(row);
             }
             rs.close();
