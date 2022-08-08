@@ -24,7 +24,7 @@ public class Fincas extends javax.swing.JPanel {
     private ControllerFinca conFinc;
     private ControllerParcela controllerParcela;
     private ControllerProductor controllerProductor = new ControllerProductor();
-    
+
     private MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -451,7 +451,10 @@ public class Fincas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarParcelaActionPerformed
 
     private void btnEditarParcelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarParcelarActionPerformed
-
+        Main m = new Main();
+        DialogCrearParcela cp = new DialogCrearParcela(m, true, Integer.valueOf(tbParcelas.getValueAt(tbParcelas.getSelectedRow(), 0).toString()));
+        cp.fincas = this;
+        cp.setVisible(true);
     }//GEN-LAST:event_btnEditarParcelarActionPerformed
 
     private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
@@ -473,7 +476,7 @@ public class Fincas extends javax.swing.JPanel {
 
     private void lbAgregarParcelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarParcelasMouseClicked
         Main m = new Main();
-        DialogCrearParcela cp = new DialogCrearParcela(m, true, Integer.valueOf(tbParcelas.getValueAt(tbParcelas.getSelectedRow(), 0).toString()));
+        DialogCrearParcela cp = new DialogCrearParcela(m, true, 0);
         cp.fincas = this;
         cp.setVisible(true);
     }//GEN-LAST:event_lbAgregarParcelasMouseClicked

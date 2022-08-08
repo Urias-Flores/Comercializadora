@@ -8,12 +8,12 @@ package Views.Panels.Inicio;
  *
  * @author Dell
  */
-public class Otros extends javax.swing.JPanel {
+public class Clientes extends javax.swing.JPanel {
 
     /**
      * Creates new form Otros
      */
-    public Otros() {
+    public Clientes() {
         initComponents();
     }
 
