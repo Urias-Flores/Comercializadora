@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.ModelParcela;
+import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -68,6 +69,17 @@ public class ControllerParcela {
         return modelParcela.InsertParcela();
     }
 
+    public boolean UpdateParcela(int parcelaID, int fincaID, int productoID, int tipoSueloID, int tipoRiegoID, float extension, float cantidad) {
+        modelParcela.setParcelaID(parcelaID);
+        modelParcela.setFincaID(fincaID);
+        modelParcela.setProductoID(productoID);
+        modelParcela.setTipoSueloID(tipoSueloID);
+        modelParcela.setTipoRiegoID(tipoRiegoID);
+        modelParcela.setExtension(extension);
+        modelParcela.setCantidad(cantidad);
+        return modelParcela.UpdateParcela();
+    }
+
     public boolean DeleteParcela(int parcelaID) {
         modelParcela.setParcelaID(parcelaID);
         return modelParcela.DeleteParcela();
@@ -75,6 +87,11 @@ public class ControllerParcela {
 
     public DefaultTableModel SelectModelParcelas() {
         return modelParcela.SelectModelParcela();
+    }
+
+    public ArrayList selectParcelaPorID(int ParcelaID) {
+        modelParcela.setParcelaID(ParcelaID);
+        return modelParcela.SelectParcelaPorID();
     }
 
 }

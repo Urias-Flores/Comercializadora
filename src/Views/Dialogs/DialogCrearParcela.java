@@ -2,6 +2,7 @@ package Views.Dialogs;
 
 import Controllers.ControllerParcela;
 import Models.ModelFinca;
+import Models.ModelParcela;
 import Models.ModelProducto;
 import Models.ModelTipoRiego;
 import Models.ModelTipoSuelo;
@@ -9,11 +10,13 @@ import Views.Panels.Produccion.Fincas;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 
 public class DialogCrearParcela extends javax.swing.JDialog {
 
     public Fincas fincas = new Fincas();
+    private int ParcelaID;
 
     private int X, Y;
     private MouseListener ml = new MouseListener() {
@@ -44,8 +47,9 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         }
     };
 
-    public DialogCrearParcela(java.awt.Frame parent, boolean modal) {
+    public DialogCrearParcela(java.awt.Frame parent, boolean modal, int parcelaID) {
         super(parent, modal);
+        this.ParcelaID = parcelaID;
         initComponents();
         Load();
         btnCerrar.addMouseListener(ml);
@@ -61,6 +65,44 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         cmbProducto.setModel(mp.SelectModelProductoCmb());
         cmbSuelo.setModel(ts.SelectModelTipoSueloCmb());
         cmbRiego.setModel(tr.SelectModelTipoRiegoCmb());
+        
+        if (ParcelaID != 0) {
+            ControllerParcela conParcela = new ControllerParcela();
+            ArrayList arryList = conParcela.selectParcelaPorID(ParcelaID);
+            
+            ModelParcela mParcela = (ModelParcela) arryList.get(0);
+            
+            for (int i = 0; i < cmbFinca.getItemCount(); i++) {
+                ModelFinca mFinca = (ModelFinca) cmbFinca.getItemAt(i);
+                if (mFinca.getFincaID()== mParcela.getFincaID()) {
+                    cmbFinca.setSelectedIndex(i);
+                }
+            }
+            
+            for (int i = 0; i < cmbProducto.getItemCount(); i++) {
+                ModelProducto mProducto = (ModelProducto) cmbProducto.getItemAt(i);
+                if (mProducto.getProductoID() == mParcela.getProductoID()) {
+                    cmbProducto.setSelectedIndex(i);
+                }
+            }
+            
+            for (int i = 0; i < cmbSuelo.getItemCount(); i++) {
+                ModelTipoSuelo mTSuelo = (ModelTipoSuelo) cmbSuelo.getItemAt(i);
+                if (mTSuelo.getTipoSueloID()== mParcela.getTipoSueloID()) {
+                    cmbSuelo.setSelectedIndex(i);
+                }
+            }
+            
+            for (int i = 0; i < cmbRiego.getItemCount(); i++) {
+                ModelTipoRiego mTRiego = (ModelTipoRiego) cmbRiego.getItemAt(i);
+                if (mTRiego.getTipoRiegoID()== mParcela.getTipoRiegoID()) {
+                    cmbRiego.setSelectedIndex(i);
+                }
+            }
+            
+            txtExtension.setText(String.valueOf(mParcela.getExtension()));
+            txtCantidad.setText(String.valueOf(mParcela.getCantidad()));
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -276,10 +318,15 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         ModelTipoSuelo ts = (ModelTipoSuelo) cmbSuelo.getSelectedItem();
         ModelTipoRiego tr = (ModelTipoRiego) cmbRiego.getSelectedItem();
 
-        boolean ok = cp.InsertParcela(mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.parseFloat(txtExtension.getText()), Float.parseFloat(txtCantidad.getText()));
-
+        boolean ok = false;
+        if (ParcelaID != 0) {
+            ok = cp.UpdateParcela(ParcelaID, mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.valueOf(txtExtension.getText()), Float.valueOf(txtCantidad.getText()));
+        } else {
+            ok = cp.InsertParcela(mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.parseFloat(txtExtension.getText()), Float.parseFloat(txtCantidad.getText()));
+        }
+        
         if (!ok) {
-            Dialogs.ShowMessageDialog("Parcela ingresada exitosamente", Dialogs.COMPLETEMessage);
+            Dialogs.ShowMessageDialog("Guardado exitosamente", Dialogs.COMPLETEMessage);
             fincas.LoadTableParcelas();
             this.dispose();
         } else {
@@ -339,7 +386,7 @@ public class DialogCrearParcela extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            DialogCrearParcela dialog = new DialogCrearParcela(new javax.swing.JFrame(), true);
+            DialogCrearParcela dialog = new DialogCrearParcela(new javax.swing.JFrame(), true, Integer.BYTES);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
