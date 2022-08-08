@@ -91,4 +91,19 @@ public class ModelCliente {
         return model;
     }
     
+    public boolean InsertFinca() {
+        String Query = "EXECUTE spInsertFinca ?, ?, ?, ?, ?;";
+        try (PreparedStatement ps = conec.getconec().prepareStatement(Query)) {
+            ps.setString(1, Nombre);
+            ps.setString(2, RTN);
+            ps.setString(3, Documento);
+            ps.setString(4, TipoDocumento);
+            ps.setString(5, TipoCliente);
+            return ps.execute();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return true;
+    }
+    
 }

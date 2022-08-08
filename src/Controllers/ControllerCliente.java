@@ -16,4 +16,12 @@ public class ControllerCliente {
         return modelCliente.SelectModelCliente();
     }
     
+    public boolean InsertCliente(String nombre, String RTN, String Documento, String TipoDocumento, String TipoCliente) {
+        modelCliente.setNombre(nombre);
+        modelCliente.setRTN(RTN);
+        modelCliente.setDocumento(Documento);
+        modelCliente.setTipoCliente(TipoCliente);
+        modelCliente.setTipoDocumento(TipoDocumento);
+        return modelCliente.InsertFinca();
+    }
 }
