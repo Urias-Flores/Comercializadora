@@ -307,8 +307,7 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="btnEditar" min="-2" pref="214" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
                               <Component id="btnEliminar" min="-2" pref="214" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -324,7 +323,11 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="txtActualizar" min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane1" alignment="0" pref="950" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jScrollPane1" pref="732" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnEditar" min="-2" pref="214" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                           </Group>
@@ -345,12 +348,15 @@
                           <Component id="txtInformacion" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="534" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnEditar" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="btnEliminar" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane1" pref="534" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="btnEditar" min="-2" pref="38" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnEliminar" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
               </Group>
