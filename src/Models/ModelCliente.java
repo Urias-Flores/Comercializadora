@@ -76,12 +76,12 @@ public class ModelCliente {
     
     public DefaultTableModel SelectModelFinca() {
         DefaultTableModel model = new DefaultTableModel();
-        String[] Columns = {"ID", "Nombre", "Propietario", "Ubicación"};
+        String[] Columns = {"ID", "Nombre", "RTN", "Documento", "Tipo de Cliente"};
         model.setColumnIdentifiers(Columns);
-        String Query = "SELECT * FROM FINCADETALLE";
+        String Query = "SELECT * FROM CLIENTEDETALLE";
         try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
             while (rs.next()) {
-                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Propietario"), rs.getString("Ubicacion")};
+                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Nombre"), rs.getString("RTN"), rs.getString("Documento"), rs.getString("Tipo de Cliente")};
                 model.addRow(row);
             }
             rs.close();
