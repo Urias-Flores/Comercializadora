@@ -22,6 +22,7 @@ import javax.swing.table.TableRowSorter;
  */
 public class Clientes extends javax.swing.JPanel {
 
+    private int ClienteID = 0;
     
     private MouseListener ml = new MouseListener() {
         @Override
@@ -102,7 +103,6 @@ public class Clientes extends javax.swing.JPanel {
         txtDocumento = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         cmbTipoCliente = new javax.swing.JComboBox<>();
         txtError = new javax.swing.JLabel();
@@ -120,6 +120,7 @@ public class Clientes extends javax.swing.JPanel {
         btnEditar = new javax.swing.JButton();
         txtActualizar = new javax.swing.JLabel();
         txtInformacion = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(190, 190, 190)));
@@ -139,17 +140,6 @@ public class Clientes extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel4.setText("Tipo de Cliente");
-
-        btnAgregar.setBackground(new java.awt.Color(49, 152, 65));
-        btnAgregar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar.png"))); // NOI18N
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
 
         btnLimpiar.setBackground(new java.awt.Color(144, 40, 40));
         btnLimpiar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
@@ -190,8 +180,7 @@ public class Clientes extends javax.swing.JPanel {
                     .addComponent(cmbTipoCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
+                        .addGap(224, 224, 224))
                     .addComponent(txtNombre)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -231,10 +220,8 @@ public class Clientes extends javax.swing.JPanel {
                 .addComponent(cmbTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
 
@@ -307,6 +294,17 @@ public class Clientes extends javax.swing.JPanel {
         txtInformacion.setToolTipText("Ver informacion");
         txtInformacion.setOpaque(true);
 
+        btnAgregar.setBackground(new java.awt.Color(49, 152, 65));
+        btnAgregar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar.png"))); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -328,12 +326,18 @@ public class Clientes extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18))))
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)))
+                        .addGap(10, 10, 10))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,6 +355,8 @@ public class Clientes extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,7 +401,14 @@ public class Clientes extends javax.swing.JPanel {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         ControllerCliente conCliente = new ControllerCliente();
         
-        boolean ok = conCliente.InsertCliente(txtNombre.getText(), txtRTN.getText(), txtDocumento.getText(), cmbTipoDocumento.getSelectedItem().toString() == "Identidad" ? "I" : "P", cmbTipoCliente.getSelectedItem().toString() == "Mayorista" ? "M" : "D");
+        boolean ok;
+        if (ClienteID != 0) {
+            ok = conCliente.UpdateCliente(ClienteID ,txtNombre.getText(), txtRTN.getText(), txtDocumento.getText(), cmbTipoDocumento.getSelectedItem().toString() == "Identidad" ? "I" : "P", cmbTipoCliente.getSelectedItem().toString() == "Mayorista" ? "M" : "D");
+        } else {
+            ok = conCliente.InsertCliente(txtNombre.getText(), txtRTN.getText(), txtDocumento.getText(), cmbTipoDocumento.getSelectedItem().toString() == "Identidad" ? "I" : "P", cmbTipoCliente.getSelectedItem().toString() == "Mayorista" ? "M" : "D");
+        }
+        
+        
         
         if (!ok) {
             Dialogs.ShowMessageDialog("Cliente ingresado exitosamente", Dialogs.COMPLETEMessage);
@@ -425,8 +438,12 @@ public class Clientes extends javax.swing.JPanel {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (tbClientes.getSelectedRow() != -1) {
+            ClienteID = Integer.valueOf(tbClientes.getValueAt(tbClientes.getSelectedRow(), 0).toString());
             txtNombre.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 1).toString());
-//            cmbTipoDocumento.setSelectedIndex(tbClientes.getValueAt(tbClientes.getSelectedRow(), 1).toString());
+            cmbTipoDocumento.setSelectedIndex(tbClientes.getValueAt(tbClientes.getSelectedRow(), 3).toString().equals("Identidad") ? 1 : 2);
+            txtDocumento.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 4).toString());
+            txtRTN.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 2).toString());
+            cmbTipoCliente.setSelectedIndex(tbClientes.getValueAt(tbClientes.getSelectedRow(), 5).toString().equals("Mayorista") ? 1 : 2);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 

@@ -22,6 +22,16 @@ public class ControllerCliente {
         modelCliente.setDocumento(Documento);
         modelCliente.setTipoCliente(TipoCliente);
         modelCliente.setTipoDocumento(TipoDocumento);
-        return modelCliente.InsertFinca();
+        return modelCliente.InsertCliente();
+    }
+    
+    public boolean UpdateCliente(int clienteID, String nombre, String RTN, String Documento, String TipoDocumento, String TipoCliente) {
+        modelCliente.setClienteID(clienteID);
+        modelCliente.setNombre(nombre);
+        modelCliente.setRTN(RTN);
+        modelCliente.setDocumento(Documento);
+        modelCliente.setTipoCliente(TipoCliente);
+        modelCliente.setTipoDocumento(TipoDocumento);
+        return modelCliente.UpdateCliente();
     }
 }
