@@ -92,7 +92,7 @@ public class ModelCliente {
     }
     
     public boolean InsertFinca() {
-        String Query = "EXECUTE spInsertFinca ?, ?, ?, ?, ?;";
+        String Query = "EXECUTE spInsertCliente ?, ?, ?, ?, ?;";
         try (PreparedStatement ps = conec.getconec().prepareStatement(Query)) {
             ps.setString(1, Nombre);
             ps.setString(2, RTN);
