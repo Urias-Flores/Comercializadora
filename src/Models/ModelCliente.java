@@ -93,7 +93,7 @@ public class ModelCliente {
     
     public ArrayList SelectClientePorID() {
         ArrayList arrList = new ArrayList();
-        String Query = "SELECT * FROM CLIENTEDETALLE";
+        String Query = "SELECT * FROM CLIENTEDETALLE WHERE ID = " + ClienteID;
         try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
             while (rs.next()) {
                 this.setClienteID(rs.getInt("ID"));
