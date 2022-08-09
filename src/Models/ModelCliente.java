@@ -91,6 +91,26 @@ public class ModelCliente {
         return model;
     }
     
+    public ArrayList SelectClientePorID() {
+        ArrayList arrList = new ArrayList();
+        String Query = "SELECT * FROM CLIENTEDETALLE";
+        try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
+            while (rs.next()) {
+                this.setClienteID(rs.getInt("ID"));
+                this.setNombre(rs.getString("Nombre"));
+                this.setRTN(rs.getString("RTN"));
+                this.setTipoDocumento(rs.getString("Tipo de documento"));
+                this.setDocumento(rs.getString("Documento"));
+                this.setTipoCliente(rs.getString("Tipo de Cliente"));
+                arrList.add(this);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return arrList;
+    }
+    
     public boolean InsertCliente() {
         String Query = "EXECUTE spInsertCliente ?, ?, ?, ?, ?;";
         try (PreparedStatement ps = conec.getconec().prepareStatement(Query)) {
