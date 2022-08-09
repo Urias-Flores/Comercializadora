@@ -34,4 +34,9 @@ public class ControllerCliente {
         modelCliente.setTipoDocumento(TipoDocumento);
         return modelCliente.UpdateCliente();
     }
+    
+    public ArrayList SelectClientePorID(int clinteID) {
+        modelCliente.setClienteID(clinteID);
+        return modelCliente.SelectClientePorID();
+    }
 }
