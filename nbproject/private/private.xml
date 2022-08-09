@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Controllers/ControllerProveedor.java</file>
-            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Resources/Conection.java</file>
-            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Views/Panels/Proveedores/Proveedores.java</file>
-            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Models/ModelProductor.java</file>
-            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Models/ModelProveedor.java</file>
-            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Views/Main.java</file>
-            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Views/Panels/Produccion/Productores.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Views/Panels/Inventario/Producto.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Controllers/ControllerProducto.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Views/Panels/Inicio/Facturacion.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/Comercializadora/src/Views/LogIn.java</file>
         </group>
     </open-files>
 </project-private>
