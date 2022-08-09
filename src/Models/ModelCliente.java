@@ -76,12 +76,12 @@ public class ModelCliente {
     
     public DefaultTableModel SelectModelCliente() {
         DefaultTableModel model = new DefaultTableModel();
-        String[] Columns = {"ID", "Nombre", "RTN", "Documento", "Tipo de Cliente"};
+        String[] Columns = {"ID", "Nombre", "RTN", "Tipo Documento", "Documento", "Tipo de Cliente"};
         model.setColumnIdentifiers(Columns);
         String Query = "SELECT * FROM CLIENTEDETALLE";
         try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
             while (rs.next()) {
-                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("RTN"), rs.getString("Documento"), rs.getString("Tipo de Cliente")};
+                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("RTN"), rs.getString("Tipo de documento"), rs.getString("Documento"), rs.getString("Tipo de Cliente")};
                 model.addRow(row);
             }
             rs.close();
@@ -89,6 +89,37 @@ public class ModelCliente {
             System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
         }
         return model;
+    }
+    
+    public boolean InsertCliente() {
+        String Query = "EXECUTE spInsertCliente ?, ?, ?, ?, ?;";
+        try (PreparedStatement ps = conec.getconec().prepareStatement(Query)) {
+            ps.setString(1, Nombre);
+            ps.setString(2, RTN);
+            ps.setString(3, Documento);
+            ps.setString(4, TipoDocumento);
+            ps.setString(5, TipoCliente);
+            return ps.execute();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return true;
+    }
+    
+    public boolean UpdateCliente() {
+        String Query = "EXECUTE spUpdateCliente ?, ?, ?, ?, ?, ?;";
+        try (PreparedStatement ps = conec.getconec().prepareStatement(Query)) {
+            ps.setInt(1, ClienteID);
+            ps.setString(2, Nombre);
+            ps.setString(3, RTN);
+            ps.setString(4, Documento);
+            ps.setString(5, TipoDocumento);
+            ps.setString(6, TipoCliente);
+            return ps.execute();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return true;
     }
     
 }
