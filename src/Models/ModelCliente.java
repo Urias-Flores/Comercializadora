@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ModelCliente {
@@ -76,12 +75,12 @@ public class ModelCliente {
     
     public DefaultTableModel SelectModelCliente() {
         DefaultTableModel model = new DefaultTableModel();
-        String[] Columns = {"ID", "Nombre", "RTN", "Tipo Documento", "Documento", "Tipo de Cliente"};
+        String[] Columns = {"ID", "Nombre", "Tipo de Cliente"};
         model.setColumnIdentifiers(Columns);
         String Query = "SELECT * FROM CLIENTEDETALLE";
         try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
             while (rs.next()) {
-                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("RTN"), rs.getString("Tipo de documento"), rs.getString("Documento"), rs.getString("Tipo de Cliente")};
+                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Tipo de Cliente")};
                 model.addRow(row);
             }
             rs.close();
