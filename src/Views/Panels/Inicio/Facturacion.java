@@ -221,7 +221,7 @@ public class Facturacion extends javax.swing.JPanel {
         });
 
         jLabel9.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
-        jLabel9.setText("Informacion de factura");
+        jLabel9.setText("Agregue productos a su factura");
 
         btnEditarVenta.setBackground(new java.awt.Color(255, 255, 255));
         btnEditarVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -391,7 +391,7 @@ public class Facturacion extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Cascadia Code", 0, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
         jLabel1.setText("Realizar nueva factura");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

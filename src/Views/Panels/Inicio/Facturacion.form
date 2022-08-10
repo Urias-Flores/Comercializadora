@@ -437,7 +437,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Cascadia Code" size="20" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Informacion de factura"/>
+                <Property name="text" type="java.lang.String" value="Agregue productos a su factura"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="btnEditarVenta">
@@ -594,7 +594,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="22" style="0"/>
+              <Font name="Cascadia Code" size="22" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Realizar nueva factura"/>
           </Properties>
