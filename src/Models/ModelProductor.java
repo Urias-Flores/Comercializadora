@@ -4,6 +4,8 @@ import Resources.Conection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ModelProductor {
@@ -92,7 +94,7 @@ public class ModelProductor {
         DefaultTableModel model = new DefaultTableModel();
         String[] Columns = {"ID", "Nombre", "Documento", "Tipo de documento", "Numero telefonico", "Correo electronico"};
         model.setColumnIdentifiers(Columns);
-        
+
         String Query = "SELECT * FROM PRODUCTORES";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
             while(rs.next()){
@@ -110,5 +112,44 @@ public class ModelProductor {
         }
         return model;
     }
-        
+    
+    public DefaultComboBoxModel setModelProductores() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        try {
+            String Query = "Select ProductorID, Nombre from Productor";
+            ResultSet rs = conec.getStatement().executeQuery(Query);
+            while (rs.next()) {
+                ModelProductor prod = new ModelProductor();
+                prod.setProductorID(rs.getInt("ProductorID"));
+                prod.setNombre(rs.getString("Nombre"));
+                model.addElement(prod);
+            }
+        } catch (SQLException ex) {
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    public DefaultTableModel ListProducClient(String type){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"ID", "Nombre"};
+        model.setColumnIdentifiers(Columns);
+
+        String Query = "SELECT * FROM DBO.LISTPRODUCCLIENTE('"+type+"')";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                String[] row = {rs.getString("ID"), rs.getString("Nombre")};
+                model.addRow(row);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
 }

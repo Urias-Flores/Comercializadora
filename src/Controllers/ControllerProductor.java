@@ -3,6 +3,7 @@ package Controllers;
 import Models.ModelProductor;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -52,7 +53,21 @@ public class ControllerProductor {
         return modelProductor.InsertProductor();
     }
     
+    public DefaultComboBoxModel setProductorCmb () {
+        return modelProductor.setModelProductores();
+    }
+    
     public DefaultTableModel SelectModelProductor(){
         return modelProductor.SelectModelProductor();
+    }
+    
+    public ModelProductor getModelProductor (int productorID, String nombre) {
+        modelProductor.setProductorID(productorID);
+        modelProductor.setNombre(nombre);
+        return modelProductor;
+    }
+    
+    public DefaultTableModel SelectListProdutorCliente(String type){
+        return modelProductor.ListProducClient(type);
     }
 }

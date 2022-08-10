@@ -5,176 +5,200 @@ import Resources.Conection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ModelProducto {
-    //Conexion a la base de datos principal
     private Conection conec = new Conection();
     
-    //Propiedades
-    private long ProductoID;
+    private int ProductoID;
     private String Nombre;
-    private String Descripción;
-    private char Categoria;
+    private String Descripcion;
     private float PrecioCompra;
     private float PrecioVenta;
     private float Descuento;
-    private long TipoSueloID;
-    private long TipoRiegoID;
-    private float TiempoCocecha;
-    
-    public ModelProducto() {
-        this.ProductoID = 0;
-        this.Nombre = "";
-        this.Descripción = "";
-        this.Categoria = 'N';
-        this.PrecioCompra = 0;
-        this.PrecioVenta = 0;
-        this.Descuento = 0;
-        this.TipoSueloID = 0;
-        this.TipoRiegoID = 0;
-        this.TiempoCocecha = 0;
-    }
+    private String Categoria;
+    private int TipoSueloID;
+    private int TipoRiegoID;
+    private float TiempoCosecha;
 
-    //Getters & setters
-    public void setTiempoCocecha(float TiempoCocecha) {    
-        this.TiempoCocecha = TiempoCocecha;
-    }
-
-    public long getProductoID() {
+    public int getProductoID() {
         return ProductoID;
+    }
+
+    public void setProductoID(int ProductoID) {
+        this.ProductoID = ProductoID;
     }
 
     public String getNombre() {
         return Nombre;
     }
 
-    public String getDescripción() {
-        return Descripción;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
-    public char getCategoria() {
-        return Categoria;
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
     }
 
     public float getPrecioCompra() {
         return PrecioCompra;
     }
 
-    public float getPrecioVenta() {
-        return PrecioVenta;
-    }
-
-    public float getDescuento() {
-        return Descuento;
-    }
-
-    public long getTipoSueloID() {
-        return TipoSueloID;
-    }
-
-    public long getTipoRiegoID() {
-        return TipoRiegoID;
-    }
-
-    public float getTiempoCocecha() {
-        return TiempoCocecha;
-    }
-    
-    public void setProductoID(long ProductoID) {
-        this.ProductoID = ProductoID;
-    }
-
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
-
-    public void setDescripción(String Descripción) {
-        this.Descripción = Descripción;
-    }
-
-    public void setCategoria(char Categoria) {
-        this.Categoria = Categoria;
-    }
-
     public void setPrecioCompra(float PrecioCompra) {
         this.PrecioCompra = PrecioCompra;
+    }
+
+    public float getPrecioVenta() {
+        return PrecioVenta;
     }
 
     public void setPrecioVenta(float PrecioVenta) {
         this.PrecioVenta = PrecioVenta;
     }
 
+    public float getDescuento() {
+        return Descuento;
+    }
+
     public void setDescuento(float Descuento) {
         this.Descuento = Descuento;
     }
 
-    public void setTipoSueloID(long TipoSueloID) {
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
+    }
+
+    public int getTipoSueloID() {
+        return TipoSueloID;
+    }
+
+    public void setTipoSueloID(int TipoSueloID) {
         this.TipoSueloID = TipoSueloID;
     }
 
-    public void setTipoRiegoID(long TipoRiegoID) {
+    public int getTipoRiegoID() {
+        return TipoRiegoID;
+    }
+
+    public void setTipoRiegoID(int TipoRiegoID) {
         this.TipoRiegoID = TipoRiegoID;
     }
-    
-    public ModelProducto(long ProductoID, String Nombre, String Descripción, char Categoria, float PrecioCompra, float PrecioVenta, float Descuento, long TipoSueloID, long TipoRiegoID, float TiempoCocecha) {
-        this.ProductoID = ProductoID;
-        this.Nombre = Nombre;
-        this.Descripción = Descripción;
-        this.Categoria = Categoria;
-        this.PrecioCompra = PrecioCompra;
-        this.PrecioVenta = PrecioVenta;
-        this.Descuento = Descuento;
-        this.TipoSueloID = TipoSueloID;
-        this.TipoRiegoID = TipoRiegoID;
-        this.TiempoCocecha = TiempoCocecha;
+
+    public float getTiempoCosecha() {
+        return TiempoCosecha;
+    }
+
+    public void setTiempoCosecha(float TiempoCosecha) {
+        this.TiempoCosecha = TiempoCosecha;
     }
     
-    public DefaultTableModel SelectProductosTableModel(){
-        DefaultTableModel m = new DefaultTableModel();
-        String[] Columns = {"ID", "Nombre", "Descripción", "Precio de compra", "Precio de venta", "Descuento", "Meses de cosecha"};
-        m.setColumnIdentifiers(Columns);
-        
-        String Query = "SELECT * FROM PRODUCTO;";
+    public boolean InsertProductoDeProduccion(){
+        String Query = "EXECUTE spInsertProducto ?, ?, ?, ?, ?, ?, ?, ?, ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setString(1,Nombre);
+            ps.setString(2, Descripcion);
+            ps.setFloat(3, PrecioCompra);
+            ps.setFloat(4, PrecioVenta);
+            ps.setFloat(5, Descuento);
+            ps.setString(6, Categoria);
+            ps.setInt(7, TipoSueloID);
+            ps.setInt(8, TipoRiegoID);
+            ps.setFloat(9, TiempoCosecha);
+            return ps.execute();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return true;
+    }
+    
+    public boolean InsertProductoObtenible(){
+        String Query = "EXECUTE spInsertProductoObtenible ?, ?, ?, ?, ?, ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setString(1,Nombre);
+            ps.setString(2, Descripcion);
+            ps.setFloat(3, PrecioCompra);
+            ps.setFloat(4, PrecioVenta);
+            ps.setFloat(5, Descuento);
+            ps.setString(6, Categoria);
+            return ps.execute();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return true;
+    }
+    
+    public DefaultTableModel SelectModelProducto(){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"ID", "Nombre", "Precio/Compra", "Precio/Venta", "Categoria"};
+        model.setColumnIdentifiers(Columns);
+        String Query = "SELECT * FROM PRODUCTOSOBTENIBLES";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
-            while(rs.next())
-            {
-                String[] row = {rs.getString("ProductoID"),
+            while(rs.next()){
+                String[] row = {rs.getString("ID"), 
                                 rs.getString("Nombre"), 
-                                rs.getString("Descripción"),
-                                rs.getString("PrecioCompra"),
-                                rs.getString("PrecioVenta"),
-                                rs.getString("Descuento"),
-                                rs.getString("TiempoCocecha")
-                                
-                };
-                m.addRow(row);
+                                rs.getString("PrecioCompra"), 
+                                rs.getString("PrecioVenta"), 
+                                rs.getString("Categoria")};
+                model.addRow(row);
             }
         }catch(SQLException ex){
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
-        
-        return m;
+        return model;
     }
     
-    public boolean InsertProducto(){
-        String Query = "EXECUTE spInsertProducto ?, ?, ?, ?, ?, ?, ?, ?, ?;";
-        try(PreparedStatement stm = conec.getconec().prepareStatement(Query)){
-            stm.setString(1, this.Nombre);
-            stm.setString(2, this.Descripción);
-            stm.setString(3, String.valueOf(this.Categoria));
-            stm.setFloat(4, this.PrecioCompra);
-            stm.setFloat(5, this.PrecioVenta);
-            stm.setFloat(6, this.Descuento);
-            stm.setLong(7, this.TipoSueloID);
-            stm.setLong(8, this.TipoRiegoID);
-            stm.setFloat(9, this.TiempoCocecha);
-            
-            return stm.execute();
+    public DefaultComboBoxModel SelectModelProductoCmb(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        String Query = "SELECT ID, Nombre FROM PRODUCTOSOBTENIBLES";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                ModelProducto prod = new ModelProducto();
+                prod.setProductoID(rs.getInt("ID"));
+                prod.setNombre(rs.getString("Nombre"));
+                model.addElement(prod);
+            }
+            rs.close();
         }catch(SQLException ex){
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
-            
-            return false;
         }
+        return model;
+    }
+    
+    public DefaultTableModel ListProductosFactura(String ID, String type){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Colums = {"ID", "Nombre", "Precio", "ISV", "Descuento"};
+        model.setColumnIdentifiers(Colums);
+        
+        String Query = "SELECT * FROM LISTPRODUCTOS("+ID+", '"+type+"');";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                String[] row = {rs.getString("ID"), 
+                                rs.getString("Nombre"),
+                                rs.getString("Precio"),
+                                rs.getString("ISV"),
+                                rs.getString("Descuento")};
+                model.addRow(row);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    @Override
+    public String toString() {
+        return this.getNombre();
     }
 }

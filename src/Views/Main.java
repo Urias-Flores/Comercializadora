@@ -12,7 +12,7 @@ import Views.Panels.Administracion.Usuarios;
 import Views.Panels.Inicio.Compras;
 import Views.Panels.Inicio.Editar;
 import Views.Panels.Inicio.Facturacion;
-import Views.Panels.Inicio.Otros;
+import Views.Panels.Inicio.Clientes;
 import Views.Panels.Inventario.Bodega;
 import Views.Panels.Inventario.Inventario;
 import Views.Panels.Inventario.Producto;
@@ -125,7 +125,7 @@ public class Main extends javax.swing.JFrame {
                 Facturacion fac = new Facturacion();
                 Compras com = new Compras();
                 Editar edi = new Editar();
-                Otros otr = new Otros();
+                Clientes otr = new Clientes();
               
                 Icon ico11 = new ImageIcon(getClass().getResource("/icons/facturacion.png"));
                 Icon ico12 = new ImageIcon(getClass().getResource("/icons/compra.png"));
@@ -135,7 +135,7 @@ public class Main extends javax.swing.JFrame {
                 TabPane.addTab("Facturacion", ico11, fac);
                 TabPane.addTab("Compras", ico12, com);
                 TabPane.addTab("Edicion", ico13, edi);
-                TabPane.addTab("Otros", ico14,otr);
+                TabPane.addTab("Clientes", ico14,otr);
                 
                 break;
             case 2:
