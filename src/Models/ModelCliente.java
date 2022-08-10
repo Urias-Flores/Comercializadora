@@ -16,6 +16,15 @@ public class ModelCliente {
     private String Documento;
     private String TipoDocumento;
     private String TipoCliente;
+    private String Saldo;
+
+    public String getSaldo() {
+        return Saldo;
+    }
+
+    public void setSaldo(String Saldo) {
+        this.Saldo = Saldo;
+    }
 
     public Conection getConec() {
         return conec;
@@ -101,6 +110,7 @@ public class ModelCliente {
                 this.setTipoDocumento(rs.getString("Tipo de documento"));
                 this.setDocumento(rs.getString("Documento"));
                 this.setTipoCliente(rs.getString("Tipo de Cliente"));
+                this.setSaldo("Saldo");
                 arrList.add(this);
             }
             rs.close();
