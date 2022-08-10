@@ -76,4 +76,10 @@ public class Dialogs {
         dscp.setVisible(true);
         return dscp.getData();
     }
+    
+    public static boolean ShowAdvertecimentDialog(String text){
+        DialogAdvertesiment da = new DialogAdvertesiment(null, true);
+        da.setText(text);
+        return da.isAcces();
+    }
 }

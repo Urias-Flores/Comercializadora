@@ -214,6 +214,11 @@ public class Facturacion extends javax.swing.JPanel {
         btnEliminarVenta.setToolTipText("Eliminar compra");
         btnEliminarVenta.setOpaque(true);
         btnEliminarVenta.setPreferredSize(new java.awt.Dimension(38, 38));
+        btnEliminarVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarVentaMouseClicked(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
         jLabel9.setText("Informacion de factura");
@@ -473,6 +478,17 @@ public class Facturacion extends javax.swing.JPanel {
         txtProducCliente.setName("");
         txtProducCliente.setText("");
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnEliminarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarVentaMouseClicked
+        int row = tbVenta.getSelectedRow();
+        if(row > -1){
+            if(Dialogs.ShowAdvertecimentDialog("Esta seguro de eliminar este producto")){
+            
+            }
+        }else{
+            Dialogs.ShowMessageDialog("Error, Seleccione una venta de la lista", Dialogs.ERRORMessage);
+        }
+    }//GEN-LAST:event_btnEliminarVentaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
