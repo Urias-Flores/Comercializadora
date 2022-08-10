@@ -213,7 +213,6 @@ public class Arqueo extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel8.setText("Saldo Final");
 
-        txtSaldoFinal.setEditable(false);
         txtSaldoFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSaldoFinalActionPerformed(evt);
