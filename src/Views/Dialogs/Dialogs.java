@@ -44,6 +44,13 @@ public class Dialogs {
         dle.setVisible(true);
         return dle.getResult();
     }
+    
+    public static boolean ShowNuevaBodegaDialog(){
+        DialogNuevaBodega dnb = new DialogNuevaBodega(null, true);
+        dnb.setVisible(true);
+        
+        return dnb.isConfirm();
+    }
 
     public static void ShowInformacionProveedorDialog(JTextField ProveedorID) {
         DialogInformacionProveedor dip = new DialogInformacionProveedor(null, true);
