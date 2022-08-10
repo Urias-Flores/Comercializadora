@@ -4,6 +4,7 @@ import Resources.Conection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ModelUsuario {
@@ -166,5 +167,28 @@ public class ModelUsuario {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return model;
+    }
+    
+    public DefaultComboBoxModel SelectModelUsuarioCmb() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+
+        String Query = "SELECT * FROM USUARIOSDETALLES";
+        try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
+            while (rs.next()) {
+                ModelUsuario mUsuario = new ModelUsuario();
+                mUsuario.setUsuarioID(rs.getInt("ID"));
+                mUsuario.setNombre(rs.getString("Nombre de usuario"));
+                model.addElement(mUsuario);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    @Override
+    public String toString() {
+        return this.getNombre();
     }
 }

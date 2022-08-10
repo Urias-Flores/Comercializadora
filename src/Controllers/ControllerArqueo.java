@@ -2,6 +2,8 @@
 package Controllers;
 
 import Models.ModelArqueo;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 public class ControllerArqueo {
     private ModelArqueo mArqueo = new ModelArqueo();
@@ -30,5 +32,9 @@ public class ControllerArqueo {
         mArqueo.setDiferencia(Diferencia);
         mArqueo.setEstado(Estado);
         return mArqueo.InsertArqueo();
+    }
+    
+    public DefaultTableModel SelectModelArqueo() {
+        return mArqueo.SelectModelArqueo();
     }
 }
