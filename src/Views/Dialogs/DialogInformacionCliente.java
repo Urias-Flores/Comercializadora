@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 public class DialogInformacionCliente extends javax.swing.JDialog {
 
     private int X, Y;
-    private static JTextField ProveedorID;
+    public int ClienteID;
     private ControllerCliente conCliente;
     private Map<String, String> tipoDocumento = new HashMap<>();
     private final MouseListener ml = new MouseListener() {
@@ -43,10 +43,6 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
         }
     };
     
-    public void setProveedorID(JTextField ProveedorID){
-        this.ProveedorID = ProveedorID;
-    }
-    
     public DialogInformacionCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -55,7 +51,8 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
     
     public void Load(){
        conCliente = new ControllerCliente();
-        ArrayList arrList = new ArrayList();
+        ArrayList arrList = conCliente.SelectClientePorID(ClienteID);
+        
         ModelCliente mCliente = (ModelCliente) arrList.get(0);
         
         lbNombre.setText(mCliente.getNombre());
