@@ -16,7 +16,6 @@ public class ModelCliente {
     private String Documento;
     private String TipoDocumento;
     private String TipoCliente;
-    private String Saldo;
     private String Numero;
     private String Correo;
 
@@ -34,14 +33,6 @@ public class ModelCliente {
 
     public void setCorreo(String Correo) {
         this.Correo = Correo;
-    }
-
-    public String getSaldo() {
-        return Saldo;
-    }
-
-    public void setSaldo(String Saldo) {
-        this.Saldo = Saldo;
     }
 
     public Conection getConec() {
@@ -102,12 +93,12 @@ public class ModelCliente {
     
     public DefaultTableModel SelectModelCliente() {
         DefaultTableModel model = new DefaultTableModel();
-        String[] Columns = {"ID", "Nombre", "RTN", "Tipo Documento", "Documento", "Tipo de Cliente"};
+        String[] Columns = {"ID", "Nombre", "Tipo de Cliente"};
         model.setColumnIdentifiers(Columns);
         String Query = "SELECT * FROM CLIENTEDETALLE";
         try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
             while (rs.next()) {
-                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("RTN"), rs.getString("Tipo de documento"), rs.getString("Documento"), rs.getString("Tipo de Cliente")};
+                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Tipo de Cliente")};
                 model.addRow(row);
             }
             rs.close();
@@ -128,7 +119,6 @@ public class ModelCliente {
                 this.setTipoDocumento(rs.getString("Tipo de documento"));
                 this.setDocumento(rs.getString("Documento"));
                 this.setTipoCliente(rs.getString("Tipo de Cliente"));
-                this.setSaldo("Saldo");
                 arrList.add(this);
             }
             rs.close();

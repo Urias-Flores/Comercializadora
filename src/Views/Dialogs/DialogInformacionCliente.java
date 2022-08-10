@@ -1,16 +1,12 @@
 package Views.Dialogs;
 
 import Controllers.ControllerCliente;
-import Controllers.ControllerProveedor;
 import Models.ModelCliente;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 public class DialogInformacionCliente extends javax.swing.JDialog {
     
@@ -60,14 +56,11 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
         ArrayList arrList = conCliente.SelectClientePorID(ClienteID);
         
         ModelCliente mCliente = (ModelCliente) arrList.get(0);
-        
-        lbNombre.setText("añsldk");
+        System.out.println(mCliente.getNumero());
+        lbNombre.setText(mCliente.getNombre());
         lbDocumento.setText(mCliente.getDocumento());
-        lbTipoDocumento.setText(mCliente.getTipoDocumento().equals("I") ? "Identidad" : "Pasaporte");
-        lbTipoCliente.setText(mCliente.getTipoCliente().equals("M") ? "Mayorista" : "Detalle");
-        lbSaldo.setText(mCliente.getSaldo());
-        lbNombre.setText(mCliente.getNumero());
-        lbCorreo.setText(mCliente.getCorreo());
+        lbTipoDocumento.setText(mCliente.getTipoDocumento());
+        lbTipoCliente.setText(mCliente.getTipoCliente());
     }
     
     @SuppressWarnings("unchecked")
@@ -84,13 +77,7 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
         lbNombre = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         lbDocumento = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        lbSaldo = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        lbNumero = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        lbCorreo = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         lbTipoDocumento = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
@@ -160,7 +147,7 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
         jLabel4.setText("Nombre");
 
         lbNombre.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        lbNombre.setText("Nombre");
+        lbNombre.setText("hoal");
 
         jLabel6.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel6.setText("Documento");
@@ -168,26 +155,8 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
         lbDocumento.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
         lbDocumento.setText("Nombre");
 
-        jLabel8.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jLabel8.setText("Saldo actual");
-
-        lbSaldo.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        lbSaldo.setText("0.0");
-
         jLabel10.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
         jLabel10.setText("Contacto");
-
-        jLabel11.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jLabel11.setText("Numero telefonico");
-
-        lbNumero.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        lbNumero.setText("Nombre");
-
-        jLabel13.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jLabel13.setText("Correo electronico");
-
-        lbCorreo.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        lbCorreo.setText("Nombre");
 
         jLabel15.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel15.setText("Tipo de documento");
@@ -231,13 +200,7 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbNumero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(lbDocumento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -279,20 +242,8 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbTipoCliente)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbSaldo)
-                .addGap(46, 46, 46)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbNumero)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbCorreo)
-                .addGap(18, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -376,23 +327,17 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JLabel btnCerrar;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lbCorreo;
     private javax.swing.JLabel lbDocumento;
     private javax.swing.JLabel lbNombre;
-    private javax.swing.JLabel lbNumero;
-    private javax.swing.JLabel lbSaldo;
     private javax.swing.JLabel lbTipoCliente;
     private javax.swing.JLabel lbTipoDocumento;
     // End of variables declaration//GEN-END:variables
