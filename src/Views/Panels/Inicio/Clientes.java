@@ -309,6 +309,11 @@ public class Clientes extends javax.swing.JPanel {
         txtInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/informacion.png"))); // NOI18N
         txtInformacion.setToolTipText("Ver informacion");
         txtInformacion.setOpaque(true);
+        txtInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtInformacionMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -447,6 +452,16 @@ public class Clientes extends javax.swing.JPanel {
     private void txtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtActualizarMouseClicked
         LoadTable();
     }//GEN-LAST:event_txtActualizarMouseClicked
+
+    private void txtInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtInformacionMouseClicked
+        if(tbClientes.getSelectedRow() != -1){
+            ClienteID = Integer.valueOf(tbClientes.getValueAt(tbClientes.getSelectedRow(), 0).toString());
+            txtNombre.setName(tbProveedores.getValueAt(row, 0).toString());
+            Dialogs.ShowInformacionProveedorDialog(txtNombre);
+        }else{
+            Dialogs.ShowMessageDialog("Error, seleccione un proveedor", Dialogs.ERRORMessage);
+        }
+    }//GEN-LAST:event_txtInformacionMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
