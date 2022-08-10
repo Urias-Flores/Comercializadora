@@ -175,6 +175,28 @@ public class ModelProducto {
         return model;
     }
     
+    public DefaultTableModel ListProductosFactura(String type){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Colums = {"ID", "Nombre", "Precio", "ISV", "Descuento"};
+        model.setColumnIdentifiers(Colums);
+        
+        String Query = "SELECT * FROM LISTPRODUCTOS('"+type+"');";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                String[] row = {rs.getString("ID"), 
+                                rs.getString("Nombre"),
+                                rs.getString("Precio"),
+                                rs.getString("ISV"),
+                                rs.getString("Descuento")};
+                model.addRow(row);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
     @Override
     public String toString() {
         return this.getNombre();

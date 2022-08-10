@@ -66,4 +66,8 @@ public class ControllerProductor {
         modelProductor.setNombre(nombre);
         return modelProductor;
     }
+    
+    public DefaultTableModel SelectListProdutorCliente(String type){
+        return modelProductor.ListProducClient(type);
+    }
 }

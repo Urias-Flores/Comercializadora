@@ -66,10 +66,11 @@ public class Dialogs {
         return null;
     }
     
-    public static String[] ShowSeleccionarClientProduc(){
+    public static ArrayList<String> ShowSeleccionarClientProduc(String type){
         DialogSelectClientProduc dscp = new DialogSelectClientProduc(null, true);
-        
+        dscp.setType(type);
+        dscp.Load();
         dscp.setVisible(true);
-        return null;
+        return dscp.getData();
     }
 }

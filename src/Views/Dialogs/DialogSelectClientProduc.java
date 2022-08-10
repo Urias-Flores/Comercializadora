@@ -1,27 +1,92 @@
 
 package Views.Dialogs;
 
+import Controllers.ControllerProductor;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
+
 public class DialogSelectClientProduc extends javax.swing.JDialog {
 
     private int X, Y;
     private static String type;
-    private String[] data;
+    private ArrayList<String> data = new ArrayList<>();
+    private MouseListener ml = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setOpaque(true);
+            l.setBackground(Color.red);
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(new Color(39, 49, 65));
+            l.setOpaque(true);
+        }
+    };
+    private FocusListener fl = new FocusListener(){
+        @Override
+        public void focusGained(FocusEvent e) {
+           JTextField jt = (JTextField) e.getComponent();
+           if(jt.getText().equals("buscar...")){
+               jt.setText("");
+               jt.setForeground(Color.BLACK);
+           }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+           JTextField jt = (JTextField) e.getComponent();
+           if(jt.getText().isEmpty()){
+               jt.setText("buscar...");
+               jt.setForeground(new Color(190, 190, 190));
+           }
+        }
+    };
+    private final ControllerProductor controllerProductor = new ControllerProductor();
     
     public void setType(String type){
         this.type = type;
     }
     
-    public String[] getData(){
+    public ArrayList<String> getData(){
         return data;
     }
     
     public DialogSelectClientProduc(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        btnClose.addMouseListener(ml);
+        txtBuscar.addFocusListener(fl);
     }
 
     public void Load(){
-        
+        tbEntes.setModel(controllerProductor.SelectListProdutorCliente(type));
+        tbEntes.getColumn("ID").setPreferredWidth(10);
+        tbEntes.getColumn("Nombre").setPreferredWidth(400);
     }
 
     @SuppressWarnings("unchecked")
@@ -35,12 +100,15 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnAgregar = new javax.swing.JButton();
+        tbEntes = new javax.swing.JTable();
+        btnSeleccionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 190, 190)));
 
         jPanel2.setBackground(new java.awt.Color(39, 49, 65));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -87,8 +155,13 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
         txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
         txtBuscar.setText("buscar...");
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbEntes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -99,16 +172,16 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbEntes);
 
-        btnAgregar.setBackground(new java.awt.Color(49, 152, 65));
-        btnAgregar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/seleccionar.png"))); // NOI18N
-        btnAgregar.setText("Seleccionar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionar.setBackground(new java.awt.Color(49, 152, 65));
+        btnSeleccionar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnSeleccionar.setForeground(new java.awt.Color(255, 255, 255));
+        btnSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/seleccionar.png"))); // NOI18N
+        btnSeleccionar.setText("Seleccionar");
+        btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btnSeleccionarActionPerformed(evt);
             }
         });
 
@@ -121,11 +194,11 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,7 +220,7 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
 
@@ -163,6 +236,7 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
@@ -180,9 +254,25 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
         Y = evt.getY();
     }//GEN-LAST:event_jPanel2MousePressed
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
+        int row = tbEntes.getSelectedRow();
+        if(row > -1){
+            data.add(tbEntes.getValueAt(row, 0).toString());
+            data.add(tbEntes.getValueAt(row, 1).toString());
+            this.dispose();
+        }else{
+            Map<String, String> tipoCliente = new HashMap<>();
+            tipoCliente.put("C", "cliente");
+            tipoCliente.put("P", "productor");
+            Dialogs.ShowMessageDialog("Error, Seleccion un "+tipoCliente.get(type), Dialogs.ERRORMessage);
+        }
+    }//GEN-LAST:event_btnSeleccionarActionPerformed
 
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        TableRowSorter s = new TableRowSorter(tbEntes.getModel());
+        tbEntes.setRowSorter(s);
+        s.setRowFilter(RowFilter.regexFilter(txtBuscar.getText(), 0, 1));
+    }//GEN-LAST:event_txtBuscarKeyReleased
 
     /**
      * @param args the command line arguments
@@ -212,29 +302,27 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogSelectClientProduc dialog = new DialogSelectClientProduc(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            DialogSelectClientProduc dialog = new DialogSelectClientProduc(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
     private javax.swing.JLabel btnClose;
+    private javax.swing.JButton btnSeleccionar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbEntes;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
