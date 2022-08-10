@@ -456,8 +456,8 @@ public class Clientes extends javax.swing.JPanel {
     private void txtInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtInformacionMouseClicked
         if(tbClientes.getSelectedRow() != -1){
             ClienteID = Integer.valueOf(tbClientes.getValueAt(tbClientes.getSelectedRow(), 0).toString());
-//            txtNombre.setName(tbProveedores.getValueAt(row, 0).toString());
-            Dialogs.ShowInformacionProveedorDialog(txtNombre);
+            
+            Dialogs.ShowInformacionClienteDialog(ClienteID);
         }else{
             Dialogs.ShowMessageDialog("Error, seleccione un proveedor", Dialogs.ERRORMessage);
         }
