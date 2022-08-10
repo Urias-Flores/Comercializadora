@@ -8,9 +8,10 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class ControllerProducto {
-    
     private ModelProducto modelProducto = new ModelProducto();
-    
+    private Map<Integer, String> CategoriaMapping = new HashMap<>();
+
+    //Fields
     private JTextField ProductoID;
     private JTextField Nombre;
     private JTextField Descripcion;
@@ -21,8 +22,6 @@ public class ControllerProducto {
     private JComboBox TipoSueloID;
     private JComboBox TipoRiegoID;
     private JTextField TiempoCosecha;
-    
-    private Map<Integer, String> CategoriaMapping = new HashMap<>();
 
     public ControllerProducto() {
     }
