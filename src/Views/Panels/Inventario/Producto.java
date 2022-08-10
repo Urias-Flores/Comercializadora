@@ -18,10 +18,9 @@ import javax.swing.table.TableRowSorter;
 
 public class Producto extends javax.swing.JPanel {
     private ControllerProducto controllerProducto;
-
     private ControllerTipoSuelo conSu = new ControllerTipoSuelo();
     private ControllerTipoRiego conRi = new ControllerTipoRiego();
-    private ControllerProducto controllerProducto;
+
     private ControllerProducto conPro;
     private MouseListener ml = new MouseListener() {
         @Override
