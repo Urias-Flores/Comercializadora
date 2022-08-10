@@ -4,6 +4,7 @@ package Controllers;
 import Models.ModelUsuario;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -83,5 +84,9 @@ public class ControllerUsuario {
     
     public DefaultTableModel SelectModelUsuarios(){
         return modelUsuario.SelectModelUsuarios();
+    }
+    
+    public DefaultComboBoxModel SelectModelUsuarioCmb() {
+        return modelUsuario.SelectModelUsuarioCmb();
     }
 }

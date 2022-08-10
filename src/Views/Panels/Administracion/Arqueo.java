@@ -5,14 +5,18 @@
 package Views.Panels.Administracion;
 
 import Controllers.ControllerArqueo;
+import Controllers.ControllerUsuario;
+import Models.ModelUsuario;
 import Views.Dialogs.Dialogs;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author Dell
  */
 public class Arqueo extends javax.swing.JPanel {
-
+    
     private float SaldoFinal;
     private ControllerArqueo cArqueo;
 
@@ -23,7 +27,6 @@ public class Arqueo extends javax.swing.JPanel {
         initComponents();
         Load();
     }
-
     
     private void Load() {
         cArqueo = new ControllerArqueo();
@@ -34,7 +37,13 @@ public class Arqueo extends javax.swing.JPanel {
         SaldoFinal = cArqueo.ObtenerSaldoFinal();
         
         tbArqueo.setModel(cArqueo.SelectModelArqueo());
+        radioGroup.add(rdFecha);
+        radioGroup.add(rdUsuario);
+        
+        ControllerUsuario cUsuario = new ControllerUsuario();
+        cmbUsuario.setModel(cUsuario.SelectModelUsuarioCmb());
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,17 +53,18 @@ public class Arqueo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        radioGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdFecha = new javax.swing.JRadioButton();
+        rdUsuario = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        cmbUsuario = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbArqueo = new javax.swing.JTable();
@@ -82,11 +92,11 @@ public class Arqueo extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel2.setText("Filtrar");
 
-        jRadioButton1.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jRadioButton1.setText("Fecha");
+        rdFecha.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        rdFecha.setText("Fecha");
 
-        jRadioButton2.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jRadioButton2.setText("Usuario");
+        rdUsuario.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        rdUsuario.setText("Usuario");
 
         jLabel3.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
         jLabel3.setText("Fecha");
@@ -103,14 +113,19 @@ public class Arqueo extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
         jLabel4.setText("Usuario");
 
-        jComboBox5.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Usuario --" }));
+        cmbUsuario.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Usuario --" }));
 
         jButton1.setBackground(new java.awt.Color(49, 152, 65));
         jButton1.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cargar.png"))); // NOI18N
         jButton1.setText("Cargar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tbArqueo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,9 +150,9 @@ public class Arqueo extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton1)
+                        .addComponent(rdFecha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton2)
+                        .addComponent(rdUsuario)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -157,7 +172,7 @@ public class Arqueo extends javax.swing.JPanel {
                                         .addGap(37, 37, 37)
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cmbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 14, Short.MAX_VALUE)))
                         .addGap(18, 18, 18))))
         );
@@ -169,8 +184,8 @@ public class Arqueo extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,7 +193,7 @@ public class Arqueo extends javax.swing.JPanel {
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -382,7 +397,7 @@ public class Arqueo extends javax.swing.JPanel {
         if (txtSaldoFinal.getText().length() > 0) {
             cArqueo = new ControllerArqueo();
             boolean ok = false;
-        
+            
             ok = cArqueo.InsertArqueo(1000, Float.valueOf(txtSaldoInicial.getText()), SaldoFinal, Float.valueOf(txtSaldoFinal.getText()), Float.valueOf(txtDiferencia.getText()), Float.valueOf(txtDiferencia.getText()) > 0 ? "C" : "N");
             
             if (!ok) {
@@ -390,18 +405,28 @@ public class Arqueo extends javax.swing.JPanel {
             } else {
                 Dialogs.ShowMessageDialog("Ha ocurrido un error", Dialogs.ERRORMessage);
             }
-        
+            
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TableRowSorter s = new TableRowSorter(tbArqueo.getModel());
+        tbArqueo.setRowSorter(s);
+        
+        if (rdUsuario.isSelected()) {
+            s.setRowFilter(RowFilter.regexFilter(cmbUsuario.getSelectedItem().toString(), 0));
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -415,9 +440,10 @@ public class Arqueo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.ButtonGroup radioGroup;
+    private javax.swing.JRadioButton rdFecha;
+    private javax.swing.JRadioButton rdUsuario;
     private javax.swing.JTable tbArqueo;
     private javax.swing.JTextField txtDiferencia;
     private javax.swing.JTextField txtSaldoFinal;
