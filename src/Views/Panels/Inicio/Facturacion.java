@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 
 public class Facturacion extends javax.swing.JPanel {
 
@@ -37,6 +38,7 @@ public class Facturacion extends javax.swing.JPanel {
             l.setBackground(Color.white);
         }
     };
+    private DefaultTableModel model = new DefaultTableModel();
     
     public Facturacion() {
         initComponents();
