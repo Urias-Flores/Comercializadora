@@ -5,12 +5,14 @@
 package Views.Panels.Inicio;
 
 import Controllers.ControllerCliente;
+import Models.ModelCliente;
 import Views.Dialogs.Dialogs;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -429,11 +431,16 @@ public class Clientes extends javax.swing.JPanel {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (tbClientes.getSelectedRow() != -1) {
             ClienteID = Integer.valueOf(tbClientes.getValueAt(tbClientes.getSelectedRow(), 0).toString());
-            txtNombre.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 1).toString());
-            cmbTipoDocumento.setSelectedIndex(tbClientes.getValueAt(tbClientes.getSelectedRow(), 3).toString().equals("Identidad") ? 1 : 2);
-            txtDocumento.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 4).toString());
-            txtRTN.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 2).toString());
-            cmbTipoCliente.setSelectedIndex(tbClientes.getValueAt(tbClientes.getSelectedRow(), 5).toString().equals("Mayorista") ? 1 : 2);
+            ControllerCliente contCliente = new ControllerCliente();
+            ArrayList arrList = contCliente.SelectClientePorID(ClienteID);
+            
+            ModelCliente mCliente = (ModelCliente) arrList.get(0);
+            
+            txtNombre.setText(mCliente.getNombre());
+            cmbTipoDocumento.setSelectedIndex(mCliente.getDocumento().equals("Identidad") ? 1 : 2);
+            txtDocumento.setText(mCliente.getDocumento());
+            txtRTN.setText(mCliente.getRTN());
+            cmbTipoCliente.setSelectedIndex(mCliente.getTipoCliente().equals("Mayorista") ? 1 : 2);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
