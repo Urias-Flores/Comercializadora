@@ -57,13 +57,14 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
        conCliente = new ControllerCliente();
         ArrayList arrList = new ArrayList();
         ModelCliente mCliente = (ModelCliente) arrList.get(0);
-//       tipoDocumento.put("I", "Identidad"); tipoDocumento.put("P", "Pasaporte");
-//       lbNombre.setText(conPro.SelectProveedor().getNombre());
-//       lbDocumento.setText(conPro.SelectProveedor().getDocumento());
-//       lbTipoDocumento.setText(tipoDocumento.get(conPro.SelectProveedor().getTipoDocumento()));
-//       lbSaldo.setText(String.valueOf(conPro.SelectProveedor().getSaldo()));
-//       lbNumero.setText(conPro.SelectProveedor().getNumero());
-//       lbCorreo.setText(conPro.SelectProveedor().getCorreo());
+        
+        lbNombre.setText(mCliente.getNombre());
+        lbDocumento.setText(mCliente.getDocumento());
+        lbTipoDocumento.setText(mCliente.getTipoDocumento().equals("I") ? "Identidad" : "Pasaporte");
+        lbTipoCliente.setText(mCliente.getTipoCliente().equals("M") ? "Mayorista" : "Detalle");
+        lbSaldo.setText(mCliente.getSaldo());
+        lbNombre.setText(mCliente.getNumero());
+        lbCorreo.setText(mCliente.getCorreo());
     }
 
     @SuppressWarnings("unchecked")
