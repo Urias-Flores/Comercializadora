@@ -52,9 +52,10 @@ public class Dialogs {
         dip.setVisible(true);
     }
 
-    public static void ShowInformacionClienteDialog() {
-        DialogInformacionProveedor dip = new DialogInformacionProveedor(null, true);
-        dip.setVisible(true);
+    public static void ShowInformacionClienteDialog(int ClienteID) {
+        DialogInformacionCliente dic = new DialogInformacionCliente(null, true);
+        dic.ClienteID = ClienteID;
+        dic.setVisible(true);
     }
 
     public static String[] ShowAgregarVentaDialog() {

@@ -11,14 +11,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 public class DialogInformacionCliente extends javax.swing.JDialog {
 
     private int X, Y;
     public int ClienteID;
     private ControllerCliente conCliente;
-    private Map<String, String> tipoDocumento = new HashMap<>();
     private final MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -45,11 +43,12 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
     
     public DialogInformacionCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        Load();
         initComponents();
         btnCerrar.addMouseListener(ml);
     }
     
-    public void Load(){
+    private void Load(){
        conCliente = new ControllerCliente();
         ArrayList arrList = conCliente.SelectClientePorID(ClienteID);
         
