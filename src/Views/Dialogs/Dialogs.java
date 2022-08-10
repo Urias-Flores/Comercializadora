@@ -65,4 +65,11 @@ public class Dialogs {
         dv.setVisible(true);
         return null;
     }
+    
+    public static String[] ShowSeleccionarClientProduc(){
+        DialogSelectClientProduc dscp = new DialogSelectClientProduc(null, true);
+        
+        dscp.setVisible(true);
+        return null;
+    }
 }
