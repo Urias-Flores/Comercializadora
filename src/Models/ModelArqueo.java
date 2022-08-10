@@ -5,6 +5,7 @@ import Resources.Conection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 public class ModelArqueo {
 
@@ -153,6 +154,23 @@ public class ModelArqueo {
             System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
         }
         return true;
+    }
+    
+    public DefaultTableModel SelectModelArqueo() {
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"Usuario", "Fecha", "Saldo Inicial", "Saldo Final (Sistema)", "Saldo Final(Usuario)", "Diferencia"};
+        model.setColumnIdentifiers(Columns);
+        String Query = "SELECT * FROM ARQUEODETALLE";
+        try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
+            while (rs.next()) {
+                String[] row = {rs.getString("Usuario"), rs.getString("Fecha"), rs.getString("Saldo Inicial"), rs.getString("Saldo Final Sistema"), rs.getString("Saldo Final Usuario"), rs.getString("Diferencia")};
+                model.addRow(row);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return model;
     }
 
 }

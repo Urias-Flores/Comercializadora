@@ -32,6 +32,8 @@ public class Arqueo extends javax.swing.JPanel {
         txtTotalCompras.setText(String.valueOf(cArqueo.ObtenerTotalCompras()));
         txtTotalVentas.setText(String.valueOf(cArqueo.ObtenerTotalVentas()));
         SaldoFinal = cArqueo.ObtenerSaldoFinal();
+        
+        tbArqueo.setModel(cArqueo.SelectModelArqueo());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,7 +57,7 @@ public class Arqueo extends javax.swing.JPanel {
         jComboBox5 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbArqueo = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -110,7 +112,7 @@ public class Arqueo extends javax.swing.JPanel {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cargar.png"))); // NOI18N
         jButton1.setText("Cargar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbArqueo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -121,7 +123,7 @@ public class Arqueo extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbArqueo);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -416,7 +418,7 @@ public class Arqueo extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbArqueo;
     private javax.swing.JTextField txtDiferencia;
     private javax.swing.JTextField txtSaldoFinal;
     private javax.swing.JTextField txtSaldoInicial;
