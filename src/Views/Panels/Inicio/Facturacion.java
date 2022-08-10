@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JLabel;
 
 public class Facturacion extends javax.swing.JPanel {
@@ -345,7 +347,7 @@ public class Facturacion extends javax.swing.JPanel {
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -416,15 +418,13 @@ public class Facturacion extends javax.swing.JPanel {
     private void btnSeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSeleccionarMouseClicked
         int Seleccion = cmbTipoVenta.getSelectedIndex();
         if(Seleccion > 0){
-            if(Seleccion == 1){
-                Dialogs.ShowSeleccionarClientProduc("C");
-            }
-            if(Seleccion == 2){
-                ArrayList<String> values = Dialogs.ShowSeleccionarClientProduc("P");
-                if(values.toArray().length > 0){
-                    txtProducCliente.setText(values.get(1));
-                    txtProducCliente.setName(values.get(0));
-                }
+            Map <Integer, String> tipo = new HashMap<>();
+            tipo.put(1, "C");
+            tipo.put(2, "P");
+            ArrayList<String> values = Dialogs.ShowSeleccionarClientProduc(tipo.get(Seleccion));
+            if(values.toArray().length > 0){
+                txtProducCliente.setText(values.get(1));
+                txtProducCliente.setName(values.get(0));
             }
         }else{
             Dialogs.ShowMessageDialog("Error, Seleccione un tipo de venta", Dialogs.ERRORMessage);
