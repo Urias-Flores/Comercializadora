@@ -97,7 +97,7 @@ public class ControllerProducto {
         return modelProducto.SelectModelProducto();
     }
     
-    public DefaultTableModel SelectListaProductos(String type){
-        return modelProducto.ListProductosFactura(type);
+    public DefaultTableModel SelectListaProductos(String ID, String type){
+        return modelProducto.ListProductosFactura(ID, type);
     }
 }

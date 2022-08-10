@@ -410,7 +410,21 @@ public class Facturacion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarVentaMouseClicked
-        Dialogs.ShowAgregarVentaDialog();
+        Map <Integer, String> tipo = new HashMap<>();
+        tipo.put(1, "C");
+        tipo.put(2, "P");
+        if(cmbTipoVenta.getSelectedIndex() > 0){
+            if(!txtProducCliente.getName().isEmpty()){
+                Dialogs.ShowAgregarVentaDialog(txtProducCliente.getName(), tipo.get(cmbTipoVenta.getSelectedIndex()));
+            }else{
+                Dialogs.ShowMessageDialog("Seleccione un cliente para continuar", Dialogs.ERRORMessage);
+                txtProducCliente.requestFocus();
+            }
+        }else{
+            Dialogs.ShowMessageDialog("Seleccione una tipo de venta", Dialogs.ERRORMessage);
+            cmbTipoVenta.requestFocus();
+            cmbTipoVenta.setPopupVisible(true);
+        }
     }//GEN-LAST:event_btnAgregarVentaMouseClicked
 
     private void UpdateTable(){

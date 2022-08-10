@@ -60,10 +60,13 @@ public class Dialogs {
         dic.setVisible(true);
     }
 
-    public static String[] ShowAgregarVentaDialog() {
+    public static ArrayList<String> ShowAgregarVentaDialog(String ID, String type){
         DialogAgregarVenta dv = new DialogAgregarVenta(null, true);
+        dv.setID(ID);
+        dv.setType(type);
+        dv.Load();
         dv.setVisible(true);
-        return null;
+        return dv.getData();
     }
     
     public static ArrayList<String> ShowSeleccionarClientProduc(String type){

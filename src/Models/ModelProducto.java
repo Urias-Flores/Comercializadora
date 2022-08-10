@@ -175,12 +175,12 @@ public class ModelProducto {
         return model;
     }
     
-    public DefaultTableModel ListProductosFactura(String type){
+    public DefaultTableModel ListProductosFactura(String ID, String type){
         DefaultTableModel model = new DefaultTableModel();
         String[] Colums = {"ID", "Nombre", "Precio", "ISV", "Descuento"};
         model.setColumnIdentifiers(Colums);
         
-        String Query = "SELECT * FROM LISTPRODUCTOS('"+type+"');";
+        String Query = "SELECT * FROM LISTPRODUCTOS("+ID+", '"+type+"');";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
             while(rs.next()){
                 String[] row = {rs.getString("ID"), 
