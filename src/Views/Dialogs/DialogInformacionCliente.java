@@ -56,7 +56,6 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
         ArrayList arrList = conCliente.SelectClientePorID(ClienteID);
         
         ModelCliente mCliente = (ModelCliente) arrList.get(0);
-        System.out.println(mCliente.getNumero());
         lbNombre.setText(mCliente.getNombre());
         lbDocumento.setText(mCliente.getDocumento());
         lbTipoDocumento.setText(mCliente.getTipoDocumento());

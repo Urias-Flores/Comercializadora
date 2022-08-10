@@ -16,24 +16,6 @@ public class ModelCliente {
     private String Documento;
     private String TipoDocumento;
     private String TipoCliente;
-    private String Numero;
-    private String Correo;
-
-    public String getNumero() {
-        return Numero;
-    }
-
-    public void setNumero(String Numero) {
-        this.Numero = Numero;
-    }
-
-    public String getCorreo() {
-        return Correo;
-    }
-
-    public void setCorreo(String Correo) {
-        this.Correo = Correo;
-    }
 
     public Conection getConec() {
         return conec;
