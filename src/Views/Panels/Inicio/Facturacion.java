@@ -39,12 +39,20 @@ public class Facturacion extends javax.swing.JPanel {
         }
     };
     private DefaultTableModel model = new DefaultTableModel();
+    private String[] columns = {"Codigo", "Producto", "Precio", "ISV", "Descuento"};
     
     public Facturacion() {
         initComponents();
         btnAgregarVenta.addMouseListener(ml);
         btnEliminarVenta.addMouseListener(ml);
         btnEditarVenta.addMouseListener(ml);
+        model.setColumnIdentifiers(columns);
+        tbVenta.setModel(model);
+        tbVenta.getColumn("Codigo").setPreferredWidth(70);
+        tbVenta.getColumn("Producto").setPreferredWidth(600);
+        tbVenta.getColumn("Precio").setPreferredWidth(150);
+        tbVenta.getColumn("ISV").setPreferredWidth(150);
+        tbVenta.getColumn("Descuento").setPreferredWidth(150);
     }
 
     @SuppressWarnings("unchecked")
@@ -61,9 +69,9 @@ public class Facturacion extends javax.swing.JPanel {
         btnSeleccionar = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbVenta = new javax.swing.JTable();
         btnEditar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         btnAgregarVenta = new javax.swing.JLabel();
         btnEliminarVenta = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -158,7 +166,7 @@ public class Facturacion extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -169,7 +177,7 @@ public class Facturacion extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbVenta);
 
         btnEditar.setBackground(new java.awt.Color(49, 152, 65));
         btnEditar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
@@ -177,11 +185,16 @@ public class Facturacion extends javax.swing.JPanel {
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/complete.png"))); // NOI18N
         btnEditar.setText("Facturar");
 
-        btnEliminar.setBackground(new java.awt.Color(144, 40, 40));
-        btnEliminar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/limpiar.png"))); // NOI18N
-        btnEliminar.setText("Cancelar");
+        btnCancelar.setBackground(new java.awt.Color(144, 40, 40));
+        btnCancelar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/limpiar.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnAgregarVenta.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregarVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -305,7 +318,7 @@ public class Facturacion extends javax.swing.JPanel {
                                                 .addComponent(jLabel17))))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(18, 18, 18))))
@@ -352,7 +365,7 @@ public class Facturacion extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -455,12 +468,18 @@ public class Facturacion extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cmbTipoVentaActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        cmbTipoVenta.setSelectedIndex(0);
+        txtProducCliente.setName("");
+        txtProducCliente.setText("");
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAgregarVenta;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JLabel btnEditarVenta;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel btnEliminarVenta;
     private javax.swing.JLabel btnSeleccionar;
     private javax.swing.JComboBox<String> cmbTipoVenta;
@@ -482,7 +501,7 @@ public class Facturacion extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbVenta;
     private javax.swing.JLabel txtDescuento;
     private javax.swing.JLabel txtISV;
     private javax.swing.JTextField txtProducCliente;
