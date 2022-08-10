@@ -54,7 +54,9 @@ public class Dialogs {
 
     public static void ShowInformacionClienteDialog(int ClienteID) {
         DialogInformacionCliente dic = new DialogInformacionCliente(null, true);
-        dic.ClienteID = ClienteID;
+        System.out.println(ClienteID);
+        dic.setClienteID(ClienteID);
+        dic.Load();
         dic.setVisible(true);
     }
 

@@ -1,4 +1,3 @@
-
 package Views.Dialogs;
 
 import Controllers.ControllerCliente;
@@ -11,28 +10,33 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class DialogInformacionCliente extends javax.swing.JDialog {
-
+    
     private int X, Y;
-    public int ClienteID;
+    private static int ClienteID;
     private ControllerCliente conCliente;
     private final MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
         }
+
         @Override
         public void mousePressed(MouseEvent e) {
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
         }
+
         @Override
         public void mouseEntered(MouseEvent e) {
             JLabel l = (JLabel) e.getComponent();
             l.setOpaque(true);
             l.setBackground(Color.red);
         }
+
         @Override
         public void mouseExited(MouseEvent e) {
             JLabel l = (JLabel) e.getComponent();
@@ -43,18 +47,21 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
     
     public DialogInformacionCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        Load();
         initComponents();
         btnCerrar.addMouseListener(ml);
     }
     
-    private void Load(){
-       conCliente = new ControllerCliente();
+    public void setClienteID(int ClienteID) {
+        DialogInformacionCliente.ClienteID = ClienteID;
+    }
+    
+    public void Load() {
+        conCliente = new ControllerCliente();
         ArrayList arrList = conCliente.SelectClientePorID(ClienteID);
         
         ModelCliente mCliente = (ModelCliente) arrList.get(0);
         
-        lbNombre.setText(mCliente.getNombre());
+        lbNombre.setText("añsldk");
         lbDocumento.setText(mCliente.getDocumento());
         lbTipoDocumento.setText(mCliente.getTipoDocumento().equals("I") ? "Identidad" : "Pasaporte");
         lbTipoCliente.setText(mCliente.getTipoCliente().equals("M") ? "Mayorista" : "Detalle");
@@ -62,7 +69,7 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
         lbNombre.setText(mCliente.getNumero());
         lbCorreo.setText(mCliente.getCorreo());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -317,7 +324,7 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x-X, y-Y);
+        this.setLocation(x - X, y - Y);
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
