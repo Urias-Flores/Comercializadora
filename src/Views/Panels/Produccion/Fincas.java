@@ -140,11 +140,6 @@ public class Fincas extends javax.swing.JPanel {
         txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
         txtBuscar.setText("Nombre...");
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
-            }
-        });
 
         tbFincas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -488,10 +483,12 @@ public class Fincas extends javax.swing.JPanel {
 
     private void lbActualizarFincasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbActualizarFincasMouseClicked
         LoadTableFincas();
+        tbFincas.setRowSorter(null);
     }//GEN-LAST:event_lbActualizarFincasMouseClicked
 
     private void lbActualizarParcelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbActualizarParcelasMouseClicked
         LoadTableParcelas();
+        tbParcelas.setRowSorter(null);
     }//GEN-LAST:event_lbActualizarParcelasMouseClicked
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
