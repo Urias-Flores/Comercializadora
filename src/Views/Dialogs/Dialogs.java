@@ -51,4 +51,10 @@ public class Dialogs {
         dip.Load();
         dip.setVisible(true);
     }
+    
+    public static String[] ShowAgregarVentaDialog(){
+        DialogAgregarVenta dv = new DialogAgregarVenta(null, true);
+        dv.setVisible(true);
+        return null;
+    }
 }
