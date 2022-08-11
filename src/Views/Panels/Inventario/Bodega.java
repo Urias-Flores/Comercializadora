@@ -4,11 +4,9 @@ import Controllers.ControllerBodega;
 import Views.Dialogs.Dialogs;
 
 public class Bodega extends javax.swing.JPanel {
+    
     private ControllerBodega conBog = new ControllerBodega();
 
-    /**
-     * Creates new form Bodega
-     */
     public Bodega() {
         initComponents();
         LoadTable();

@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class Conection {
 
     private static Connection conec;
-    //private static Information INFO = new Information();
+    private static Information INFO = new Information();
     private static Statement stm;
     private String ip, port, user, password, database, timeout;
     
@@ -33,12 +33,12 @@ public class Conection {
     {
         if(conec == null)
         {
-            ip = "localhost\\SQLEXPRESS";
-            port = "1433";
-            user = "sa";
-            password = "340$Uuxwp7Mcxo7Khy";
-            database = "Comercializadora";
-            timeout = "100";
+            ip = INFO.getData("IP");
+            port = INFO.getData("Port");
+            user = INFO.getData("User");
+            password = INFO.getData("Password");
+            database = INFO.getData("DataBase");
+            timeout = INFO.getData("TimeOut");
             try{
                 String url = "jdbc:sqlserver://"+ip+":"+port+";"
                         + "database="+database+";"

@@ -45,7 +45,6 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="cmbCategoria" max="32767" attributes="0"/>
-                      <Component id="txtNombre" alignment="1" max="32767" attributes="0"/>
                       <Component id="jLabel8" alignment="1" max="32767" attributes="0"/>
                       <Component id="jLabel7" alignment="1" max="32767" attributes="0"/>
                       <Component id="txtDescripcion" alignment="1" max="32767" attributes="0"/>
@@ -82,18 +81,19 @@
                       <Component id="jLabel19" alignment="1" max="32767" attributes="0"/>
                       <Component id="txtError" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="txtTiempoObtencion" min="-2" pref="200" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <Component id="btnLimpiar" pref="224" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Component id="btnAgregar" pref="212" max="32767" attributes="0"/>
                       </Group>
                       <Component id="cmbTipoSuelo" alignment="0" max="32767" attributes="0"/>
                       <Component id="cmbTipoRiego" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="txtTiempoObtencion" min="-2" pref="200" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>

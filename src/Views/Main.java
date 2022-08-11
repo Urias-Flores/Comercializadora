@@ -149,7 +149,7 @@ public class Main extends javax.swing.JFrame {
                 Icon ico23 = new ImageIcon(getClass().getResource("/icons/bodega.png"));
                 
                 TabPane.addTab("Inventario", ico21, inv);
-                TabPane.addTab("Productos", ico22,pro);
+                TabPane.addTab("Productos", ico22, pro);
                 TabPane.addTab("Bodegas", ico23,bo);
                 
                 break;

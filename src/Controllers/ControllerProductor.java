@@ -33,7 +33,7 @@ public class ControllerProductor {
 
     public ControllerProductor(JTextField Nombre, JTextField Documento, JComboBox TipoDocumento, JTextField Numero, JTextField Correo) {
         TipoDoc.put(1, "I");
-        TipoDoc.put(1, "P");
+        TipoDoc.put(2, "P");
         this.Nombre = Nombre;
         this.Documento = Documento;
         this.TipoDocumento = TipoDocumento;
