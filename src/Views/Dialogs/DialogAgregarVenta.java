@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class DialogAgregarVenta extends javax.swing.JDialog {
 
@@ -65,6 +66,7 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
            }
         }
     };
+    private DefaultTableModel model = new DefaultTableModel();
 
     public void setID(String ID) {
         this.ID = ID;
@@ -87,8 +89,9 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
     }
     
     public void Load(){
+        model = controllerProducto.SelectListaProductos(ID, Type);
         cmbBodega.setModel(controllerBodega.SelectListBodegas());
-        tbProductos.setModel(controllerProducto.SelectListaProductos(ID, Type));
+        tbProductos.setModel(model);
         tbProductos.removeColumn(tbProductos.getColumn("ISV"));
         tbProductos.removeColumn(tbProductos.getColumn("Descuento"));
         tbProductos.getColumn("ID").setPreferredWidth(20);
@@ -191,6 +194,11 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbProductosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbProductos);
 
         jLabel4.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
@@ -397,6 +405,10 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
             txtError.setText("La cantidad seleccionada supera la cantidad en existencia");
             return false;
         }
+        if(Integer.parseInt(txtCantidad.getValue().toString()) == 0){
+            txtError.setText("La cantidad seleccionada debe ser mayor a cero");
+            return false;
+        }
         return true;
     }
     
@@ -426,6 +438,20 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_cmbBodegaActionPerformed
+
+    private void tbProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProductosMouseClicked
+        int row = tbProductos.getSelectedRow();
+        if(row > 0){
+            txtPrecio.setText(tbProductos.getValueAt(row, 2).toString());
+            for(int i = 0; i < tbProductos.getRowCount(); i++){
+                if(tbProductos.getValueAt(row, 0).toString().equals(model.getValueAt(i, 0))){
+                    txtISV.setText(model.getValueAt(i, 3).toString());
+                    float descuento = Float.parseFloat(model.getValueAt(i, 4).toString()) * 100;
+                    txtDescuento.setText(descuento+"");
+                }
+            }
+        }
+    }//GEN-LAST:event_tbProductosMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
