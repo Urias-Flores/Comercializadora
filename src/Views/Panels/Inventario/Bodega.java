@@ -9,7 +9,7 @@ public class Bodega extends javax.swing.JPanel {
 
     public Bodega() {
         initComponents();
-        LoadTable();
+        this.LoadTable();
     }
     
     private void LoadTable(){
@@ -185,12 +185,16 @@ public class Bodega extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditar1ActionPerformed
 
     private void btnNuevaBodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaBodegaActionPerformed
-        // TODO add your handling code here:
+        this.LoadTable();
     }//GEN-LAST:event_btnNuevaBodegaActionPerformed
 
     private void btnActualizarBodegasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarBodegasActionPerformed
         boolean result = Dialogs.ShowNuevaBodegaDialog();
-        System.out.print(result);
+        
+        if(result)
+        {
+            this.LoadTable();
+        }
     }//GEN-LAST:event_btnActualizarBodegasActionPerformed
 
 

@@ -1,6 +1,7 @@
 package Models;
 
 import Resources.Conection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
@@ -70,5 +71,19 @@ public class ModelBodega {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return m;
+    }
+    
+    public boolean InsertBodega(){
+        String Query = "INSERT INTO Bodega(BodegaID, Nombre, Ubicacion) VALUES(?, ?, ?);";
+        try(PreparedStatement stm = conec.getconec().prepareStatement(Query)){
+            stm.setLong(1, 5);
+            stm.setString(2, Nombre);
+            stm.setString(3, Ubicacion);
+            
+            return stm.execute();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+            return true;
+        }
     }
 }

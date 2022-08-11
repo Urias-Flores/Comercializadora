@@ -1,5 +1,6 @@
 package Views.Dialogs;
 
+import Views.Panels.Inventario.Bodega;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 
