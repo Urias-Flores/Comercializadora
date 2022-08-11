@@ -1,6 +1,7 @@
 
 package Views.Dialogs;
 
+import Controllers.ControllerBodega;
 import Controllers.ControllerProducto;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
@@ -17,6 +18,7 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
     private ArrayList<String> data = new ArrayList<>();
     private String ID, Type;
     private final ControllerProducto controllerProducto = new ControllerProducto();
+    private final ControllerBodega controllerBodega = new ControllerBodega();
     private MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -85,10 +87,10 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
     }
     
     public void Load(){
+        cmbBodega.setModel(controllerBodega.SelectListBodegas());
         tbProductos.setModel(controllerProducto.SelectListaProductos(ID, Type));
         tbProductos.removeColumn(tbProductos.getColumn("ISV"));
         tbProductos.removeColumn(tbProductos.getColumn("Descuento"));
-        
         tbProductos.getColumn("ID").setPreferredWidth(20);
         tbProductos.getColumn("Nombre").setPreferredWidth(380);
         tbProductos.getColumn("Precio").setPreferredWidth(150);
