@@ -56,7 +56,7 @@ public class ModelFinca {
         String Query = "SELECT * FROM FINCADETALLE";
         try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
             while (rs.next()) {
-                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Propietario"), rs.getString("Ubicacion")};
+                String[] row = {rs.getString("ID"), rs.getString("Nombre"), rs.getString("Dueno"), rs.getString("Ubicacion")};
                 model.addRow(row);
             }
             rs.close();

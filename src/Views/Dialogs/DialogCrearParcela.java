@@ -184,6 +184,7 @@ public class DialogCrearParcela extends javax.swing.JDialog {
             }
         });
 
+        cmbFinca.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         cmbFinca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione Finca --" }));
 
         jLabel2.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
@@ -194,20 +195,24 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Producto");
 
+        cmbProducto.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         cmbProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione Finca --" }));
 
         jLabel4.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Tipo de Suelo");
 
+        cmbSuelo.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         cmbSuelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione Finca --" }));
 
         jLabel5.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Tipo de Riego");
 
+        cmbRiego.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         cmbRiego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione Finca --" }));
 
+        txtExtension.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtExtension.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtExtensionActionPerformed(evt);
@@ -222,6 +227,7 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("Cantidad");
 
+        txtCantidad.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadActionPerformed(evt);
@@ -245,7 +251,7 @@ public class DialogCrearParcela extends javax.swing.JDialog {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbFinca, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
                                 .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbProducto, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -256,7 +262,7 @@ public class DialogCrearParcela extends javax.swing.JDialog {
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(36, 36, 36))))
+                        .addGap(18, 18, 18))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,18 +294,16 @@ public class DialogCrearParcela extends javax.swing.JDialog {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,19 +322,27 @@ public class DialogCrearParcela extends javax.swing.JDialog {
         ModelTipoSuelo ts = (ModelTipoSuelo) cmbSuelo.getSelectedItem();
         ModelTipoRiego tr = (ModelTipoRiego) cmbRiego.getSelectedItem();
 
-        boolean ok = false;
-        if (ParcelaID != 0) {
-            ok = cp.UpdateParcela(ParcelaID, mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.valueOf(txtExtension.getText()), Float.valueOf(txtCantidad.getText()));
-        } else {
-            ok = cp.InsertParcela(mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.parseFloat(txtExtension.getText()), Float.parseFloat(txtCantidad.getText()));
-        }
-        
-        if (!ok) {
-            Dialogs.ShowMessageDialog("Guardado exitosamente", Dialogs.COMPLETEMessage);
-            fincas.LoadTableParcelas();
-            this.dispose();
-        } else {
-            Dialogs.ShowMessageDialog("Ha ocurrido un error", Dialogs.ERRORMessage);
+        if(mp.getTipoSueloID() == ts.getTipoSueloID()){
+            if(mp.getTipoRiegoID() == tr.getTipoRiegoID()){
+                boolean ok = false;
+                if (ParcelaID != 0) {
+                    ok = cp.UpdateParcela(ParcelaID, mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.valueOf(txtExtension.getText()), Float.valueOf(txtCantidad.getText()));
+                } else {
+                    ok = cp.InsertParcela(mf.getFincaID(), mp.getProductoID(), ts.getTipoSueloID(), tr.getTipoRiegoID(), Float.parseFloat(txtExtension.getText()), Float.parseFloat(txtCantidad.getText()));
+                }
+
+                if (!ok) {
+                    Dialogs.ShowMessageDialog("Guardado exitosamente", Dialogs.COMPLETEMessage);
+                    fincas.LoadTableParcelas();
+                    this.dispose();
+                } else {
+                    Dialogs.ShowMessageDialog("Ha ocurrido un error", Dialogs.ERRORMessage);
+                }
+            }else{
+                Dialogs.ShowMessageDialog("Tipo de riego de producto y parcela no coinciden", Dialogs.ERRORMessage);
+            }
+        }else{
+            Dialogs.ShowMessageDialog("Tipo de suelo de producto y parcela no coinciden", Dialogs.ERRORMessage);
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 

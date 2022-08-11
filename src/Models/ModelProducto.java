@@ -160,11 +160,13 @@ public class ModelProducto {
     public DefaultComboBoxModel SelectModelProductoCmb(){
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         
-        String Query = "SELECT ID, Nombre FROM PRODUCTOSOBTENIBLES";
+        String Query = "SELECT * FROM PRODUCTOSPRODUCCION";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
             while(rs.next()){
                 ModelProducto prod = new ModelProducto();
                 prod.setProductoID(rs.getInt("ID"));
+                prod.setTipoSueloID(rs.getInt("Tipo de suelo"));
+                prod.setTipoRiegoID(rs.getInt("Tipo de riego"));
                 prod.setNombre(rs.getString("Nombre"));
                 model.addElement(prod);
             }
