@@ -474,7 +474,7 @@ public class Facturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarVentaMouseClicked
 
     private void UpdateData(){
-        DecimalFormat d = new DecimalFormat("#.##");
+        DecimalFormat d = new DecimalFormat("#.00");
         float subtotal = 0f, ISV = 0f, Descuento = 0f, Total = 0f;
         for(int i = 0; i < model.getRowCount(); i++){
             subtotal += Float.parseFloat(tbVenta.getValueAt(i, 3).toString()) * Float.parseFloat(tbVenta.getValueAt(i, 4).toString()) * 0.85;

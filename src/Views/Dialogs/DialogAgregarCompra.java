@@ -8,6 +8,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -64,6 +65,12 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
     };
     private ControllerProducto controllerProducto = new ControllerProducto();
     private ControllerBodega conBog = new ControllerBodega();
+    
+    private ArrayList<Object> data = new ArrayList<>();
+
+    public ArrayList<Object> getData() {
+        return data;
+    }
 
     public DialogAgregarCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -206,6 +213,11 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         txtPrecioSugerido.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
 
         txtPrecioObtenido.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtPrecioObtenido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPrecioObtenidoKeyReleased(evt);
+            }
+        });
 
         txtISV.setEditable(false);
         txtISV.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
@@ -338,8 +350,15 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        int row = tbProductos.getSelectedRow();
         if(verify()){
-            this.dispose();
+            data.add(tbProductos.getValueAt(row, 0).toString());
+            data.add(tbProductos.getValueAt(row, 1).toString());
+            data.add(cmbBodega.getSelectedIndex()+999);
+            data.add(txtPrecioObtenido.getText());
+            data.add(txtCantidad.getValue().toString());
+            data.add(txtISV.getText());
+            this.setVisible(false);
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -356,7 +375,46 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbProductosMouseClicked
 
+    private void txtPrecioObtenidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioObtenidoKeyReleased
+        if(!txtPrecioObtenido.getText().isEmpty()){
+            try{
+                float ISV = Float.parseFloat(txtPrecioObtenido.getText()) * 0.15f;
+                txtISV.setText(ISV+"");
+            }catch(NumberFormatException ex){
+                txtError.setText("Ingrese un valor numerico");
+            }
+        }
+    }//GEN-LAST:event_txtPrecioObtenidoKeyReleased
+
     private boolean verify(){
+        if(tbProductos.getSelectedRow() < 0){
+            txtError.setText("Debe seleccionar un producto");
+            return false;
+        }
+        if(cmbBodega.getSelectedIndex() == 0){
+            txtError.setText("Debe seleccionar una bodega");
+            return false;
+        }
+        if(txtCantidad.getValue().toString().isEmpty()){
+            txtError.setText("Debe ingresar la cantidad");
+            return false;
+        }
+        try{
+            int Cantidad = Integer.parseInt(txtCantidad.getValue().toString());
+        }catch(NumberFormatException ex){
+            txtError.setText("El Cantidad debe de ser un numero entero");
+            return false;
+        }
+        if(txtPrecioObtenido.getText().isEmpty()){
+            txtError.setText("Debe ingresar el precio de obtencion");
+            return false;
+        }
+        try{
+            float Precio = Float.parseFloat(txtPrecioObtenido.getText());
+        }catch(NumberFormatException ex){
+            txtError.setText("El precio debe de ser un numero");
+            return false;
+        }
         return true;
     }
     

@@ -94,6 +94,6 @@ public class Dialogs {
     public static ArrayList<Object> ShowAgregarCompraDialog(){
         DialogAgregarCompra dac = new DialogAgregarCompra(null, true);
         dac.setVisible(true);
-        return null;
+        return dac.getData();
     }
 }

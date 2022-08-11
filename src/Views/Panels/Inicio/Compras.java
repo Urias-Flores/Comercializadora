@@ -5,6 +5,7 @@ import Views.Dialogs.Dialogs;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,6 +56,19 @@ public class Compras extends javax.swing.JPanel {
         tbCompras.getColumn("Precio").setPreferredWidth(150);
         tbCompras.getColumn("Cantidad").setPreferredWidth(110);
         tbCompras.getColumn("ISV").setPreferredWidth(150);
+    }
+    
+    private void UpdateData(){
+        DecimalFormat d = new DecimalFormat("#.00");
+        float Total = 0f, Subtotal = 0f, ISV = 0f;
+        for(int i = 0; i < model.getRowCount(); i++){
+            Subtotal += (Float.parseFloat(tbCompras.getValueAt(i, 3).toString()) * Float.parseFloat(tbCompras.getValueAt(i, 4).toString()) * 0.85);
+            ISV += Float.parseFloat(tbCompras.getValueAt(i, 5).toString()) * Float.parseFloat(tbCompras.getValueAt(i, 4).toString());
+            Total = Subtotal + ISV;
+        }
+        txtSubtotal.setText(d.format(Subtotal));
+        txtISV.setText(d.format(ISV));
+        txtTotal.setText(d.format(Total));
     }
     
     @SuppressWarnings("unchecked")
@@ -238,6 +252,11 @@ public class Compras extends javax.swing.JPanel {
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/complete.png"))); // NOI18N
         btnEditar.setText("Facturar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setBackground(new java.awt.Color(144, 40, 40));
         btnCancelar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
@@ -428,14 +447,19 @@ public class Compras extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSeleccionarMouseClicked
 
     private void btnAgregarCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCompraMouseClicked
-        Dialogs.ShowAgregarCompraDialog();
+        ArrayList<Object> list = Dialogs.ShowAgregarCompraDialog();
+        if(list.toArray().length > 0){
+            model.addRow(list.toArray());
+            UpdateData();
+        }
     }//GEN-LAST:event_btnAgregarCompraMouseClicked
 
     private void btnEliminarCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCompraMouseClicked
         int row = tbCompras.getSelectedRow();
         if(row > -1){
             if(Dialogs.ShowAdvertecimentDialog("Esta seguro de eliminar este producto")){
-                
+                model.removeRow(row);
+                UpdateData();
             }
         }else{
             Dialogs.ShowMessageDialog("Error, Seleccione una venta de la lista", Dialogs.ERRORMessage);
@@ -448,7 +472,29 @@ public class Compras extends javax.swing.JPanel {
         txtproductor.setText("");
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if(verify()){
+            
+            Dialogs.ShowMessageDialog("Compra agregada exitosamente", Dialogs.COMPLETEMessage);
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
 
+    private boolean verify(){
+        if(cmbTipoCompra.getSelectedIndex() == 0){
+            Dialogs.ShowMessageDialog("Error, seleccion una fuente de compra", Dialogs.ERRORMessage);
+            return false;
+        }
+        if(txtproductor.getText().isEmpty() || txtproductor.getName().isEmpty()){
+            Dialogs.ShowMessageDialog("Error, seleccion un proveedor/productor", Dialogs.ERRORMessage);
+            return false;
+        }
+        if(model.getRowCount() == 0){
+            Dialogs.ShowMessageDialog("Error, debe seleccionar al menos un producto", Dialogs.ERRORMessage);
+            return false;
+        }
+        return true;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAgregarCompra;
     private javax.swing.JButton btnCancelar;
