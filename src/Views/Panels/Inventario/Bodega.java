@@ -2,21 +2,83 @@ package Views.Panels.Inventario;
 
 import Controllers.ControllerBodega;
 import Views.Dialogs.Dialogs;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 public class Bodega extends javax.swing.JPanel {
     
+    
     private ControllerBodega conBog = new ControllerBodega();
+    private ControllerBodega controllerBodega;
+    private MouseListener ml = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(new Color(220, 220, 220));
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            JLabel l = (JLabel) e.getComponent();
+            l.setBackground(Color.white);
+        }
+    };
+    private FocusListener fl = new FocusListener(){
+        @Override
+        public void focusGained(FocusEvent e) {
+           JTextField jt = (JTextField) e.getComponent();
+           if(jt.getText().equals("buscar...")){
+               jt.setText("");
+               jt.setForeground(Color.BLACK);
+           }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+           JTextField jt = (JTextField) e.getComponent();
+           if(jt.getText().isEmpty()){
+               jt.setText("buscar...");
+               jt.setForeground(new Color(190, 190, 190));
+           }
+        }
+    };
 
     public Bodega() {
         initComponents();
+        btnAgregarBodega.addMouseListener(ml);
+        btnActualizar.addMouseListener(ml);
+        txtBuscar.addFocusListener(fl);
         LoadTable();
     }
     
     private void LoadTable(){
-        jTable1.setModel(conBog.SelectBodegaModel());
-        jTable1.getColumn("ID").setPreferredWidth(20);
-        jTable1.getColumn("Nombre").setPreferredWidth(300);
-        jTable1.getColumn("Ubicacion").setPreferredWidth(170);
+        controllerBodega = new ControllerBodega();
+        cmbBodegas.setModel(controllerBodega.SelectListBodegas());
+        tbDetalles.setModel(conBog.SelectBodegaModel());
+        tbDetalles.getColumn("ID").setPreferredWidth(40);
+        tbDetalles.getColumn("Bodega").setPreferredWidth(130);
+        tbDetalles.getColumn("Producto").setPreferredWidth(250);
+        tbDetalles.getColumn("Cantidad").setPreferredWidth(70);
+        tbDetalles.getColumn("Estado").setPreferredWidth(140);
     }
 
     @SuppressWarnings("unchecked")
@@ -26,15 +88,14 @@ public class Bodega extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnEliminar1 = new javax.swing.JButton();
-        btnEditar1 = new javax.swing.JButton();
+        tbDetalles = new javax.swing.JTable();
+        btnImprimir = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        btnNuevaBodega = new javax.swing.JButton();
-        btnActualizarBodegas = new javax.swing.JButton();
+        cmbBodegas = new javax.swing.JComboBox<>();
+        btnActualizar = new javax.swing.JLabel();
+        btnAgregarBodega = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -46,11 +107,16 @@ public class Bodega extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/buscar.png"))); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(190, 190, 190));
-        jTextField1.setText("Nombre de producto...");
+        txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
+        txtBuscar.setText("buscar...");
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbDetalles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,53 +127,47 @@ public class Bodega extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbDetalles);
 
-        btnEliminar1.setBackground(new java.awt.Color(49, 152, 65));
-        btnEliminar1.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        btnEliminar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/imprimir.png"))); // NOI18N
-        btnEliminar1.setText("Imprimir reporte");
-        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+        btnImprimir.setBackground(new java.awt.Color(49, 152, 65));
+        btnImprimir.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/imprimir.png"))); // NOI18N
+        btnImprimir.setText("Imprimir reporte");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminar1ActionPerformed(evt);
-            }
-        });
-
-        btnEditar1.setBackground(new java.awt.Color(49, 152, 65));
-        btnEditar1.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        btnEditar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/ver.png"))); // NOI18N
-        btnEditar1.setText("Ver informacion");
-        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditar1ActionPerformed(evt);
+                btnImprimirActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel8.setText("Bodega");
 
-        jComboBox1.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --" }));
-
-        btnNuevaBodega.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        btnNuevaBodega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
-        btnNuevaBodega.setText("Actualizar");
-        btnNuevaBodega.addActionListener(new java.awt.event.ActionListener() {
+        cmbBodegas.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbBodegas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --" }));
+        cmbBodegas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevaBodegaActionPerformed(evt);
+                cmbBodegasActionPerformed(evt);
             }
         });
 
-        btnActualizarBodegas.setBackground(new java.awt.Color(49, 152, 65));
-        btnActualizarBodegas.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
-        btnActualizarBodegas.setForeground(new java.awt.Color(255, 255, 255));
-        btnActualizarBodegas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar.png"))); // NOI18N
-        btnActualizarBodegas.setText("Agregar");
-        btnActualizarBodegas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarBodegasActionPerformed(evt);
+        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
+        btnActualizar.setOpaque(true);
+        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMouseClicked(evt);
+            }
+        });
+
+        btnAgregarBodega.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarBodega.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAgregarBodega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar_32.png"))); // NOI18N
+        btnAgregarBodega.setOpaque(true);
+        btnAgregarBodega.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarBodegaMouseClicked(evt);
             }
         });
 
@@ -118,27 +178,26 @@ public class Bodega extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                        .addComponent(btnActualizarBodegas)
-                        .addGap(23, 23, 23)
-                        .addComponent(btnNuevaBodega)
-                        .addGap(17, 17, 17)))
-                .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(97, 97, 97)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbBodegas, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 357, Short.MAX_VALUE)
+                                .addComponent(btnAgregarBodega, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,21 +205,17 @@ public class Bodega extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                        .addComponent(jTextField1)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnActualizarBodegas)))
-                    .addComponent(btnNuevaBodega, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(txtBuscar)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbBodegas)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAgregarBodega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
 
@@ -176,36 +231,45 @@ public class Bodega extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminar1ActionPerformed
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        Dialogs.ShowMessageDialog("Funcion aun no disponible", Dialogs.WARNINGMessage);
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
-    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
-        
-    }//GEN-LAST:event_btnEditar1ActionPerformed
+    private void btnAgregarBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarBodegaMouseClicked
+        Dialogs.ShowNuevaBodegaDialog();
+    }//GEN-LAST:event_btnAgregarBodegaMouseClicked
 
-    private void btnNuevaBodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaBodegaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNuevaBodegaActionPerformed
+    private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        LoadTable();
+    }//GEN-LAST:event_btnActualizarMouseClicked
 
-    private void btnActualizarBodegasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarBodegasActionPerformed
-        boolean result = Dialogs.ShowNuevaBodegaDialog();
-        System.out.print(result);
-    }//GEN-LAST:event_btnActualizarBodegasActionPerformed
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        TableRowSorter s = new TableRowSorter(tbDetalles.getModel());
+        tbDetalles.setRowSorter(s);
+        s.setRowFilter(RowFilter.regexFilter(txtBuscar.getText(), 2));
+    }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void cmbBodegasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBodegasActionPerformed
+        TableRowSorter s = new TableRowSorter(tbDetalles.getModel());
+        tbDetalles.setRowSorter(s);
+        if(cmbBodegas.getSelectedIndex() > 0){
+            s.setRowFilter(RowFilter.regexFilter(cmbBodegas.getSelectedItem().toString(), 1));
+        }else{
+            s.setRowFilter(RowFilter.regexFilter("", 1));
+        }
+    }//GEN-LAST:event_cmbBodegasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizarBodegas;
-    private javax.swing.JButton btnEditar1;
-    private javax.swing.JButton btnEliminar1;
-    private javax.swing.JButton btnNuevaBodega;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel btnActualizar;
+    private javax.swing.JLabel btnAgregarBodega;
+    private javax.swing.JButton btnImprimir;
+    private javax.swing.JComboBox<String> cmbBodegas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbDetalles;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,8 +1,10 @@
 package Models;
 
 import Resources.Conection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ModelBodega {
@@ -51,18 +53,47 @@ public class ModelBodega {
         this.Ubicacion = Ubicacion;
     }
     
-    public DefaultTableModel SelectBodegasTableModel(){
-        DefaultTableModel m = new DefaultTableModel();
-        String[] Columns = {"ID", "Nombre", "Ubicacion"};
-        m.setColumnIdentifiers(Columns);
-        
-        String Query = "SELECT * FROM BODEGA;";
+    public boolean InsertBodega(){
+        String Query = "EXECUTE spInsertBodega ?, ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setString(1, Nombre);
+            ps.setString(2, Ubicacion);
+            return ps.execute();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return true;
+    }
+    
+    public DefaultComboBoxModel SelectListBodegas(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addElement("-- Seleccione --");
+        String Query = "SELECT Nombre FROM BODEGA";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
             while(rs.next())
             {
-                String[] row = {rs.getString("BodegaID"), 
-                                rs.getString("Nombre"), 
-                                rs.getString("Ubicacion")
+                model.addElement(rs.getString("Nombre"));
+            }
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    public DefaultTableModel SelectBodegasTableModel(){
+        DefaultTableModel m = new DefaultTableModel();
+        String[] Columns = {"ID", "Bodega", "Producto", "Cantidad", "Estado"};
+        m.setColumnIdentifiers(Columns);
+        
+        String Query = "SELECT * FROM EXITENCIADETALLADA";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next())
+            {
+                String[] row = {rs.getString("ID"),
+                                rs.getString("Bodega"), 
+                                rs.getString("Producto"), 
+                                rs.getString("Cantidad"),
+                                rs.getString("Estado")
                 };
                 m.addRow(row);
             }
