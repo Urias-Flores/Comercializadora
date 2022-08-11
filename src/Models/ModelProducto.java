@@ -197,6 +197,20 @@ public class ModelProducto {
         return model;
     }
     
+    public int SelectExistencia(int ProductoID, int BodegaID){
+        String Query = "SELECT dbo.EXISTENCION("+ProductoID+", "+BodegaID+")";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return 0;
+    }
+        
+    
     @Override
     public String toString() {
         return this.getNombre();

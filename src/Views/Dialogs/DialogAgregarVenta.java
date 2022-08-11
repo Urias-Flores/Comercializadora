@@ -223,6 +223,11 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
 
         cmbBodega.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         cmbBodega.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccionar --", "Bodega 1" }));
+        cmbBodega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBodegaActionPerformed(evt);
+            }
+        });
 
         txtISV.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtISV.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -409,6 +414,18 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
         this.setVisible(false);
     }//GEN-LAST:event_btnCloseMouseClicked
+
+    private void cmbBodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBodegaActionPerformed
+        int row = tbProductos.getSelectedRow();
+        if(cmbBodega.getSelectedIndex() > 0){
+            if(row > 0){
+                int Producto = Integer.parseInt(tbProductos.getValueAt(row, 0).toString());
+                txtExistencia.setValue(controllerProducto.SelectExistencia(Producto, cmbBodega.getSelectedIndex() + 999));
+            }else{
+                Dialogs.ShowMessageDialog("Seleccione un producto", Dialogs.WARNINGMessage);
+            }
+        }
+    }//GEN-LAST:event_cmbBodegaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
