@@ -67,6 +67,7 @@ public class Facturacion extends javax.swing.JPanel {
         tbVenta.getColumn("Cantidad").setPreferredWidth(110);
         tbVenta.getColumn("ISV").setPreferredWidth(150);
         tbVenta.getColumn("Descuento %").setPreferredWidth(150);
+        txtProducCliente.setName("");
     }
 
     @SuppressWarnings("unchecked")

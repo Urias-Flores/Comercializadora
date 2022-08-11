@@ -2,7 +2,6 @@
 package Controllers;
 
 import Models.ModelVenta;
-import Resources.Utilities;
 import javax.swing.JTextField;
 
 public class ControllerVenta {
@@ -25,7 +24,11 @@ public class ControllerVenta {
     
     public int InsertVenta(){
         modelVenta.setUsuarioID(Integer.parseInt("1000"));
-        modelVenta.setClienteID(Integer.parseInt(ClienteID.getName()));
+        if(ClienteID.getName().isEmpty())
+            modelVenta.setClienteID(0);
+        else{
+            modelVenta.setClienteID(Integer.parseInt(ClienteID.getName()));
+        }
         modelVenta.setEstado("R");
         return modelVenta.InsertVenta();
     }
