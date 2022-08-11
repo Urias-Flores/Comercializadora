@@ -18,7 +18,7 @@ public class Arqueo extends javax.swing.JPanel {
 
     private void Load() {
         cArqueo = new ControllerArqueo();
-        txtUsuario.setText("admin");
+        txtUsuario.setText(String.valueOf(Resources.Utilities.getUsuarioActual()));
         txtSaldoInicial.setText(String.valueOf(cArqueo.ObtenerSaldoAnterior()));
         txtTotalCompras.setText(String.valueOf(cArqueo.ObtenerTotalCompras()));
         txtTotalVentas.setText(String.valueOf(cArqueo.ObtenerTotalVentas()));
@@ -387,7 +387,7 @@ public class Arqueo extends javax.swing.JPanel {
             cArqueo = new ControllerArqueo();
             boolean ok = false;
 
-            ok = cArqueo.InsertArqueo(1000, Float.valueOf(txtSaldoInicial.getText()), SaldoFinal, Float.valueOf(txtSaldoFinal.getText()), Float.valueOf(txtDiferencia.getText()), Float.valueOf(txtDiferencia.getText()) > 0 ? "C" : "N");
+            ok = cArqueo.InsertArqueo(Resources.Utilities.getUsuarioIDActual(), Float.valueOf(txtSaldoInicial.getText()), SaldoFinal, Float.valueOf(txtSaldoFinal.getText()), Float.valueOf(txtDiferencia.getText()), Float.valueOf(txtDiferencia.getText()) > 0 ? "C" : "N");
             if (!ok) {
                 Dialogs.ShowMessageDialog("Guardado exitosamente", Dialogs.COMPLETEMessage);
             } else {

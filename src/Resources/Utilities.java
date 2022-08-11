@@ -15,14 +15,20 @@ import javax.swing.JLabel;
 
 public class Utilities {
     
+    private static int UsuarioID;
     private static String UsuarioActual;
     private static String AccesoUsuario;
 
     public static String getUsuarioActual() {
         return UsuarioActual;
     }
+    
+    public static int getUsuarioIDActual() {
+        return UsuarioID;
+    }
 
-    public static void setUsuarioActual(String UsuarioActual) {
+    public static void setUsuarioActual(int UsuarioID, String UsuarioActual) {
+        Utilities.UsuarioID = UsuarioID;
         Utilities.UsuarioActual = UsuarioActual;
     }
 

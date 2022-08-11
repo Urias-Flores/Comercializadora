@@ -1,4 +1,3 @@
-
 package Views;
 
 import Controllers.ControllerUsuario;
@@ -18,18 +17,22 @@ public class LogIn extends javax.swing.JFrame {
         @Override
         public void mouseClicked(MouseEvent e) {
         }
+
         @Override
         public void mousePressed(MouseEvent e) {
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
         }
+
         @Override
         public void mouseEntered(MouseEvent e) {
             JLabel l = (JLabel) e.getComponent();
             l.setOpaque(true);
             l.setBackground(Color.red);
         }
+
         @Override
         public void mouseExited(MouseEvent e) {
             JLabel l = (JLabel) e.getComponent();
@@ -37,7 +40,7 @@ public class LogIn extends javax.swing.JFrame {
             l.setOpaque(true);
         }
     };
-    
+
     public LogIn() {
         initComponents();
         btnCerrar.addMouseListener(ml);
@@ -234,24 +237,18 @@ public class LogIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        if(verifyUser()){
+        if (verifyUser()) {
             txtError.setText("");
-            switch(conUs.IniciarSesion()){
-                case -1:
-                    txtError.setText("El usuario ingresado no existe");
-                    break;
-                case 0:
-                    txtError.setText("La contraseña es incorrecta");
-                    break;
-                case 1:
-                    Utilities.setUsuarioActual(txtNombre.getText());
-                    Main m = new Main();
-                    m.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                default:
-                    txtError.setText("ah ocurrido un error inesperado");
-                    break;
+            int ok = conUs.IniciarSesion();
+            if (ok == -1) {
+                txtError.setText("El usuario ingresado no existe");
+            } else if (ok == 0) {
+                txtError.setText("La contraseña es incorrecta");
+            } else if (ok > 0) {
+                Utilities.setUsuarioActual(ok, txtNombre.getText());
+                Main m = new Main();
+                m.setVisible(true);
+                this.setVisible(false);
             }
         }
     }//GEN-LAST:event_btnIniciarActionPerformed
@@ -284,18 +281,18 @@ public class LogIn extends javax.swing.JFrame {
         btnIniciar.doClick();
     }//GEN-LAST:event_txtContrasenaActionPerformed
 
-    private boolean verifyUser(){
-        if(txtNombre.getText().isEmpty()){
+    private boolean verifyUser() {
+        if (txtNombre.getText().isEmpty()) {
             txtError.setText("Debe ingresar el nombre de usuario o la contraseña");
             return false;
         }
-        if(txtContrasena.getText().isEmpty()){
+        if (txtContrasena.getText().isEmpty()) {
             txtError.setText("Debe ingrear la contraseña");
             return false;
         }
         return true;
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
