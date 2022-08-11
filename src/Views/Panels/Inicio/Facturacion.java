@@ -1,6 +1,8 @@
 
 package Views.Panels.Inicio;
 
+import Controllers.ControllerInsumo;
+import Controllers.ControllerInsumoDetalle;
 import Controllers.ControllerVenta;
 import Controllers.ControllerVentaDetalle;
 import Views.Dialogs.Dialogs;
@@ -17,7 +19,9 @@ import javax.swing.table.DefaultTableModel;
 public class Facturacion extends javax.swing.JPanel {
 
     private ControllerVentaDetalle conVD = new ControllerVentaDetalle();
+    private ControllerInsumoDetalle conID = new ControllerInsumoDetalle();
     private ControllerVenta controllerVenta;
+    private ControllerInsumo controllerInsumo;
     
     private MouseListener ml = new MouseListener() {
         @Override
@@ -50,6 +54,7 @@ public class Facturacion extends javax.swing.JPanel {
     public Facturacion() {
         initComponents();
         controllerVenta = new ControllerVenta(txtProducCliente);
+        controllerInsumo = new ControllerInsumo(txtProducCliente);
         btnAgregarVenta.addMouseListener(ml);
         btnEliminarVenta.addMouseListener(ml);
         btnEditarVenta.addMouseListener(ml);
@@ -535,18 +540,31 @@ public class Facturacion extends javax.swing.JPanel {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if(verify()){
-            
-            String VentaID = controllerVenta.InsertVenta()+"";
-            for(int i = 0; i < model.getRowCount(); i++){
-                String ProductoID = tbVenta.getValueAt(i, 0).toString();
-                String Bodega = tbVenta.getValueAt(i, 2).toString();
-                String Precio = tbVenta.getValueAt(i, 3).toString();
-                String Cantidad = tbVenta.getValueAt(i, 4).toString();
-                String ISV = tbVenta.getValueAt(i, 5).toString();
-                String Descuento = tbVenta.getValueAt(i, 6).toString();
-                conVD.InsertVenta(VentaID, ProductoID, Bodega, Cantidad, Precio, ISV, Descuento);
-            } 
+            if(cmbTipoVenta.getSelectedIndex() == 1){
+                String VentaID = controllerVenta.InsertVenta()+"";
+                for(int i = 0; i < model.getRowCount(); i++){
+                    String ProductoID = tbVenta.getValueAt(i, 0).toString();
+                    String Bodega = tbVenta.getValueAt(i, 2).toString();
+                    String Precio = tbVenta.getValueAt(i, 3).toString();
+                    String Cantidad = tbVenta.getValueAt(i, 4).toString();
+                    String ISV = tbVenta.getValueAt(i, 5).toString();
+                    String Descuento = tbVenta.getValueAt(i, 6).toString();
+                    conVD.InsertVenta(VentaID, ProductoID, Bodega, Cantidad, Precio, ISV, Descuento);
+                } 
+            }else if (cmbTipoVenta.getSelectedIndex() == 2){
+                int InsumoID = controllerInsumo.InsertInsumo();
+                for(int i = 0; i < model.getRowCount(); i++){
+                    String ProductoID = tbVenta.getValueAt(i, 0).toString();
+                    String Bodega = tbVenta.getValueAt(i, 2).toString();
+                    String Precio = tbVenta.getValueAt(i, 3).toString();
+                    String Cantidad = tbVenta.getValueAt(i, 4).toString();
+                    String ISV = tbVenta.getValueAt(i, 5).toString();
+                    String Descuento = tbVenta.getValueAt(i, 6).toString();
+                    conID.InsertInsumoDetalle(InsumoID, ProductoID, Bodega, Cantidad, Precio, ISV, Descuento);
+                } 
+            }
             Dialogs.ShowMessageDialog("Factura realizada con exito", Dialogs.COMPLETEMessage);
+            clear();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 

@@ -38,8 +38,8 @@ public class ControllerInsumo {
     
     public int InsertInsumo(){
         modelInsumo.setUsuarioID(1000);
-        modelInsumo.setProductorID(Integer.parseInt(ProductorID.getText()));
-        modelInsumo.setEstado("R");
+        modelInsumo.setProductorID(Integer.parseInt(ProductorID.getName()));
+        modelInsumo.setEstado("P");
         return modelInsumo.InsertInsumo();
     }
 }
