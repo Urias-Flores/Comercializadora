@@ -39,7 +39,7 @@ public class Facturacion extends javax.swing.JPanel {
         }
     };
     private DefaultTableModel model = new DefaultTableModel();
-    private String[] columns = {"Codigo", "Producto", "Precio", "ISV", "Descuento"};
+    private String[] columns = {"Codigo", "Producto", "Bodega", "Precio", "ISV", "Descuento"};
     
     public Facturacion() {
         initComponents();
@@ -48,8 +48,9 @@ public class Facturacion extends javax.swing.JPanel {
         btnEditarVenta.addMouseListener(ml);
         model.setColumnIdentifiers(columns);
         tbVenta.setModel(model);
-        tbVenta.getColumn("Codigo").setPreferredWidth(70);
-        tbVenta.getColumn("Producto").setPreferredWidth(600);
+        tbVenta.getColumn("Codigo").setPreferredWidth(90);
+        tbVenta.getColumn("Producto").setPreferredWidth(550);
+        tbVenta.getColumn("Bodega").setPreferredWidth(200);
         tbVenta.getColumn("Precio").setPreferredWidth(150);
         tbVenta.getColumn("ISV").setPreferredWidth(150);
         tbVenta.getColumn("Descuento").setPreferredWidth(150);
