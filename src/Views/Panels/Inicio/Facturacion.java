@@ -1,6 +1,8 @@
 
 package Views.Panels.Inicio;
 
+import Controllers.ControllerVenta;
+import Controllers.ControllerVentaDetalle;
 import Views.Dialogs.Dialogs;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -14,6 +16,9 @@ import javax.swing.table.DefaultTableModel;
 
 public class Facturacion extends javax.swing.JPanel {
 
+    private ControllerVentaDetalle conVD = new ControllerVentaDetalle();
+    private ControllerVenta controllerVenta;
+    
     private MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -44,6 +49,7 @@ public class Facturacion extends javax.swing.JPanel {
     
     public Facturacion() {
         initComponents();
+        controllerVenta = new ControllerVenta(txtProducCliente);
         btnAgregarVenta.addMouseListener(ml);
         btnEliminarVenta.addMouseListener(ml);
         btnEditarVenta.addMouseListener(ml);
@@ -187,6 +193,11 @@ public class Facturacion extends javax.swing.JPanel {
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/complete.png"))); // NOI18N
         btnEditar.setText("Facturar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setBackground(new java.awt.Color(144, 40, 40));
         btnCancelar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
@@ -437,11 +448,16 @@ public class Facturacion extends javax.swing.JPanel {
         if(cmbTipoVenta.getSelectedIndex() > 0){
             if(!txtProducCliente.getName().isEmpty()){
                 ArrayList<Object> list = Dialogs.ShowAgregarVentaDialog(txtProducCliente.getName(), tipo.get(cmbTipoVenta.getSelectedIndex()));
-                model.addRow(list.toArray());
-                UpdateData();
+                if(list.toArray().length > 0){
+                    model.addRow(list.toArray());
+                    UpdateData();
+                }
             }else{
-                Dialogs.ShowMessageDialog("Seleccione un cliente para continuar", Dialogs.ERRORMessage);
-                txtProducCliente.requestFocus();
+                ArrayList<Object> list = Dialogs.ShowAgregarVentaDialog("NULL", tipo.get(cmbTipoVenta.getSelectedIndex()));
+                if(list.toArray().length > 0){
+                    model.addRow(list.toArray());
+                    UpdateData();
+                }
             }
         }else{
             Dialogs.ShowMessageDialog("Seleccione una tipo de venta", Dialogs.ERRORMessage);
@@ -490,6 +506,10 @@ public class Facturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbTipoVentaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        clear();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void clear(){
         cmbTipoVenta.setSelectedIndex(0);
         txtProducCliente.setName("");
         txtProducCliente.setText("");
@@ -498,8 +518,8 @@ public class Facturacion extends javax.swing.JPanel {
         txtDescuento.setText("0.0");
         txtTotal.setText("0.0");
         model.setRowCount(0);
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
+    }
+    
     private void btnEliminarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarVentaMouseClicked
         System.out.println("Se precioono");
         int row = tbVenta.getSelectedRow();
@@ -513,6 +533,39 @@ public class Facturacion extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnEliminarVentaMouseClicked
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if(verify()){
+            
+            String VentaID = controllerVenta.InsertVenta()+"";
+            for(int i = 0; i < model.getRowCount(); i++){
+                String ProductoID = tbVenta.getValueAt(i, 0).toString();
+                String Bodega = tbVenta.getValueAt(i, 2).toString();
+                String Precio = tbVenta.getValueAt(i, 3).toString();
+                String Cantidad = tbVenta.getValueAt(i, 4).toString();
+                String ISV = tbVenta.getValueAt(i, 5).toString();
+                String Descuento = tbVenta.getValueAt(i, 6).toString();
+                conVD.InsertVenta(VentaID, ProductoID, Bodega, Cantidad, Precio, ISV, Descuento);
+            } 
+            Dialogs.ShowMessageDialog("Factura realizada con exito", Dialogs.COMPLETEMessage);
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    public boolean verify(){
+        if(cmbTipoVenta.getSelectedIndex() == 0){
+            Dialogs.ShowMessageDialog("Error, seleccione un tipo de venta", Dialogs.ERRORMessage);
+            return false;
+        }
+        if(txtProducCliente.getText().isEmpty() || txtProducCliente.getName().isEmpty()){
+            if(!Dialogs.ShowAdvertecimentDialog("¿Desea continuar sin un cliente?")){
+                return false;
+            }
+        }
+        if(model.getRowCount() == 0){
+            Dialogs.ShowMessageDialog("Error, seleccione al menos un producto", Dialogs.ERRORMessage);
+            return false;
+        }
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAgregarVenta;
