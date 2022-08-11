@@ -5,6 +5,7 @@ import Views.Dialogs.Dialogs;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class Facturacion extends javax.swing.JPanel {
         }
     };
     private DefaultTableModel model = new DefaultTableModel();
-    private String[] columns = {"Codigo", "Producto", "Bodega", "Precio", "ISV", "Descuento"};
+    private String[] columns = {"Codigo", "Producto", "Bodega", "Precio", "Cantidad", "ISV", "Descuento %"};
     
     public Facturacion() {
         initComponents();
@@ -52,8 +53,9 @@ public class Facturacion extends javax.swing.JPanel {
         tbVenta.getColumn("Producto").setPreferredWidth(550);
         tbVenta.getColumn("Bodega").setPreferredWidth(200);
         tbVenta.getColumn("Precio").setPreferredWidth(150);
+        tbVenta.getColumn("Cantidad").setPreferredWidth(110);
         tbVenta.getColumn("ISV").setPreferredWidth(150);
-        tbVenta.getColumn("Descuento").setPreferredWidth(150);
+        tbVenta.getColumn("Descuento %").setPreferredWidth(150);
     }
 
     @SuppressWarnings("unchecked")
@@ -294,7 +296,7 @@ public class Facturacion extends javax.swing.JPanel {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(252, 252, 252)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(txtSubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -434,7 +436,9 @@ public class Facturacion extends javax.swing.JPanel {
         tipo.put(2, "P");
         if(cmbTipoVenta.getSelectedIndex() > 0){
             if(!txtProducCliente.getName().isEmpty()){
-                Dialogs.ShowAgregarVentaDialog(txtProducCliente.getName(), tipo.get(cmbTipoVenta.getSelectedIndex()));
+                ArrayList<Object> list = Dialogs.ShowAgregarVentaDialog(txtProducCliente.getName(), tipo.get(cmbTipoVenta.getSelectedIndex()));
+                model.addRow(list.toArray());
+                UpdateData();
             }else{
                 Dialogs.ShowMessageDialog("Seleccione un cliente para continuar", Dialogs.ERRORMessage);
                 txtProducCliente.requestFocus();
@@ -447,7 +451,18 @@ public class Facturacion extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarVentaMouseClicked
 
     private void UpdateData(){
-        
+        DecimalFormat d = new DecimalFormat("#.##");
+        float subtotal = 0f, ISV = 0f, Descuento = 0f, Total = 0f;
+        for(int i = 0; i < model.getRowCount(); i++){
+            subtotal += Float.parseFloat(tbVenta.getValueAt(i, 3).toString()) * Float.parseFloat(tbVenta.getValueAt(i, 4).toString()) * 0.85;
+            ISV += Float.parseFloat(tbVenta.getValueAt(i, 5).toString());
+            Descuento += Float.parseFloat(tbVenta.getValueAt(i, 3).toString()) * Float.parseFloat(tbVenta.getValueAt(i, 6).toString()) * 0.1;
+            Total = subtotal + ISV - Descuento;
+        }
+        txtSubtotal.setText(d.format(subtotal));
+        txtISV.setText(d.format(ISV));
+        txtDescuento.setText(d.format(Descuento));
+        txtTotal.setText(d.format(Total));
     }
     
     private void btnSeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSeleccionarMouseClicked
@@ -478,9 +493,15 @@ public class Facturacion extends javax.swing.JPanel {
         cmbTipoVenta.setSelectedIndex(0);
         txtProducCliente.setName("");
         txtProducCliente.setText("");
+        txtSubtotal.setText("0.0");
+        txtISV.setText("0.0");
+        txtDescuento.setText("0.0");
+        txtTotal.setText("0.0");
+        model.setRowCount(0);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEliminarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarVentaMouseClicked
+        System.out.println("Se precioono");
         int row = tbVenta.getSelectedRow();
         if(row > -1){
             if(Dialogs.ShowAdvertecimentDialog("Esta seguro de eliminar este producto")){

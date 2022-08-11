@@ -2,7 +2,6 @@ package Views.Panels.Administracion;
 
 import Controllers.ControllerArqueo;
 import Controllers.ControllerUsuario;
-import Models.ModelUsuario;
 import Views.Dialogs.Dialogs;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
