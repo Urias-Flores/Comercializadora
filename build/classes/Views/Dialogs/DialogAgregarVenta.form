@@ -233,7 +233,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Cascadia Code" size="22" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Agregar a factura"/>
+            <Property name="text" type="java.lang.String" value="Agregar producto a factura"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">

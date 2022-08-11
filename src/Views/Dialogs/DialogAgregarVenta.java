@@ -169,7 +169,7 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
         );
 
         jLabel2.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
-        jLabel2.setText("Agregar a factura");
+        jLabel2.setText("Agregar producto a factura");
 
         jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
