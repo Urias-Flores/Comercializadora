@@ -65,7 +65,7 @@ public class ModelInsumo {
     }
     
     public int InsertInsumo(){
-        String Query = "EXECUTE spInsertVenta "+UsuarioID+", "+ProductorID+", '"+Estado+"';";
+        String Query = "EXECUTE spInsertInsumo "+UsuarioID+", "+ProductorID+", '"+Estado+"';";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){
             if(rs.next()){
                 return rs.getInt(1);
