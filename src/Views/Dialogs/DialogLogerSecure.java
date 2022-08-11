@@ -1,4 +1,3 @@
-
 package Views.Dialogs;
 
 import Controllers.ControllerUsuario;
@@ -13,14 +12,14 @@ public class DialogLogerSecure extends javax.swing.JDialog {
     public boolean isAcces() {
         return Acces;
     }
-    
-    public void setText(String Text1, String Text2, String Text3){
+
+    public void setText(String Text1, String Text2, String Text3) {
         this.message1.setText(Text1);
         this.message2.setText(Text2);
         this.message3.setText(Text3);
-        
+
     }
-    
+
     public DialogLogerSecure(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -29,8 +28,6 @@ public class DialogLogerSecure extends javax.swing.JDialog {
         conUs = new ControllerUsuario(txtUsuario, txtUsuario, txtContrasena);
     }
 
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -268,26 +265,23 @@ public class DialogLogerSecure extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        if(VerifyUser()){
-            switch(conUs.IniciarSesion()){
-                case -1:
-                    txtError.setText("El usuario ingresado no existe");
-                    break;
-                case 0:
-                    txtError.setText("La contraseña es incorrecta");
-                    break;
-                case 1:
-                    if(txtConfirmar.getText().equals("CONFIRMAR")){
-                        Acces = true;
-                        this.setVisible(false);
-                    }else{
-                        txtError.setText("Debe escribir la palabra 'CONFIRMAR'");
-                    }
-                    break;
-                default:
-                    txtError.setText("ah ocurrido un error inesperado");
-                    break;
+        if (VerifyUser()) {
+            int ok = conUs.IniciarSesion();
+            if (ok == -1) {
+                txtError.setText("El usuario ingresado no existe");
+            } else if (ok == 0) {
+                txtError.setText("La contraseña es incorrecta");
+            } else if (ok > 0) {
+                if (txtConfirmar.getText().equals("CONFIRMAR")) {
+                    Acces = true;
+                    this.setVisible(false);
+                } else {
+                    txtError.setText("Debe escribir la palabra 'CONFIRMAR'");
+                }
+            } else {
+                txtError.setText("ah ocurrido un error inesperado");
             }
+
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
@@ -297,23 +291,22 @@ public class DialogLogerSecure extends javax.swing.JDialog {
         this.setLocation(x - X, y - Y);
     }//GEN-LAST:event_pnBarraMouseDragged
 
-    private boolean VerifyUser(){
-        if(txtUsuario.getText().isEmpty()){
+    private boolean VerifyUser() {
+        if (txtUsuario.getText().isEmpty()) {
             txtError.setText("Ha ocurrido un error al procesaro el usuario");
             return false;
         }
-        if(txtContrasena.getText().isEmpty()){
+        if (txtContrasena.getText().isEmpty()) {
             txtError.setText("Debe ingresar su contraseña");
             return false;
         }
-        if(txtConfirmar.getText().isEmpty()){
+        if (txtConfirmar.getText().isEmpty()) {
             txtError.setText("EL campo de confirmacion es obligatorio");
             return false;
         }
         return true;
     }
-    
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
