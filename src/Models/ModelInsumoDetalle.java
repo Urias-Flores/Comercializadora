@@ -1,15 +1,16 @@
+
 package Models;
 
 import Resources.Conection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ModelVentaDetalle {
+public class ModelInsumoDetalle {
     
     private Conection conec = new Conection();
     
-    private int VentaDetalleID;
-    private int VentaID;
+    private int InsumoID;
+    private int InsumoDetalleID;
     private int ProductoID;
     private int BodegaID;
     private int Cantidad;
@@ -17,20 +18,20 @@ public class ModelVentaDetalle {
     private float ISV;
     private float Descuento;
 
-    public int getVentaDetalleID() {
-        return VentaDetalleID;
+    public int getInsumoID() {
+        return InsumoID;
     }
 
-    public void setVentaDetalleID(int VentaDetalleID) {
-        this.VentaDetalleID = VentaDetalleID;
+    public void setInsumoID(int InsumoID) {
+        this.InsumoID = InsumoID;
     }
 
-    public int getVentaID() {
-        return VentaID;
+    public int getInsumoDetalleID() {
+        return InsumoDetalleID;
     }
 
-    public void setVentaID(int VentaID) {
-        this.VentaID = VentaID;
+    public void setInsumoDetalleID(int InsumoDetalleID) {
+        this.InsumoDetalleID = InsumoDetalleID;
     }
 
     public int getProductoID() {
@@ -81,10 +82,10 @@ public class ModelVentaDetalle {
         this.Descuento = Descuento;
     }
     
-    public boolean InsertVentaDetalle(){
-        String Query = "EXECUTE spInsertVentaDetalle ?, ?, ?, ?, ?, ?, ?";
+    public boolean InsertInsumoDetalle(){
+        String Query = "EXECUTE spInsertInsumoDetalle ?, ?, ?, ?, ?, ?, ?";
         try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
-            ps.setInt(1, VentaID);
+            ps.setInt(1, InsumoID);
             ps.setInt(2, ProductoID);
             ps.setInt(3, BodegaID);
             ps.setInt(4, Cantidad);
@@ -97,6 +98,4 @@ public class ModelVentaDetalle {
         }
         return true;
     }
-    
-    
 }

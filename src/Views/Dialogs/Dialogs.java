@@ -67,7 +67,7 @@ public class Dialogs {
         dic.setVisible(true);
     }
 
-    public static ArrayList<String> ShowAgregarVentaDialog(String ID, String type){
+    public static ArrayList<Object> ShowAgregarVentaDialog(String ID, String type){
         DialogAgregarVenta dv = new DialogAgregarVenta(null, true);
         dv.setID(ID);
         dv.setType(type);
@@ -87,6 +87,7 @@ public class Dialogs {
     public static boolean ShowAdvertecimentDialog(String text){
         DialogAdvertesiment da = new DialogAdvertesiment(null, true);
         da.setText(text);
+        da.setVisible(true);
         return da.isAcces();
     }
 }

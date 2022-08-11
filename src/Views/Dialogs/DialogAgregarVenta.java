@@ -3,6 +3,8 @@ package Views.Dialogs;
 
 import Controllers.ControllerBodega;
 import Controllers.ControllerProducto;
+import Models.ModelBodega;
+import Models.ModelProducto;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -16,10 +18,9 @@ import javax.swing.table.DefaultTableModel;
 public class DialogAgregarVenta extends javax.swing.JDialog {
 
     private int X, Y;
-    private ArrayList<String> data = new ArrayList<>();
+    private ArrayList<Object> data = new ArrayList<>();
     private String ID, Type;
     private final ControllerProducto controllerProducto = new ControllerProducto();
-    private final ControllerBodega controllerBodega = new ControllerBodega();
     private MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -76,7 +77,7 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
         this.Type = Type;
     }
 
-    public ArrayList<String> getData(){
+    public ArrayList<Object> getData(){
         return this.data;
     }
     
@@ -89,8 +90,10 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
     }
     
     public void Load(){
+        ModelBodega mb = new ModelBodega();
         model = controllerProducto.SelectListaProductos(ID, Type);
-        cmbBodega.setModel(controllerBodega.SelectListBodegas());
+        cmbBodega.setModel(mb.SelectListBodegas());
+        
         tbProductos.setModel(model);
         tbProductos.removeColumn(tbProductos.getColumn("ISV"));
         tbProductos.removeColumn(tbProductos.getColumn("Descuento"));
@@ -210,7 +213,7 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
         jLabel5.setText("Cantidad");
 
         jLabel6.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jLabel6.setText("ISV");
+        jLabel6.setText("ISV unit.");
 
         jLabel7.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel7.setText("Descuento");
@@ -387,7 +390,16 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        int row = tbProductos.getSelectedRow();
         if(verify()){
+            data.add(tbProductos.getValueAt(row, 0).toString());
+            data.add(tbProductos.getValueAt(row, 1).toString());
+            data.add(cmbBodega.getSelectedIndex()+999);
+            data.add(txtPrecio.getText());
+            data.add(txtCantidad.getValue().toString());
+            float ISV = Float.parseFloat(txtCantidad.getValue().toString()) * Float.parseFloat(txtISV.getText());
+            data.add(ISV);
+            data.add(txtDescuento.getText());
             this.dispose();
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
