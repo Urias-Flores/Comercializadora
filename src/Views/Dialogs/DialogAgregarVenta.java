@@ -81,6 +81,7 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
         initComponents();
         btnClose.addMouseListener(ml);
         txtBuscar.addFocusListener(fl);
+        Load();
     }
     
     public void Load(){
@@ -91,8 +92,6 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
         tbProductos.getColumn("ID").setPreferredWidth(20);
         tbProductos.getColumn("Nombre").setPreferredWidth(380);
         tbProductos.getColumn("Precio").setPreferredWidth(150);
-        
-        
     }
 
     @SuppressWarnings("unchecked")

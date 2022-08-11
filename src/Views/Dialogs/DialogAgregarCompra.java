@@ -1,6 +1,7 @@
 
 package Views.Dialogs;
 
+import Controllers.ControllerProducto;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -8,6 +9,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 public class DialogAgregarCompra extends javax.swing.JDialog {
 
@@ -58,11 +61,13 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
            }
         }
     };
+    private ControllerProducto controllerProducto = new ControllerProducto();
 
     public DialogAgregarCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         btnClose.addMouseListener(ml);
+        txtBuscar.addFocusListener(fl);
         Load();
     }
     
@@ -146,6 +151,11 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
         txtBuscar.setText("buscar...");
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
 
         tbProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -325,12 +335,20 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        TableRowSorter s = new TableRowSorter(tbProductos.getModel());
+        tbProductos.setRowSorter(s);
+        s.setRowFilter(RowFilter.regexFilter(txtBuscar.getText(), 0, 1));
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
     private boolean verify(){
         return true;
     }
+    
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -356,17 +374,15 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogAgregarCompra dialog = new DialogAgregarCompra(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            DialogAgregarCompra dialog = new DialogAgregarCompra(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
