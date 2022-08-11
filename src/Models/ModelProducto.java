@@ -199,6 +199,27 @@ public class ModelProducto {
         return model;
     }
     
+    public DefaultTableModel ListProductosCompra(){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Colums = {"ID", "Nombre", "Precio"};
+        model.setColumnIdentifiers(Colums);
+        
+        String Query = "SELECT * FROM PRODUCTOSCOMPRA";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                String[] row = {rs.getString("ID"), 
+                                rs.getString("Nombre"),
+                                rs.getString("PrecioCompra"),};
+                model.addRow(row);
+            }
+            rs.close();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    
     public int SelectExistencia(int ProductoID, int BodegaID){
         String Query = "SELECT dbo.EXISTENCION("+ProductoID+", "+BodegaID+")";
         try(ResultSet rs = conec.getStatement().executeQuery(Query)){

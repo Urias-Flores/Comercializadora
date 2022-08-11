@@ -1,6 +1,7 @@
 
 package Views.Dialogs;
 
+import Controllers.ControllerBodega;
 import Controllers.ControllerProducto;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
@@ -62,6 +63,7 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         }
     };
     private ControllerProducto controllerProducto = new ControllerProducto();
+    private ControllerBodega conBog = new ControllerBodega();
 
     public DialogAgregarCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -72,7 +74,11 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
     }
     
     private void Load(){
-        
+        cmbBodega.setModel(conBog.SelectListBodegas());
+        tbProductos.setModel(controllerProducto.SelectListaProductosCompra());
+        tbProductos.getColumn("ID").setPreferredWidth(40);
+        tbProductos.getColumn("Nombre").setPreferredWidth(350);
+        tbProductos.getColumn("Precio").setPreferredWidth(100);
     }
 
     @SuppressWarnings("unchecked")
@@ -97,14 +103,15 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         txtPrecioSugerido = new javax.swing.JTextField();
         txtPrecioObtenido = new javax.swing.JTextField();
         txtISV = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
-        txtDescuento = new javax.swing.JTextField();
         txtError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 190, 190)));
 
         jPanel2.setBackground(new java.awt.Color(39, 49, 65));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -133,7 +140,7 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 680, Short.MAX_VALUE)
+                .addGap(0, 678, Short.MAX_VALUE)
                 .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -168,6 +175,11 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbProductosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbProductos);
 
         txtCantidad.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
@@ -191,11 +203,12 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         jLabel7.setText("ISV");
 
         txtPrecioSugerido.setEditable(false);
+        txtPrecioSugerido.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+
+        txtPrecioObtenido.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
 
         txtISV.setEditable(false);
-
-        jLabel9.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
-        jLabel9.setText("Descuento");
+        txtISV.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
 
         btnAgregar.setBackground(new java.awt.Color(49, 152, 65));
         btnAgregar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
@@ -238,14 +251,12 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtPrecioSugerido)
                                     .addComponent(txtPrecioObtenido)
-                                    .addComponent(txtISV)
-                                    .addComponent(txtDescuento)))
+                                    .addComponent(txtISV)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -289,15 +300,11 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtISV, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDescuento))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -312,6 +319,7 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
@@ -340,6 +348,13 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         tbProductos.setRowSorter(s);
         s.setRowFilter(RowFilter.regexFilter(txtBuscar.getText(), 0, 1));
     }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void tbProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProductosMouseClicked
+        int row = tbProductos.getSelectedRow();
+        if(row > -1){
+            txtPrecioSugerido.setText(tbProductos.getValueAt(row, 2).toString());
+        }
+    }//GEN-LAST:event_tbProductosMouseClicked
 
     private boolean verify(){
         return true;
@@ -397,14 +412,12 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbProductos;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JSpinner txtCantidad;
-    private javax.swing.JTextField txtDescuento;
     private javax.swing.JLabel txtError;
     private javax.swing.JTextField txtISV;
     private javax.swing.JTextField txtPrecioObtenido;

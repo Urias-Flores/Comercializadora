@@ -100,6 +100,10 @@ public class ControllerProducto {
         return modelProducto.ListProductosFactura(ID, type);
     }
     
+    public DefaultTableModel SelectListaProductosCompra(){
+        return modelProducto.ListProductosCompra();
+    }
+    
     public int SelectExistencia(int ProductoID, int BodegaID){
         return modelProducto.SelectExistencia(ProductoID, BodegaID);
     }

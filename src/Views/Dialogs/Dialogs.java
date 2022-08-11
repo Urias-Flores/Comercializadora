@@ -90,4 +90,10 @@ public class Dialogs {
         da.setVisible(true);
         return da.isAcces();
     }
+    
+    public static ArrayList<Object> ShowAgregarCompraDialog(){
+        DialogAgregarCompra dac = new DialogAgregarCompra(null, true);
+        dac.setVisible(true);
+        return null;
+    }
 }

@@ -58,6 +58,7 @@ public class Facturacion extends javax.swing.JPanel {
         btnAgregarVenta.addMouseListener(ml);
         btnEliminarVenta.addMouseListener(ml);
         btnEditarVenta.addMouseListener(ml);
+        btnSeleccionar.addMouseListener(ml);
         model.setColumnIdentifiers(columns);
         tbVenta.setModel(model);
         tbVenta.getColumn("Codigo").setPreferredWidth(90);

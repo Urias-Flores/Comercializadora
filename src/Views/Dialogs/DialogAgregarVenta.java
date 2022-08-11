@@ -1,10 +1,8 @@
 
 package Views.Dialogs;
 
-import Controllers.ControllerBodega;
 import Controllers.ControllerProducto;
 import Models.ModelBodega;
-import Models.ModelProducto;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
