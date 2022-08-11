@@ -446,7 +446,7 @@ public class Facturacion extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAgregarVentaMouseClicked
 
-    private void UpdateTable(){
+    private void UpdateData(){
         
     }
     
@@ -484,7 +484,8 @@ public class Facturacion extends javax.swing.JPanel {
         int row = tbVenta.getSelectedRow();
         if(row > -1){
             if(Dialogs.ShowAdvertecimentDialog("Esta seguro de eliminar este producto")){
-            
+                model.removeRow(row);
+                UpdateData();
             }
         }else{
             Dialogs.ShowMessageDialog("Error, Seleccione una venta de la lista", Dialogs.ERRORMessage);
