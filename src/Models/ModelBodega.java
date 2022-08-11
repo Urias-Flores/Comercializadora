@@ -74,11 +74,10 @@ public class ModelBodega {
     }
     
     public boolean InsertBodega(){
-        String Query = "INSERT INTO Bodega(BodegaID, Nombre, Ubicacion) VALUES(?, ?, ?);";
+        String Query = "EXECUTE spInsertBodega ?, ?;";
         try(PreparedStatement stm = conec.getconec().prepareStatement(Query)){
-            stm.setLong(1, 5);
-            stm.setString(2, Nombre);
-            stm.setString(3, Ubicacion);
+            stm.setString(1, Nombre);
+            stm.setString(2, Ubicacion);
             
             return stm.execute();
         }catch(SQLException ex){
