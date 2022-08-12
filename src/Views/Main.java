@@ -167,7 +167,7 @@ public class Main extends javax.swing.JFrame {
                 
                 TabPane.addTab("Productores", ico31, prod);
                 TabPane.addTab("Fincas y parcelas", ico32,fin);
-                TabPane.addTab("Insumos", ico33,ins);
+                //TabPane.addTab("Insumos", ico33,ins);
                 TabPane.addTab("Anticipos", ico34,ant);
                 
                 break;
@@ -195,7 +195,7 @@ public class Main extends javax.swing.JFrame {
                 Icon ico53 = new ImageIcon(getClass().getResource("/icons/usuarios.png"));
                 Icon ico54 = new ImageIcon(getClass().getResource("/icons/empleado.png"));
                 
-                TabPane.addTab("Resumenes", ico51, res);
+                //TabPane.addTab("Resumenes", ico51, res);
                 TabPane.addTab("Arqueos", ico52, arq);
                 TabPane.addTab("Empleados", ico54,emp);
                 TabPane.addTab("Usuarios", ico53, us);
