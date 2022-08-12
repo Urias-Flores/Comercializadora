@@ -1,6 +1,8 @@
 
 package Views.Panels.Inicio;
 
+import Controllers.ControllerCompra;
+import Controllers.ControllerCompraDetalle;
 import Views.Dialogs.Dialogs;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -16,6 +18,8 @@ public class Compras extends javax.swing.JPanel {
 
     private String[] Column = {"Codigo", "Producto", "Bodega", "Precio", "Cantidad", "ISV"};
     private DefaultTableModel model = new DefaultTableModel();
+    private ControllerCompra conCom;
+    private ControllerCompraDetalle conCD = new ControllerCompraDetalle();
     private MouseListener ml = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -44,6 +48,7 @@ public class Compras extends javax.swing.JPanel {
     
     public Compras() {
         initComponents();
+        conCom = new ControllerCompra(txtproductor, txtproductor);
         btnAgregarCompra.addMouseListener(ml);
         btnEliminarCompra.addMouseListener(ml);
         btnEditarCompra.addMouseListener(ml);
@@ -62,7 +67,7 @@ public class Compras extends javax.swing.JPanel {
         DecimalFormat d = new DecimalFormat("#.00");
         float Total = 0f, Subtotal = 0f, ISV = 0f;
         for(int i = 0; i < model.getRowCount(); i++){
-            Subtotal += (Float.parseFloat(tbCompras.getValueAt(i, 3).toString()) * Float.parseFloat(tbCompras.getValueAt(i, 4).toString()) * 0.85);
+            Subtotal += Float.parseFloat(tbCompras.getValueAt(i, 3).toString()) * Float.parseFloat(tbCompras.getValueAt(i, 4).toString()) * 0.85;
             ISV += Float.parseFloat(tbCompras.getValueAt(i, 5).toString()) * Float.parseFloat(tbCompras.getValueAt(i, 4).toString());
             Total = Subtotal + ISV;
         }
@@ -430,6 +435,15 @@ public class Compras extends javax.swing.JPanel {
         else{lbProvProd.setText("Seleccione un productor");}
     }//GEN-LAST:event_cmbTipoCompraActionPerformed
 
+    private void Clear(){
+        cmbTipoCompra.setSelectedIndex(0);
+        txtproductor.setText(""); txtproductor.setName("");
+        model.setRowCount(0);
+        txtSubtotal.setText("0.0");
+        txtISV.setText("0.0");
+        txtTotal.setText("0.0");
+    }
+    
     private void btnSeleccionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSeleccionarMouseClicked
         int Seleccion = cmbTipoCompra.getSelectedIndex();
         if(Seleccion > 0){
@@ -467,14 +481,25 @@ public class Compras extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarCompraMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        cmbTipoCompra.setSelectedIndex(0);
-        txtproductor.setName("");
-        txtproductor.setText("");
+        Clear();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if(verify()){
-            
+            int CompraID = 0;
+            if(cmbTipoCompra.getSelectedIndex() == 1){
+                CompraID = conCom.InsertCompra("prov");
+            }else if(cmbTipoCompra.getSelectedIndex() == 2){
+                CompraID = conCom.InsertCompra("prod");
+            }
+            for(int i = 0; i < model.getRowCount(); i++){
+                String ProductoID = tbCompras.getValueAt(i, 0).toString();
+                String BodegaID = tbCompras.getValueAt(i, 2).toString();
+                String Precio = tbCompras.getValueAt(i, 3).toString();
+                String Cantidad = tbCompras.getValueAt(i, 4).toString();
+                String ISV = tbCompras.getValueAt(i, 5).toString();
+                conCD.InsertCompraDetalle(CompraID, ProductoID, BodegaID, Cantidad, Precio, ISV);
+            }
             Dialogs.ShowMessageDialog("Compra agregada exitosamente", Dialogs.COMPLETEMessage);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
