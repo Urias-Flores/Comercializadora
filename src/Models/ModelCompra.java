@@ -3,6 +3,7 @@ package Models;
 
 import Resources.Conection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
@@ -108,5 +109,16 @@ public class ModelCompra {
             System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
         }
         return model;
+    }
+    
+    public int DeleteCompra(){
+        String Query = "EXECUTE spDeleteCompra ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setInt(1, CompraID);
+            return ps.executeUpdate();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return 0;
     }
 }

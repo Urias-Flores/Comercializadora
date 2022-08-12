@@ -47,4 +47,9 @@ public class ControllerInsumo {
     public DefaultTableModel getPreelimar(int ID){
         return modelInsumo.getPreelimar(ID);
     }
+    
+    public int DeleteInsumo(int ID){
+        modelInsumo.setInsumoID(ID);
+        return modelInsumo.DeleteInsumo();
+    }
 }

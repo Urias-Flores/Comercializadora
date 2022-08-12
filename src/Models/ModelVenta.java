@@ -118,4 +118,15 @@ public class ModelVenta {
         }
         return model;
     }
+    
+    public int DeleteVenta(){
+        String Query = "EXECUTE spDeleteVenta ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setInt(1, VentaID);
+            return ps.executeUpdate();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return 0;
+    }
 }

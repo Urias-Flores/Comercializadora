@@ -440,7 +440,7 @@ public class DialogAgregarVenta extends javax.swing.JDialog {
     private void cmbBodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBodegaActionPerformed
         int row = tbProductos.getSelectedRow();
         if(cmbBodega.getSelectedIndex() > 0){
-            if(row > 0){
+            if(row > -1){
                 int Producto = Integer.parseInt(tbProductos.getValueAt(row, 0).toString());
                 txtExistencia.setValue(controllerProducto.SelectExistencia(Producto, cmbBodega.getSelectedIndex() + 999));
             }else{

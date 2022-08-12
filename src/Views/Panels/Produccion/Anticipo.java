@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Views.Panels.Produccion;
 
 import Controllers.ControllerAnticipo;
@@ -13,18 +9,11 @@ import java.util.ArrayList;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author Dell
- */
 public class Anticipo extends javax.swing.JPanel {
 
     private ControllerAnticipo cAnticipo = new ControllerAnticipo();
     private int AnticipoID = 0;
 
-    /**
-     * Creates new form Anticipo
-     */
     public Anticipo() {
         initComponents();
         load();

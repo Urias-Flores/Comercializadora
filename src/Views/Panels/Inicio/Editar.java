@@ -5,6 +5,7 @@ import Controllers.ControllerArqueo;
 import Controllers.ControllerCompra;
 import Controllers.ControllerInsumo;
 import Controllers.ControllerVenta;
+import Views.Dialogs.Dialogs;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -368,7 +369,30 @@ public class Editar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        
+        int row = tbDetalles.getSelectedRow();
+        if(row > -1){
+            String type = tbDetalles.getValueAt(row, 3).toString();
+            int ID = Integer.parseInt(tbDetalles.getValueAt(row, 0).toString());
+            int result = 0;
+            switch(type){
+                case "INSUMO":
+                    result = conIns.DeleteInsumo(ID);
+                    break;
+                case "VENTA":
+                    result = conFac.DeleteVenta(ID);
+                    break;
+                case "COMPRA":
+                    result = conCom.DeleteCompra(ID);
+                    break;
+            }
+            if(result > 0){
+                Dialogs.ShowMessageDialog("Compra eliminado con exito", Dialogs.COMPLETEMessage);
+            }else{
+                Dialogs.ShowMessageDialog("Ups, ha ocurrido un error inesperado", Dialogs.ERRORMessage);
+            }
+            model.setRowCount(0);
+            Load();
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
     
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased

@@ -41,4 +41,9 @@ public class ControllerVenta {
     public DefaultTableModel getPreeliminar(int ID){
         return modelVenta.getPreelimar(ID);
     }
+    
+    public int DeleteVenta(int ID){
+        modelVenta.setVentaID(ID);
+        return modelVenta.DeleteVenta();
+    }
 }

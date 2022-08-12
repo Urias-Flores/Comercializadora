@@ -2,6 +2,7 @@ package Models;
 
 import Resources.Conection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
@@ -93,5 +94,16 @@ public class ModelInsumo {
             System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
         }
         return model;
+    }
+    
+    public int DeleteInsumo(){
+        String Query = "EXECUTE spDeleteInsumo ?;";
+        try(PreparedStatement ps = conec.getconec().prepareStatement(Query)){
+            ps.setInt(1, InsumoID);
+            return ps.executeUpdate();
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return 0;
     }
 }
