@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 public class ModelVenta {
     
@@ -76,5 +77,45 @@ public class ModelVenta {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return 0;
+    }
+    
+    public DefaultTableModel getVentasCompras(){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"Codigo", "Usuario", "Titular", "Tipo", "Fecha/Hora", "Total"};
+        model.setColumnIdentifiers(Columns);
+        String Query = "SELECT * FROM DBO.FCI();";
+        try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
+            while (rs.next()) {
+                String[] row = {rs.getString("ID"), 
+                                rs.getString("Usuario"), 
+                                rs.getString("Persona"), 
+                                rs.getString("Tipo"), 
+                                rs.getString("Fecha"), 
+                                rs.getString("Total")};
+                model.addRow(row);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return model;
+    }
+    
+    public DefaultTableModel getPreelimar(int ID){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"Producto", "Cantidad"};
+        model.setColumnIdentifiers(Columns);
+        String Query = "SELECT * FROM dbo.Preeliminar("+ID+", 'VENTA')";
+        try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
+            while (rs.next()) {
+                String[] row = {rs.getString("Producto"), 
+                                rs.getString("Cantidad")};
+                model.addRow(row);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return model;
     }
 }

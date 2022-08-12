@@ -2,7 +2,6 @@
 package Controllers;
 
 import Models.ModelArqueo;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ControllerArqueo {

@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.ModelCompra;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class ControllerCompra {
     
@@ -39,5 +40,9 @@ public class ControllerCompra {
         modelCompra.setProveedorID(Integer.parseInt(ProveedorID.getName()));
         modelCompra.setEstado("R");
         return modelCompra.InsertVenta(type);
+    }
+    
+    public DefaultTableModel getPreeliminar(int ID){
+        return modelCompra.getPreelimar(ID);
     }
 }

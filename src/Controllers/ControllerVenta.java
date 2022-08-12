@@ -3,6 +3,7 @@ package Controllers;
 
 import Models.ModelVenta;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class ControllerVenta {
     
@@ -31,5 +32,13 @@ public class ControllerVenta {
         }
         modelVenta.setEstado("R");
         return modelVenta.InsertVenta();
+    }
+    
+    public DefaultTableModel getTotalVentasCompras(){
+        return modelVenta.getVentasCompras();
+    }
+    
+    public DefaultTableModel getPreeliminar(int ID){
+        return modelVenta.getPreelimar(ID);
     }
 }

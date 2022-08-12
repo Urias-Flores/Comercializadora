@@ -134,7 +134,7 @@ public class Main extends javax.swing.JFrame {
                 
                 TabPane.addTab("Facturacion", ico11, fac);
                 TabPane.addTab("Compras", ico12, com);
-                TabPane.addTab("Edicion", ico13, edi);
+                TabPane.addTab("Resumen", ico13, edi);
                 TabPane.addTab("Clientes", ico14,otr);
                 
                 break;

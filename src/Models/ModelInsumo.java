@@ -4,6 +4,7 @@ import Resources.Conection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 public class ModelInsumo {
     
@@ -74,5 +75,23 @@ public class ModelInsumo {
             System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
         }
         return 0;
+    }
+    
+    public DefaultTableModel getPreelimar(int ID){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"Producto", "Cantidad"};
+        model.setColumnIdentifiers(Columns);
+        String Query = "SELECT * FROM dbo.Preeliminar("+ID+", 'INSUMO')";
+        try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
+            while (rs.next()) {
+                String[] row = {rs.getString("Producto"), 
+                                rs.getString("Cantidad")};
+                model.addRow(row);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return model;
     }
 }

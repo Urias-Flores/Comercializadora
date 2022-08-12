@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.ModelInsumo;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class ControllerInsumo {
     
@@ -41,5 +42,9 @@ public class ControllerInsumo {
         modelInsumo.setProductorID(Integer.parseInt(ProductorID.getName()));
         modelInsumo.setEstado("P");
         return modelInsumo.InsertInsumo();
+    }
+    
+    public DefaultTableModel getPreelimar(int ID){
+        return modelInsumo.getPreelimar(ID);
     }
 }
