@@ -157,6 +157,25 @@ public class ModelProducto {
         return model;
     }
     
+    public DefaultTableModel Inventario(){
+        DefaultTableModel model = new DefaultTableModel();
+        String[] Columns = {"Codigo", "Nombre", "Descripcion","Cantidad"};
+        model.setColumnIdentifiers(Columns);
+        String Query = "SELECT * FROM DBO.INVENTARIO()";
+        try(ResultSet rs = conec.getStatement().executeQuery(Query)){
+            while(rs.next()){
+                String[] row = {rs.getString("ProductoID"), 
+                                rs.getString("Nombre"),
+                                rs.getString("Descripcion"),
+                                rs.getString("Cantidad")};
+                model.addRow(row);
+            }
+        }catch(SQLException ex){
+            System.out.print("ERROR: "+ex.getMessage()+" Codigo: "+ex.getErrorCode());
+        }
+        return model;
+    }
+    
     public DefaultComboBoxModel SelectModelProductoCmb(){
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         

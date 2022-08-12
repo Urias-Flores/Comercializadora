@@ -107,4 +107,8 @@ public class ControllerProducto {
     public int SelectExistencia(int ProductoID, int BodegaID){
         return modelProducto.SelectExistencia(ProductoID, BodegaID);
     }
+    
+    public DefaultTableModel Inventario(){
+        return modelProducto.Inventario();
+    }
 }
