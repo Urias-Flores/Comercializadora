@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.ModelPago;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -18,6 +19,7 @@ public class ControllerPago {
     private JTextField Total;
     private JTable Pagos;
     private JTextField Saldo;
+    private JLabel Deuda;
 
     public ControllerPago(JTextField PagoID, JTextField UsuarioID, JTextField ProveedorID, JComboBox Estado, JTextField Fecha, JTextField Tipo, JTextField Total, JTable Pagos) {
         this.PagoID = PagoID;
@@ -30,12 +32,13 @@ public class ControllerPago {
         this.Pagos = Pagos;
     }
 
-    public ControllerPago(JTextField ProveedorID, JComboBox Estado, JTextField Total, JTable Pagos, JTextField Saldo) {
+    public ControllerPago(JTextField ProveedorID, JComboBox Estado, JTextField Total, JTable Pagos, JTextField Saldo, JLabel Deuda) {
         this.ProveedorID = ProveedorID;
         this.Estado = Estado;
         this.Total = Total;
         this.Pagos = Pagos;
         this.Saldo = Saldo;
+        this.Deuda = Deuda;
     }
 
     public ControllerPago() {
@@ -49,8 +52,9 @@ public class ControllerPago {
         return modelPago.InsertPago();
     }
     
-    public void llenarTabla(){
+    public void Cargar(){
         this.Pagos.setModel(modelPago.cargarPagos());
+        this.Deuda.setText(String.valueOf(modelPago.getDeuda()));
     }
     
     public void ActualizarSaldoActual(){

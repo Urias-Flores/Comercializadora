@@ -39,8 +39,8 @@ public class Pagos extends javax.swing.JPanel {
     
     public Pagos() {
         initComponents();
-        controllerPago = new ControllerPago(txtProveedor, cmbEstado, txtTotal, tbPagos, txtSaldoActual);
-        controllerPago.llenarTabla();
+        controllerPago = new ControllerPago(txtProveedor, cmbEstado, txtTotal, tbPagos, txtSaldoActual, lbDeuda);
+        controllerPago.Cargar();
         lbProveedor.addMouseListener(ml);
         lbActualizar.addMouseListener(ml);
     }
@@ -66,7 +66,7 @@ public class Pagos extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbDeuda = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbPagos = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
@@ -205,11 +205,11 @@ public class Pagos extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel3.setText("Deuda con proveedores");
 
-        jLabel4.setFont(new java.awt.Font("Cascadia Code", 0, 65)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(49, 152, 65));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/dinero.png"))); // NOI18N
-        jLabel4.setText("0.0");
-        jLabel4.setIconTextGap(12);
+        lbDeuda.setFont(new java.awt.Font("Cascadia Code", 0, 65)); // NOI18N
+        lbDeuda.setForeground(new java.awt.Color(49, 152, 65));
+        lbDeuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/dinero.png"))); // NOI18N
+        lbDeuda.setText("0.0");
+        lbDeuda.setIconTextGap(12);
 
         tbPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -253,16 +253,16 @@ public class Pagos extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lbDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
@@ -274,7 +274,7 @@ public class Pagos extends javax.swing.JPanel {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
@@ -307,10 +307,10 @@ public class Pagos extends javax.swing.JPanel {
         if(verify()){
             if(!controllerPago.InsertPago()){
                 Dialogs.ShowMessageDialog("Pago ingresado exitosamente", Dialogs.COMPLETEMessage);
-                controllerPago.llenarTabla();
+                controllerPago.Cargar();
             }else{
                 Dialogs.ShowMessageDialog("Ups, Ha ocurrido un error inesperado", Dialogs.ERRORMessage);
-                controllerPago.llenarTabla();
+                controllerPago.Cargar();
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -346,7 +346,7 @@ public class Pagos extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void lbActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbActualizarMouseClicked
-        controllerPago.llenarTabla();
+        controllerPago.Cargar();
     }//GEN-LAST:event_lbActualizarMouseClicked
 
     private void lbProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbProveedorMouseClicked
@@ -368,7 +368,6 @@ public class Pagos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -376,6 +375,7 @@ public class Pagos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbActualizar;
+    private javax.swing.JLabel lbDeuda;
     private javax.swing.JLabel lbProveedor;
     private javax.swing.JTable tbPagos;
     private javax.swing.JLabel txtError;

@@ -123,4 +123,17 @@ public class ModelPago {
         }
         return "";
     }
+    
+    public float getDeuda(){
+        String Query = "SELECT DBO.DEUDA(2)";
+        try (ResultSet rs = conec.getStatement().executeQuery(Query)) {
+            if (rs.next()) {
+                return rs.getFloat(1);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.print("ERROR: " + ex.getMessage() + " Codigo: " + ex.getErrorCode());
+        }
+        return 0;
+    }
 }
