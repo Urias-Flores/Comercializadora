@@ -114,26 +114,26 @@ public class LogIn extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 0, 40)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 40)); // NOI18N
         jLabel2.setText("Comercializadora");
 
-        jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 30)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
         jLabel3.setText("Del Norte");
 
-        jLabel4.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         jLabel4.setText("Usuario o correo");
 
-        txtNombre.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         jLabel5.setText("Contraseña");
 
-        txtContrasena.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        txtContrasena.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         txtContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContrasenaActionPerformed(evt);
@@ -141,7 +141,7 @@ public class LogIn extends javax.swing.JFrame {
         });
 
         btnIniciar.setBackground(new java.awt.Color(39, 49, 65));
-        btnIniciar.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        btnIniciar.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar.setText("Iniciar Sesion");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +160,7 @@ public class LogIn extends javax.swing.JFrame {
         txtError.setForeground(new java.awt.Color(255, 51, 51));
         txtError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jCheckBox1.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jCheckBox1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jCheckBox1.setText("Recordar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -169,7 +169,7 @@ public class LogIn extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnBarra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -218,7 +218,7 @@ public class LogIn extends javax.swing.JFrame {
                 .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 84, Short.MAX_VALUE))
+                .addGap(0, 83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

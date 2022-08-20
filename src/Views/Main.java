@@ -249,13 +249,14 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(39, 49, 65));
+        jPanel2.setPreferredSize(new java.awt.Dimension(320, 817));
 
-        jLabel5.setFont(new java.awt.Font("Cascadia Code", 1, 34)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 34)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Opciones");
 
         lb1.setBackground(new java.awt.Color(39, 49, 65));
-        lb1.setFont(new java.awt.Font("Cascadia Code", 1, 24)); // NOI18N
+        lb1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lb1.setForeground(new java.awt.Color(255, 255, 255));
         lb1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lb1.setText(" Inicio");
@@ -270,7 +271,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         lb2.setBackground(new java.awt.Color(39, 49, 65));
-        lb2.setFont(new java.awt.Font("Cascadia Code", 1, 24)); // NOI18N
+        lb2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lb2.setForeground(new java.awt.Color(255, 255, 255));
         lb2.setText(" Inventario");
         lb2.setEnabled(false);
@@ -282,7 +283,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         lb3.setBackground(new java.awt.Color(39, 49, 65));
-        lb3.setFont(new java.awt.Font("Cascadia Code", 1, 24)); // NOI18N
+        lb3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lb3.setForeground(new java.awt.Color(255, 255, 255));
         lb3.setText(" Produccion");
         lb3.setEnabled(false);
@@ -294,7 +295,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         lb4.setBackground(new java.awt.Color(39, 49, 65));
-        lb4.setFont(new java.awt.Font("Cascadia Code", 1, 24)); // NOI18N
+        lb4.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lb4.setForeground(new java.awt.Color(255, 255, 255));
         lb4.setText(" Proveedores");
         lb4.setEnabled(false);
@@ -305,12 +306,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Cascadia Code", 1, 34)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto", 1, 34)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("otros");
 
         lb5.setBackground(new java.awt.Color(39, 49, 65));
-        lb5.setFont(new java.awt.Font("Cascadia Code", 1, 24)); // NOI18N
+        lb5.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lb5.setForeground(new java.awt.Color(255, 255, 255));
         lb5.setText(" Administracion");
         lb5.setEnabled(false);
@@ -322,7 +323,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         lb6.setBackground(new java.awt.Color(39, 49, 65));
-        lb6.setFont(new java.awt.Font("Cascadia Code", 1, 24)); // NOI18N
+        lb6.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lb6.setForeground(new java.awt.Color(255, 255, 255));
         lb6.setText(" Preferencias");
         lb6.setEnabled(false);
@@ -338,15 +339,15 @@ public class Main extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lb2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lb3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lb4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb5, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                     .addComponent(lb6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(23, 23, 23))
         );
@@ -375,15 +376,15 @@ public class Main extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(190, 190, 190)));
 
-        jLabel1.setFont(new java.awt.Font("Cascadia Code", 1, 40)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(39, 49, 65));
         jLabel1.setText("COMERCIALIZADORA");
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 0, 30)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(39, 49, 65));
         jLabel2.setText("Del Norte");
 
-        lbSalir.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        lbSalir.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         lbSalir.setForeground(new java.awt.Color(39, 49, 65));
         lbSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbSalir.setText("Salir");
@@ -393,7 +394,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        lbAjustes.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        lbAjustes.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         lbAjustes.setForeground(new java.awt.Color(39, 49, 65));
         lbAjustes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAjustes.setText("Ajustes");
@@ -407,7 +408,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 804, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 750, Short.MAX_VALUE)
                 .addComponent(lbAjustes, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
