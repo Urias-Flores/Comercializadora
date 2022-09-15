@@ -94,7 +94,7 @@ public class DialogDeleteParcela extends javax.swing.JDialog {
         );
 
         btnCancelar.setBackground(new java.awt.Color(49, 152, 65));
-        btnCancelar.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class DialogDeleteParcela extends javax.swing.JDialog {
         });
 
         btnCerrar.setBackground(new java.awt.Color(140, 40, 40));
-        btnCerrar.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        btnCerrar.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrar.setText("Aceptar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +113,7 @@ public class DialogDeleteParcela extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Cascadia Code", 0, 19)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cascadia Mono", 0, 19)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("¿Desea Eliminar la Parcela?");
 

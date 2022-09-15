@@ -114,7 +114,7 @@ public class Compras extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(190, 190, 190)));
 
-        jLabel1.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel1.setText("Agregar nueva compra");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -137,10 +137,10 @@ public class Compras extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(383, 210));
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel2.setText("A quien se realiza la compra");
 
-        cmbTipoCompra.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbTipoCompra.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbTipoCompra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --", "Proveedor", "Productor" }));
         cmbTipoCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,11 +148,11 @@ public class Compras extends javax.swing.JPanel {
             }
         });
 
-        lbProvProd.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        lbProvProd.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         lbProvProd.setText("Seleccione");
 
         txtproductor.setEditable(false);
-        txtproductor.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtproductor.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
         btnSeleccionar.setBackground(new java.awt.Color(255, 255, 255));
         btnSeleccionar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -164,7 +164,7 @@ public class Compras extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         jLabel5.setText("Informacion de compra");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -205,7 +205,7 @@ public class Compras extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(190, 190, 190)));
 
-        jLabel6.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         jLabel6.setText("Agregar productos a la compra");
 
         btnEditarCompra.setBackground(new java.awt.Color(255, 255, 255));
@@ -239,6 +239,7 @@ public class Compras extends javax.swing.JPanel {
             }
         });
 
+        tbCompras.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         tbCompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -253,7 +254,7 @@ public class Compras extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tbCompras);
 
         btnEditar.setBackground(new java.awt.Color(49, 152, 65));
-        btnEditar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnEditar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/complete.png"))); // NOI18N
         btnEditar.setText("Facturar");
@@ -264,7 +265,7 @@ public class Compras extends javax.swing.JPanel {
         });
 
         btnCancelar.setBackground(new java.awt.Color(144, 40, 40));
-        btnCancelar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/limpiar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -274,34 +275,34 @@ public class Compras extends javax.swing.JPanel {
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         jLabel14.setText("Lps.");
 
-        jLabel15.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         jLabel15.setText("Total");
 
-        txtTotal.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        txtTotal.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         txtTotal.setForeground(new java.awt.Color(49, 152, 54));
         txtTotal.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         txtTotal.setText("0.0");
 
-        jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         jLabel3.setText("Subtotal");
 
-        jLabel17.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         jLabel17.setText("Lps.");
 
-        txtSubtotal.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        txtSubtotal.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         txtSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         txtSubtotal.setText("0.0");
 
-        jLabel7.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         jLabel7.setText("Lps.");
 
-        jLabel12.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         jLabel12.setText("ISV");
 
-        txtISV.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        txtISV.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         txtISV.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         txtISV.setText("0.0");
 
@@ -345,7 +346,7 @@ public class Compras extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel7))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                        .addComponent(txtISV, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                        .addComponent(txtISV, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel14))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()

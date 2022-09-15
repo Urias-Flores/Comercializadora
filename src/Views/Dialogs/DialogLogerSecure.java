@@ -94,36 +94,36 @@ public class DialogLogerSecure extends javax.swing.JDialog {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/error_94.png"))); // NOI18N
 
-        message1.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        message1.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         message1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         message1.setText("Message");
 
-        message2.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        message2.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         message2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         message2.setText("Message");
 
-        message3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        message3.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         message3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         message3.setText("Message");
 
-        jLabel6.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         jLabel6.setText("Usuario");
 
         txtUsuario.setEditable(false);
-        txtUsuario.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Cascadia Mono", 0, 20)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         jLabel7.setText("Contraseña");
 
-        txtContrasena.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        txtContrasena.setFont(new java.awt.Font("Cascadia Mono", 0, 20)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         jLabel8.setText("Escriba 'CONFIRMAR'");
 
-        txtConfirmar.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        txtConfirmar.setFont(new java.awt.Font("Cascadia Mono", 0, 20)); // NOI18N
 
         btnConfirmar.setBackground(new java.awt.Color(140, 40, 40));
-        btnConfirmar.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        btnConfirmar.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         btnConfirmar.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/complete.png"))); // NOI18N
         btnConfirmar.setText("Confirmar");
@@ -134,7 +134,7 @@ public class DialogLogerSecure extends javax.swing.JDialog {
         });
 
         btnCancelar.setBackground(new java.awt.Color(49, 152, 65));
-        btnCancelar.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eliminar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -145,7 +145,7 @@ public class DialogLogerSecure extends javax.swing.JDialog {
         });
 
         txtError.setBackground(new java.awt.Color(255, 255, 255));
-        txtError.setFont(new java.awt.Font("Cascadia Code", 0, 16)); // NOI18N
+        txtError.setFont(new java.awt.Font("Cascadia Mono", 0, 16)); // NOI18N
         txtError.setForeground(new java.awt.Color(255, 0, 0));
         txtError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtError.setOpaque(true);

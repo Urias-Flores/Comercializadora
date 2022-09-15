@@ -170,7 +170,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="22" style="1"/>
+              <Font name="Cascadia Mono" size="22" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Creaci&#xf3;n de Parcela"/>
@@ -182,7 +182,7 @@
               <Color blue="41" green="98" red="31" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="1"/>
+              <Font name="Cascadia Mono" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -199,7 +199,7 @@
         <Component class="javax.swing.JComboBox" name="cmbFinca">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -214,7 +214,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Finca"/>
@@ -223,7 +223,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Producto"/>
@@ -232,7 +232,7 @@
         <Component class="javax.swing.JComboBox" name="cmbProducto">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -247,7 +247,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Tipo de Suelo"/>
@@ -256,7 +256,7 @@
         <Component class="javax.swing.JComboBox" name="cmbSuelo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -271,7 +271,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Tipo de Riego"/>
@@ -280,7 +280,7 @@
         <Component class="javax.swing.JComboBox" name="cmbRiego">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -295,7 +295,7 @@
         <Component class="javax.swing.JTextField" name="txtExtension">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -305,7 +305,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Extensi&#xf3;n"/>
@@ -314,7 +314,7 @@
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Cantidad"/>
@@ -323,7 +323,7 @@
         <Component class="javax.swing.JTextField" name="txtCantidad">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
           </Properties>
           <Events>

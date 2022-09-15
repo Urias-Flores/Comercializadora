@@ -136,35 +136,35 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
             .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel2.setText("Acerca del Cliente");
 
-        jLabel3.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         jLabel3.setText("Informacion general");
 
-        jLabel4.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel4.setText("Nombre");
 
-        lbNombre.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        lbNombre.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         lbNombre.setText("hoal");
 
-        jLabel6.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel6.setText("Documento");
 
-        lbDocumento.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        lbDocumento.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         lbDocumento.setText("Nombre");
 
-        jLabel10.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         jLabel10.setText("Contacto");
 
-        jLabel15.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel15.setText("Tipo de documento");
 
-        lbTipoDocumento.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        lbTipoDocumento.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         lbTipoDocumento.setText("Nombre");
 
         btnAgregar.setBackground(new java.awt.Color(49, 152, 65));
-        btnAgregar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnAgregar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/complete.png"))); // NOI18N
         btnAgregar.setText("Aceptar");
@@ -174,10 +174,10 @@ public class DialogInformacionCliente extends javax.swing.JDialog {
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel16.setText("Tipo de Cliente");
 
-        lbTipoCliente.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        lbTipoCliente.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         lbTipoCliente.setText("Nombre");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

@@ -132,12 +132,12 @@ public class DialogCrearFinca extends javax.swing.JDialog {
             .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Creación de Finca");
 
         btnSeleccionar.setBackground(new java.awt.Color(49, 152, 65));
-        btnSeleccionar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnSeleccionar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnSeleccionar.setForeground(new java.awt.Color(255, 255, 255));
         btnSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar.png"))); // NOI18N
         btnSeleccionar.setText("Guardar");
@@ -147,19 +147,23 @@ public class DialogCrearFinca extends javax.swing.JDialog {
             }
         });
 
-        cmbProductor.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtDescripcion.setFont(new java.awt.Font("Cascadia Mono", 0, 15)); // NOI18N
+
+        txtUbicacion.setFont(new java.awt.Font("Cascadia Mono", 0, 15)); // NOI18N
+
+        cmbProductor.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbProductor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccionar productor --" }));
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel2.setText("Productor");
 
-        jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel3.setText("Nombre");
 
-        jLabel4.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel4.setText("Ubicación");
 
-        txtError.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtError.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtError.setForeground(new java.awt.Color(140, 40, 40));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

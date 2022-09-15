@@ -123,37 +123,37 @@ public class Usuarios extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel1.setText("Agregar nuevo usuario");
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel2.setText("Nombre de usuario");
 
-        txtNombreUsuario.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtNombreUsuario.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel3.setText("Empleado ligado");
 
         txtEmpleado.setEditable(false);
-        txtEmpleado.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtEmpleado.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel4.setText("Correo Electronico");
 
-        txtCorreo.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtCorreo.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
-        txtNumero.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtNumero.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel5.setText("Numero telefonico");
 
-        jLabel6.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel6.setText("Contraseña");
 
-        jLabel7.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel7.setText("Nivel de acceso");
 
-        txtContrasena.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtContrasena.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
         lbEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         lbEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -166,11 +166,11 @@ public class Usuarios extends javax.swing.JPanel {
             }
         });
 
-        cmbAcceso.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbAcceso.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbAcceso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione un nivel --", "Administrador", "Servicio Tecnico", "Vistas" }));
 
         btnAgregar.setBackground(new java.awt.Color(49, 152, 65));
-        btnAgregar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnAgregar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
@@ -181,7 +181,7 @@ public class Usuarios extends javax.swing.JPanel {
         });
 
         btnLimpiar.setBackground(new java.awt.Color(144, 40, 40));
-        btnLimpiar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnLimpiar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/limpiar.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -267,13 +267,13 @@ public class Usuarios extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(220, 220, 220)));
 
-        jLabel9.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel9.setText("Usuarios Existentes");
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/buscar.png"))); // NOI18N
 
-        txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
         txtBuscar.setText("Nombre de usuario...");
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -296,7 +296,7 @@ public class Usuarios extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tbUsuarios);
 
         btnEditar.setBackground(new java.awt.Color(49, 152, 65));
-        btnEditar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnEditar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/editar2.png"))); // NOI18N
         btnEditar.setText("Editar");
@@ -307,7 +307,7 @@ public class Usuarios extends javax.swing.JPanel {
         });
 
         btnEliminar.setBackground(new java.awt.Color(144, 40, 40));
-        btnEliminar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");

@@ -169,12 +169,12 @@ public class DialogCrearParcela extends javax.swing.JDialog {
             .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Creación de Parcela");
 
         btnSeleccionar.setBackground(new java.awt.Color(49, 152, 65));
-        btnSeleccionar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnSeleccionar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnSeleccionar.setForeground(new java.awt.Color(255, 255, 255));
         btnSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/agregar.png"))); // NOI18N
         btnSeleccionar.setText("Guardar");
@@ -184,50 +184,50 @@ public class DialogCrearParcela extends javax.swing.JDialog {
             }
         });
 
-        cmbFinca.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbFinca.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbFinca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione Finca --" }));
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Finca");
 
-        jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Producto");
 
-        cmbProducto.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbProducto.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione Finca --" }));
 
-        jLabel4.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Tipo de Suelo");
 
-        cmbSuelo.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbSuelo.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbSuelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione Finca --" }));
 
-        jLabel5.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Tipo de Riego");
 
-        cmbRiego.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbRiego.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbRiego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione Finca --" }));
 
-        txtExtension.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtExtension.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtExtension.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtExtensionActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("Extensión");
 
-        jLabel7.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("Cantidad");
 
-        txtCantidad.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtCantidad.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadActionPerformed(evt);

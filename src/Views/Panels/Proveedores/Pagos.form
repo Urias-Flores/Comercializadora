@@ -113,7 +113,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="22" style="1"/>
+              <Font name="Cascadia Mono" size="22" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Realizar pago a proveedor"/>
           </Properties>
@@ -121,7 +121,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Proveedor"/>
           </Properties>
@@ -130,7 +130,7 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
           </Properties>
         </Component>
@@ -152,7 +152,7 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Marcas como"/>
           </Properties>
@@ -160,14 +160,14 @@
         <Component class="javax.swing.JTextField" name="txtTotal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Total a pagar"/>
           </Properties>
@@ -175,7 +175,7 @@
         <Component class="javax.swing.JComboBox" name="cmbEstado">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -196,7 +196,7 @@
               <Color blue="41" green="98" red="31" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="1"/>
+              <Font name="Cascadia Mono" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -216,7 +216,7 @@
               <Color blue="28" green="28" red="90" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="1"/>
+              <Font name="Cascadia Mono" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -243,7 +243,7 @@
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Saldo actual"/>
           </Properties>
@@ -252,7 +252,7 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="0.0"/>
           </Properties>
@@ -321,7 +321,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="22" style="1"/>
+              <Font name="Cascadia Mono" size="22" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Registro de pagos"/>
           </Properties>
@@ -329,7 +329,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Deuda con proveedores"/>
           </Properties>
@@ -337,7 +337,7 @@
         <Component class="javax.swing.JLabel" name="lbDeuda">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="65" style="0"/>
+              <Font name="Cascadia Mono" size="65" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="41" green="98" red="31" type="rgb"/>
@@ -358,6 +358,9 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tbPagos">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Cascadia Mono" size="18" style="0"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
                     <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -376,7 +379,7 @@
               <Color blue="28" green="28" red="90" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="1"/>
+              <Font name="Cascadia Mono" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

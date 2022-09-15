@@ -137,34 +137,34 @@ public class Editar extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(190, 190, 190)));
 
-        jLabel1.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cascadia Mono", 0, 20)); // NOI18N
         jLabel1.setText("Resumen del dia");
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cascadia Mono", 0, 20)); // NOI18N
         jLabel2.setText("Total de ventas hoy");
 
-        lbVentas.setFont(new java.awt.Font("Cascadia Code", 0, 65)); // NOI18N
+        lbVentas.setFont(new java.awt.Font("Cascadia Mono", 0, 65)); // NOI18N
         lbVentas.setForeground(new java.awt.Color(49, 152, 54));
         lbVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/entradas.png"))); // NOI18N
         lbVentas.setText("0.0");
         lbVentas.setIconTextGap(12);
 
-        lbCompras.setFont(new java.awt.Font("Cascadia Code", 0, 65)); // NOI18N
+        lbCompras.setFont(new java.awt.Font("Cascadia Mono", 0, 65)); // NOI18N
         lbCompras.setForeground(new java.awt.Color(140, 40, 40));
         lbCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Salidas.png"))); // NOI18N
         lbCompras.setText("0.0");
         lbCompras.setIconTextGap(12);
 
-        jLabel5.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Cascadia Mono", 0, 20)); // NOI18N
         jLabel5.setText("Total de compras hoy");
 
-        lbGanancias.setFont(new java.awt.Font("Cascadia Code", 0, 65)); // NOI18N
+        lbGanancias.setFont(new java.awt.Font("Cascadia Mono", 0, 65)); // NOI18N
         lbGanancias.setForeground(new java.awt.Color(49, 152, 54));
         lbGanancias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Ganancias.png"))); // NOI18N
         lbGanancias.setText("0.0");
         lbGanancias.setIconTextGap(12);
 
-        jLabel10.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Cascadia Mono", 0, 20)); // NOI18N
         jLabel10.setText("Total de ganancias hoy");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -177,15 +177,15 @@ public class Editar extends javax.swing.JPanel {
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbGanancias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
         );
         jPanel1Layout.setVerticalGroup(
@@ -214,6 +214,7 @@ public class Editar extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        tbDetalles.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         tbDetalles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -232,11 +233,11 @@ public class Editar extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbDetalles);
 
-        jLabel6.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         jLabel6.setText("Historial de acciones");
 
         btnEliminar.setBackground(new java.awt.Color(144, 40, 40));
-        btnEliminar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
@@ -249,7 +250,7 @@ public class Editar extends javax.swing.JPanel {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/buscar.png"))); // NOI18N
 
-        txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
         txtBuscar.setText("buscar...");
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -310,9 +311,10 @@ public class Editar extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(190, 190, 190)));
 
-        jLabel8.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         jLabel8.setText("Vistas previa");
 
+        tbPreeliminar.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         tbPreeliminar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

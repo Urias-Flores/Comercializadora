@@ -145,14 +145,14 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
             .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel2.setText("Agregar a factura");
 
         jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/buscar.png"))); // NOI18N
 
-        txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
         txtBuscar.setText("buscar...");
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -161,6 +161,7 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
             }
         });
 
+        tbEntes.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         tbEntes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -175,7 +176,7 @@ public class DialogSelectClientProduc extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tbEntes);
 
         btnSeleccionar.setBackground(new java.awt.Color(49, 152, 65));
-        btnSeleccionar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnSeleccionar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnSeleccionar.setForeground(new java.awt.Color(255, 255, 255));
         btnSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/seleccionar.png"))); // NOI18N
         btnSeleccionar.setText("Seleccionar");

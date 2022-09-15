@@ -119,7 +119,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="22" style="1"/>
+              <Font name="Cascadia Mono" size="22" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Arqueos Anteriores"/>
           </Properties>
@@ -127,7 +127,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Filtrar"/>
           </Properties>
@@ -135,7 +135,7 @@
         <Component class="javax.swing.JRadioButton" name="rdFecha">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Fecha"/>
           </Properties>
@@ -143,7 +143,7 @@
         <Component class="javax.swing.JRadioButton" name="rdUsuario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Usuario"/>
           </Properties>
@@ -151,7 +151,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="1"/>
+              <Font name="Cascadia Mono" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Fecha"/>
           </Properties>
@@ -159,7 +159,7 @@
         <Component class="javax.swing.JComboBox" name="cmbDia">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="32">
@@ -205,7 +205,7 @@
         <Component class="javax.swing.JComboBox" name="cmbMes">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="13">
@@ -232,7 +232,7 @@
         <Component class="javax.swing.JComboBox" name="cmbAnio">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="66">
@@ -312,7 +312,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="1"/>
+              <Font name="Cascadia Mono" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Usuario"/>
           </Properties>
@@ -320,7 +320,7 @@
         <Component class="javax.swing.JComboBox" name="cmbUsuario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -338,7 +338,7 @@
               <Color blue="41" green="98" red="31" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="1"/>
+              <Font name="Cascadia Mono" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -361,6 +361,9 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tbArqueo">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Cascadia Mono" size="15" style="0"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
                     <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -461,7 +464,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="22" style="1"/>
+              <Font name="Cascadia Mono" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Registrar nuevo arqueo"/>
           </Properties>
@@ -469,7 +472,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="20" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Usuario"/>
           </Properties>
@@ -478,7 +481,7 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -488,7 +491,7 @@
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="20" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Saldo Inicial"/>
           </Properties>
@@ -497,7 +500,7 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -507,7 +510,7 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="20" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Saldo Final"/>
           </Properties>
@@ -515,7 +518,7 @@
         <Component class="javax.swing.JTextField" name="txtSaldoFinal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -526,7 +529,7 @@
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="20" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Total compras"/>
           </Properties>
@@ -535,7 +538,7 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -545,7 +548,7 @@
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="20" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Total en ventas"/>
           </Properties>
@@ -554,7 +557,7 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
           </Properties>
           <Events>
@@ -564,7 +567,7 @@
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="20" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Diferencia"/>
           </Properties>
@@ -573,7 +576,7 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Cascadia Code" size="18" style="0"/>
+              <Font name="Cascadia Mono" size="18" style="0"/>
             </Property>
           </Properties>
           <Events>

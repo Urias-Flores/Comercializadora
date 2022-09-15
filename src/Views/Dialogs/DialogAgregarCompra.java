@@ -155,14 +155,14 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
             .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel2.setText("Agregar producto a factura");
 
         jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/buscar.png"))); // NOI18N
 
-        txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
         txtBuscar.setText("buscar...");
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -171,6 +171,7 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
             }
         });
 
+        tbProductos.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         tbProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -189,30 +190,30 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tbProductos);
 
-        txtCantidad.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtCantidad.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel5.setText("Cantidad");
 
-        jLabel8.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel8.setText("Bodega");
 
-        cmbBodega.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbBodega.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbBodega.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccionar --", "Bodega 1" }));
 
-        jLabel4.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel4.setText("Precio sug.");
 
-        jLabel6.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel6.setText("Precio obt.");
 
-        jLabel7.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel7.setText("ISV");
 
         txtPrecioSugerido.setEditable(false);
-        txtPrecioSugerido.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtPrecioSugerido.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
-        txtPrecioObtenido.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtPrecioObtenido.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtPrecioObtenido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPrecioObtenidoKeyReleased(evt);
@@ -220,7 +221,7 @@ public class DialogAgregarCompra extends javax.swing.JDialog {
         });
 
         txtISV.setEditable(false);
-        txtISV.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtISV.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
         btnAgregar.setBackground(new java.awt.Color(49, 152, 65));
         btnAgregar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N

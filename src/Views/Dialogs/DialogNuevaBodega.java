@@ -78,10 +78,10 @@ public class DialogNuevaBodega extends javax.swing.JDialog {
             .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
         );
 
-        nuevaBodegaLabel.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        nuevaBodegaLabel.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         nuevaBodegaLabel.setText("Agregar nueva bodega");
 
-        ubicacionLabel.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        ubicacionLabel.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         ubicacionLabel.setText("Ubicacion");
 
         txtUbicacion.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
@@ -92,7 +92,7 @@ public class DialogNuevaBodega extends javax.swing.JDialog {
         });
 
         btnConfirmar.setBackground(new java.awt.Color(0, 153, 51));
-        btnConfirmar.setFont(new java.awt.Font("Cascadia Code", 1, 20)); // NOI18N
+        btnConfirmar.setFont(new java.awt.Font("Cascadia Mono", 1, 20)); // NOI18N
         btnConfirmar.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/complete.png"))); // NOI18N
         btnConfirmar.setText("Confirmar");
@@ -102,10 +102,10 @@ public class DialogNuevaBodega extends javax.swing.JDialog {
             }
         });
 
-        nombreLabel.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        nombreLabel.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         nombreLabel.setText("Nombre");
 
-        txtError.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtError.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtError.setForeground(new java.awt.Color(140, 40, 40));
         txtError.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 

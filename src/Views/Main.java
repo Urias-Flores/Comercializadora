@@ -251,12 +251,12 @@ public class Main extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(39, 49, 65));
         jPanel2.setPreferredSize(new java.awt.Dimension(320, 817));
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 34)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Cascadia Mono", 1, 32)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Opciones");
 
         lb1.setBackground(new java.awt.Color(39, 49, 65));
-        lb1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lb1.setFont(new java.awt.Font("Cascadia Mono", 1, 24)); // NOI18N
         lb1.setForeground(new java.awt.Color(255, 255, 255));
         lb1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lb1.setText(" Inicio");
@@ -271,7 +271,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         lb2.setBackground(new java.awt.Color(39, 49, 65));
-        lb2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lb2.setFont(new java.awt.Font("Cascadia Mono", 1, 24)); // NOI18N
         lb2.setForeground(new java.awt.Color(255, 255, 255));
         lb2.setText(" Inventario");
         lb2.setEnabled(false);
@@ -283,7 +283,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         lb3.setBackground(new java.awt.Color(39, 49, 65));
-        lb3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lb3.setFont(new java.awt.Font("Cascadia Mono", 1, 24)); // NOI18N
         lb3.setForeground(new java.awt.Color(255, 255, 255));
         lb3.setText(" Produccion");
         lb3.setEnabled(false);
@@ -295,7 +295,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         lb4.setBackground(new java.awt.Color(39, 49, 65));
-        lb4.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lb4.setFont(new java.awt.Font("Cascadia Mono", 1, 24)); // NOI18N
         lb4.setForeground(new java.awt.Color(255, 255, 255));
         lb4.setText(" Proveedores");
         lb4.setEnabled(false);
@@ -306,12 +306,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Roboto", 1, 34)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Cascadia Mono", 1, 32)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("otros");
 
         lb5.setBackground(new java.awt.Color(39, 49, 65));
-        lb5.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lb5.setFont(new java.awt.Font("Cascadia Mono", 1, 24)); // NOI18N
         lb5.setForeground(new java.awt.Color(255, 255, 255));
         lb5.setText(" Administracion");
         lb5.setEnabled(false);
@@ -323,7 +323,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         lb6.setBackground(new java.awt.Color(39, 49, 65));
-        lb6.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lb6.setFont(new java.awt.Font("Cascadia Mono", 1, 24)); // NOI18N
         lb6.setForeground(new java.awt.Color(255, 255, 255));
         lb6.setText(" Preferencias");
         lb6.setEnabled(false);
@@ -376,15 +376,15 @@ public class Main extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(190, 190, 190)));
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 40)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cascadia Mono", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(39, 49, 65));
         jLabel1.setText("COMERCIALIZADORA");
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cascadia Mono", 0, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(39, 49, 65));
         jLabel2.setText("Del Norte");
 
-        lbSalir.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        lbSalir.setFont(new java.awt.Font("Cascadia Mono", 0, 20)); // NOI18N
         lbSalir.setForeground(new java.awt.Color(39, 49, 65));
         lbSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbSalir.setText("Salir");
@@ -394,7 +394,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        lbAjustes.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        lbAjustes.setFont(new java.awt.Font("Cascadia Mono", 0, 20)); // NOI18N
         lbAjustes.setForeground(new java.awt.Color(39, 49, 65));
         lbAjustes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAjustes.setText("Ajustes");
@@ -434,7 +434,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        TabPane.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        TabPane.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

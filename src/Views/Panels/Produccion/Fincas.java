@@ -131,16 +131,17 @@ public class Fincas extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel7.setText("Fincas");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/buscar.png"))); // NOI18N
 
-        txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
         txtBuscar.setText("Nombre...");
 
+        tbFincas.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         tbFincas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -155,7 +156,7 @@ public class Fincas extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tbFincas);
 
         btnEditarFinca.setBackground(new java.awt.Color(49, 152, 65));
-        btnEditarFinca.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnEditarFinca.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnEditarFinca.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarFinca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/editar2.png"))); // NOI18N
         btnEditarFinca.setText("Editar");
@@ -166,7 +167,7 @@ public class Fincas extends javax.swing.JPanel {
         });
 
         btnEliminarFinca.setBackground(new java.awt.Color(144, 40, 40));
-        btnEliminarFinca.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnEliminarFinca.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnEliminarFinca.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarFinca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eliminar.png"))); // NOI18N
         btnEliminarFinca.setText("Eliminar");
@@ -249,9 +250,10 @@ public class Fincas extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(190, 190, 190)));
 
-        jLabel8.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel8.setText("Control de parcelas o lotes");
 
+        tbParcelas.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
         tbParcelas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -265,29 +267,29 @@ public class Fincas extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tbParcelas);
 
-        jLabel9.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel9.setText("Filtrar");
 
-        jLabel10.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel10.setText("Productor");
 
-        cmbProductores.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbProductores.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbProductores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- seleccione --" }));
 
-        jLabel11.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel11.setText("Finca");
 
-        cmbFincas.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbFincas.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbFincas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- seleccione --" }));
 
         btnCargar.setBackground(new java.awt.Color(49, 152, 65));
-        btnCargar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnCargar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnCargar.setForeground(new java.awt.Color(255, 255, 255));
         btnCargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cargar.png"))); // NOI18N
         btnCargar.setText("Cargar");
 
         btnEditarParcelar.setBackground(new java.awt.Color(49, 152, 65));
-        btnEditarParcelar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnEditarParcelar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnEditarParcelar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarParcelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/editar2.png"))); // NOI18N
         btnEditarParcelar.setText("Editar");
@@ -298,7 +300,7 @@ public class Fincas extends javax.swing.JPanel {
         });
 
         btnEliminarParcela.setBackground(new java.awt.Color(144, 40, 40));
-        btnEliminarParcela.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnEliminarParcela.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnEliminarParcela.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarParcela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eliminar.png"))); // NOI18N
         btnEliminarParcela.setText("Eliminar");

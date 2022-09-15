@@ -117,12 +117,12 @@ public class DialogMessage extends javax.swing.JDialog {
         lbIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/error_94.png"))); // NOI18N
 
-        lbMessage.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        lbMessage.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         lbMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMessage.setText("Message");
 
         btnAceptar.setBackground(new java.awt.Color(39, 49, 65));
-        btnAceptar.setFont(new java.awt.Font("Cascadia Code", 0, 20)); // NOI18N
+        btnAceptar.setFont(new java.awt.Font("Cascadia Mono", 0, 20)); // NOI18N
         btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {

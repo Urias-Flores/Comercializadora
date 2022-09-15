@@ -76,14 +76,14 @@ public class Pagos extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel1.setText("Realizar pago a proveedor");
 
-        jLabel5.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel5.setText("Proveedor");
 
         txtProveedor.setEditable(false);
-        txtProveedor.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtProveedor.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
         lbProveedor.setBackground(new java.awt.Color(255, 255, 255));
         lbProveedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -95,19 +95,19 @@ public class Pagos extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel8.setText("Marcas como");
 
-        txtTotal.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtTotal.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel9.setText("Total a pagar");
 
-        cmbEstado.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbEstado.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccionar --", "Realizado", "Pendiente", " " }));
 
         btnGuardar.setBackground(new java.awt.Color(49, 152, 65));
-        btnGuardar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnGuardar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/complete.png"))); // NOI18N
         btnGuardar.setText("Guardar");
@@ -118,7 +118,7 @@ public class Pagos extends javax.swing.JPanel {
         });
 
         btnLimpiar.setBackground(new java.awt.Color(144, 40, 40));
-        btnLimpiar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnLimpiar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/limpiar.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -131,11 +131,11 @@ public class Pagos extends javax.swing.JPanel {
         txtError.setFont(new java.awt.Font("Cascadia Code", 0, 16)); // NOI18N
         txtError.setForeground(new java.awt.Color(140, 40, 40));
 
-        jLabel10.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel10.setText("Saldo actual");
 
         txtSaldoActual.setEditable(false);
-        txtSaldoActual.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtSaldoActual.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtSaldoActual.setText("0.0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -199,18 +199,19 @@ public class Pagos extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(190, 190, 190)));
 
-        jLabel2.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel2.setText("Registro de pagos");
 
-        jLabel3.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel3.setText("Deuda con proveedores");
 
-        lbDeuda.setFont(new java.awt.Font("Cascadia Code", 0, 65)); // NOI18N
+        lbDeuda.setFont(new java.awt.Font("Cascadia Mono", 0, 65)); // NOI18N
         lbDeuda.setForeground(new java.awt.Color(49, 152, 65));
         lbDeuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/dinero.png"))); // NOI18N
         lbDeuda.setText("0.0");
         lbDeuda.setIconTextGap(12);
 
+        tbPagos.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         tbPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -225,7 +226,7 @@ public class Pagos extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tbPagos);
 
         btnEliminar.setBackground(new java.awt.Color(144, 40, 40));
-        btnEliminar.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");

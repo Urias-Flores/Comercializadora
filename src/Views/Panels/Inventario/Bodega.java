@@ -101,13 +101,13 @@ public class Bodega extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setFont(new java.awt.Font("Cascadia Code", 1, 22)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Cascadia Mono", 1, 22)); // NOI18N
         jLabel7.setText("Control y registro de bodegas");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/buscar.png"))); // NOI18N
 
-        txtBuscar.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(190, 190, 190));
         txtBuscar.setText("buscar...");
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -116,6 +116,7 @@ public class Bodega extends javax.swing.JPanel {
             }
         });
 
+        tbDetalles.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         tbDetalles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -130,7 +131,7 @@ public class Bodega extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tbDetalles);
 
         btnImprimir.setBackground(new java.awt.Color(49, 152, 65));
-        btnImprimir.setFont(new java.awt.Font("Cascadia Code", 1, 18)); // NOI18N
+        btnImprimir.setFont(new java.awt.Font("Cascadia Mono", 1, 18)); // NOI18N
         btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/imprimir.png"))); // NOI18N
         btnImprimir.setText("Imprimir reporte");
@@ -140,10 +141,10 @@ public class Bodega extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         jLabel8.setText("Bodega");
 
-        cmbBodegas.setFont(new java.awt.Font("Cascadia Code", 0, 18)); // NOI18N
+        cmbBodegas.setFont(new java.awt.Font("Cascadia Mono", 0, 18)); // NOI18N
         cmbBodegas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Seleccione --" }));
         cmbBodegas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
